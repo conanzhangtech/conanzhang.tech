@@ -1,4 +1,4 @@
-module github.com/hbstack/theme
+module github.com/conanzhangtech/www.conanzhang.tech.git
 
 go 1.19
 
