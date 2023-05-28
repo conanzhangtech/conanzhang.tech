@@ -25,16 +25,15 @@ images:
 #         name: book
 #         color: '#e24d0e'
 authors:
-  - razonyang
-  - hugomods
----
+  - conanzhangtech
 ---
 
+---
 Innovation meets inspiration. 
 
 Embark on an exciting journey into the vast world of me, where you can explore and contribute your creativity and imagination. Discover valuable insights and inspiration to enhance your pursuits.
 
-<hr>
+---
 
 ## Biography 
 
