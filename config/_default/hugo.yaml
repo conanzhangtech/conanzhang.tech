@@ -1,15 +1,15 @@
 baseURL: https://www-conanzhang-tech.pages.dev/
-title: HB Starter Theme Template
+title: Facets of Conan Zhang
 # Copyright, the {year} is the placeholder of this year.
-copyright: "Copyright © 2022-{year} [Hugo Modules](https://hugomods.com/) and [HB Framework](https://hbstack.dev/). All Rights Reserved."
+copyright: "Copyright © 2023 [Conan ZHANG](/) All Rights Reserved."
 defaultContentLanguage: en
-defaultContentLanguageInSubdir: true # disable this to remove the default language code from URL, i.e. /en/docs -> /docs.
+defaultContentLanguageInSubdir: false # disable this to remove the default language code from URL, i.e. /en/docs -> /docs.
 enableRobotsTXT: true
 timeout: 120s # images processing takes a long time, it's recommended to commit the resources folder for improve the build performance.
 enableEmoji: true
 
 permalinks:
-  blog: /blog/:year/:month/:title
+  blog: /blog/:month/:year/:title
 
 module:
   # For some regions can not access the proxy.golang.org, i.e. China.

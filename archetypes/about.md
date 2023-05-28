@@ -7,9 +7,9 @@ description:
 noindex: false
 # comments: false
 nav_weight: 1000
-# nav_icon:
-#   vendor: bootstrap
-#   name: toggles
+ nav_icon:
+   vendor: bootstrap
+   name: person-badge
 #   color: '#e24d0e'
 series:
   - Docs
@@ -19,13 +19,13 @@ tags:
 #  - 
 images:
 #  - 
-# menu:
-#   main:
-#     weight: 100
-#     params:
-#       icon:
-#         vendor: bs
-#         name: book
+ menu:
+   main:
+     weight: 100
+     params:
+       icon:
+         vendor: bookstrap
+         name: person-badge
 #         color: '#e24d0e'
 ---
 

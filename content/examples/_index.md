@@ -2,7 +2,7 @@
 title: Examples
 menu:
   main:
-    weight: 3
+    weight: 1003
     params:
       icon:
         vendor: bs

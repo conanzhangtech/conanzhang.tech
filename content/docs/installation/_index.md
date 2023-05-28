@@ -5,5 +5,5 @@ nav_icon:
   vendor: bs
   name: cloud-download
   color: green
-nav_weight: 2
+nav_weight: 110
 ---
