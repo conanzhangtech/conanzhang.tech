@@ -2,7 +2,7 @@
 title: Docs
 menu:
   main:
-    weight: 101
+    weight: 1001
     params:
       icon:
         vendor: bs
