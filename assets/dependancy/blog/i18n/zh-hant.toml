@@ -1,5 +1,0 @@
-[on_this_page]
-other = "本頁內容"
-
-[reading_time]
-other = "{{ .Count }} 分鐘閱讀"

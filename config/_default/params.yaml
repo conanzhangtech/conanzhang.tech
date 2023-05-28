@@ -12,6 +12,7 @@ hb:
       facebook: conanzhang.tech
       discord: 141732959534317569
       telegram: conanzhangtech
+      gmail: mailto:conan.zhang@conanzhang.tech
       
 
   footer:
@@ -23,6 +24,7 @@ hb:
       facebook: conanzhang.tech
       discord: 141732959534317569
       telegram: conanzhangtech
+      gmail: mailto:conan.zhang@conanzhang.tech
 
   blog:
     paginate: 12 # paginate.
