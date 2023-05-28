@@ -19,11 +19,11 @@ module:
   # The order of module is very important, precedence from top to bottom.
   imports:
     # gallery modules.
-    - path: github.com/conanzhangtech/www.conanzhang.tech/assets/dependancy/gallery
-    - path: github.com/conanzhangtech/www.conanzhang.tech/assets/dependancy/gallery/modules/breadcrumb
+    - path: github.com/hbstack/gallery
+    - path: github.com/hbstack/gallery/modules/breadcrumb
 
     # syntax highlighting, see https://hbstack.dev/en/docs/modules/syntax-highlighting/.
-    # - path: github.com/conanzhangtech/www.conanzhang.tech/assets/dependancy/syntax-highlighting/styles/github-dark
+    # - path: github.com/hbstack/syntax-highlighting/styles/github-dark
   
     # icons modules
     - path: github.com/hugomods/icons/vendors/font-awesome
@@ -33,26 +33,26 @@ module:
     # - path: github.com/hugomods/icons/vendors/feather
 
     # blog comments engine
-    - path: github.com/conanzhangtech/www.conanzhang.tech/assets/dependancy/blog/modules/giscus
-    # - path: github.com/conanzhangtech/www.conanzhang.tech/assets/dependancy/blog/modules/disqus
-    # - path: github.com/conanzhangtech/www.conanzhang.tech/assets/dependancy/blog/modules/utterances
+    - path: github.com/hbstack/blog/modules/giscus
+    # - path: github.com/hbstack/blog/modules/disqus
+    # - path: github.com/hbstack/blog/modules/utterances
 
     # blog table of contents scrollspy
-    - path: github.com/conanzhangtech/www.conanzhang.tech/assets/dependancy/blog/modules/toc-scrollspy
+    - path: github.com/hbstack/blog/modules/toc-scrollspy
 
     # blog content panel
-    - path: github.com/conanzhangtech/www.conanzhang.tech/assets/dependancy/blog/modules/content-panel
+    - path: github.com/hbstack/blog/modules/content-panel
 
     # docs comments engine
-    - path: github.com/conanzhangtech/www.conanzhang.tech/assets/dependancy/docs/modules/giscus
-    # - path: github.com/conanzhangtech/www.conanzhang.tech/assets/dependancy/docs/modules/utterances
-    # - path: github.com/conanzhangtech/www.conanzhang.tech/assets/dependancy/docs/modules/disqus
+    - path: github.com/hbstack/docs/modules/giscus
+    # - path: github.com/hbstack/docs/modules/utterances
+    # - path: github.com/hbstack/docs/modules/disqus
 
     # docs table of contents scrollspy
-    - path: github.com/conanzhangtech/www.conanzhang.tech/assets/dependancy/docs/modules/toc-scrollspy
+    - path: github.com/hbstack/docs/modules/toc-scrollspy
 
     # docs content panel
-    - path: github.com/conanzhangtech/www.conanzhang.tech/assets/dependancy/docs/modules/content-panel
+    - path: github.com/hbstack/docs/modules/content-panel
 
     # other modules
     # - path: github.com/hugomods/google-analytics
@@ -62,7 +62,7 @@ module:
     # check which modules were imported by recommended module by "hugo mod graph | grep recommended".
     # see also https://hbstack.dev/en/docs/modules/meta/.
     # to remove unused modules, you need to replace the recommended module with modules your need.
-    - path: github.com/conanzhangtech/www.conanzhang.tech/assets/dependancy/meta/recommended
+    - path: github.com/hbstack/meta/recommended
 
 outputs:
   home:
