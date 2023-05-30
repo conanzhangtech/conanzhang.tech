@@ -13,7 +13,7 @@ categories:
   
 tags:
   - awards
-  - achivements
+  - achievements
   - timeline
   - school
   - tp

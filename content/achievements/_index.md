@@ -9,10 +9,10 @@ series:
   - About Me
 categories:
   - Awards and Achievements
-  
+
 tags:
   - awards
-  - achivements
+  - achievements
   - timeline
   - events
   - personal
