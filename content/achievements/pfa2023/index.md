@@ -1,5 +1,5 @@
 ---
-title: Phychological First Aid (PFA)
+title: Psychological First Aid (PFA)
 date: 2023-04-15
 draft: false
 description: Psychological First Aid (PFA) is a crisis response intervention technique that facilitates recovery and reduces trauma-related stress after a crisis hits.
