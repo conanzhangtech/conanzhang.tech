@@ -38,18 +38,18 @@ hb:
         - blog
         - tutorials
     giscus:
-      repo: hbstack/theme
+      repo: conanzhangtech/www.conanzhang.tech
       repo_id: R_kgDOJP3qtA
       category_id: DIC_kwDOJP3qtM4CVavM
   docs:
     giscus:
-      repo: hbstack/theme
+      repo: conanzhangtech/www.conanzhang.tech
       repo_id: R_kgDOJP3qtA
       category_id: DIC_kwDOJP3qtM4CVavM
   content_panel:
     repo:
       service: github # github or gitlab.
-      repo: hbstack/theme
+      repo: conanzhangtech/www.conanzhang.tech
       branch: main
       # subpath: exampleSite
   # gallery:
