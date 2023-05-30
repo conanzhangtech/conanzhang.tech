@@ -6,9 +6,10 @@ description: The purpose is to showcase the effort and commitment I have investe
 noindex: false
 comments: true
 series:
-  - My Dimension
+  - About Me
 categories:
   - Awards and Achievements
+  
 tags:
   - awards
   - achivements

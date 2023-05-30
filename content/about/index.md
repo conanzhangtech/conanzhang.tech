@@ -7,7 +7,7 @@ noindex: false
 comments: false
 
 series:
-  - My Dimension
+  - About Me
 categories:
   - About Me
 tags:
