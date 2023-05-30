@@ -1,5 +1,6 @@
 ---
 title: Facets of Conan ZHANG
+layout: 'landing'
 # menu:
 #   main:
 #     name: Home
@@ -9,3 +10,7 @@ title: Facets of Conan ZHANG
 #         vendor: bs
 #         name: house
 ---
+
+Hi
+
+

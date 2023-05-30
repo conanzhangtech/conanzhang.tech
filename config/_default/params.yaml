@@ -1,4 +1,4 @@
-description: Innovation meets inspiration.
+description: Innovation meets inspiration | Embark on an exciting journey into the vast world of me, where you can explore and contribute your creativity and imagination. Discover valuable insights and inspiration to enhance your pursuits.
 
 hb:
   header:
@@ -65,14 +65,17 @@ pwa:
   manifest:
     background_color: '#712cf9'
     theme_color: '#712cf9'
-    short_name: 'HB Theme'
+    short_name: 'Facets of Conan Zhang'
 
 # see https://hugomods.com/en/docs/search/#site-parameters
 search:
   stall_threshold: 300
   min_match_char_length: 1
   case_sensitive: false
-  # shortcut_search: ["/"]
+  modal_toggle_selector: false
+  index_all_pages: false
+  index_content: false
+  # shortcut_search: ["~"]
 
 mermaid:
   # replace it with other CDNs or self-hosted URLs.
@@ -84,7 +87,7 @@ hugopress:
       hooks:
         # see layouts/partials/hugopress/modules/hb-custom/hooks/head-end.html.
         head-end:
-          cacheable: true
+          cacheable: false
         # see layouts/partials/hugopress/modules/hb-custom/hooks/body-end.html.
         body-end:
-          cacheable: true
+          cacheable: false

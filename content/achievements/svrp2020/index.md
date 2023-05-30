@@ -1,6 +1,6 @@
 ---
-title: Student Volunteer Recognition Programme Award (SVRP) 2019
-date: 2019-11-06
+title: Student Volunteer Recognition Programme Award (SVRP) 2020
+date: 2019-10-03
 draft: false
 description: Developed by Association of Information Security Professionals (AiSP) and Cyber Security Agency of Singapore (CSA), the SVRP aims to encourage volunteerism amongst students while honing their interest and skills in cybersecurity. SVRP, an initiative under CSA’s SG Cyber Youth Programme, has received strong participation and support from local Institutes of Higher Learning (IHLs) as well as AiSP’s industry partners.
 
@@ -43,17 +43,18 @@ Developed by Association of Information Security Professionals (AiSP) and Cyber 
 
 ## What took place?
 
-The inaugural Student Volunteer & Recognition Programme (SVRP) Award Ceremony was held on 6 November 2019 to recognise student volunteers for their contributions to the cybersecurity community. 
 
-The ceremony was graced by Senior Minister of State for Communications and Information Sim Ann. SMS Sim Ann presented four students with the SVRP Gold Award. There were also 33 Silver and 47 Bronze Award recipients, presented by Mr Selwyn Scharnhorst, Director of Ecosystem Development at the Cyber Security Agency of Singapore (CSA) and Mr Freddy Tan, Association of Information Security (AiSP) SRVP Exco Lead.
+The second edition of the Student Volunteer & Recognition Programme (SVRP) Awards Ceremony was held on 24 March 2021 to recognise student volunteers for their contributions to the cybersecurity community. In 2020, close to 100 student volunteers in the SVRP contributed more than 9,000 hours of volunteering to the cybersecurity community.
+
+Dr. Janil Puthucheary, Senior Minister of State for Communications and Information and Health, graced the event. A total of 64 Gold, Silver and Bronze awards were given to the student volunteers this year. Award recipients contributed at least 120 hours of volunteer work, with six Gold Award recipients contributing at least 150 hours each.
 
 ## Which award did I get?
 
-Silver
+Gold
 
 ## View my credentials
 
-![Student Volunteer Recognition Programme Award (SVRP) 2019](credential1.jpg)
+![Student Volunteer Recognition Programme Award (SVRP) 2020](credential1.jpg)
 
 ## How did I get the award?
 
@@ -63,7 +64,7 @@ Content updating **come back later!**
 {{% /markdownify %}}
 {{< /bs/alert >}}
 
-## Reflection / takeaway / thoughts
+## My personal reflection / takeaway / thoughts
 
 {{< bs/alert info >}}
 {{% markdownify %}}
@@ -71,14 +72,11 @@ Content updating **come back later!**
 {{% /markdownify %}}
 {{< /bs/alert >}}
 
-
 ## Reference
 
-["Inaugural Student Volunteer & Recognition Programme Award Ceremony" article by Cyber Security Agency of Singapore](https://www.csa.gov.sg/News-Events/News-Articles/2019/Inaugural-Student-Volunteer-and-Recognition-Programme-Award-Ceremony)
+["Student Volunteer & Recognition Programme Awards Ceremony 2020" article by Cyber Security Agency of Singapore](https://www.csa.gov.sg/News-Events/News-Articles/2021/svrp-awards-ceremony-2020)
 
-["Student Volunteer Recognition Programme by AISP, Singapore." instagram post by @conanzhang.tech](https://www.instagram.com/p/B4h_P4Tnj6g/)
+["Student Volunteer Recognition Programme 2020 organised by @aisp.sg, supported by @csasingapore and ensign_infosecurity." instagram post by @conanzhang.tech](https://www.instagram.com/p/B4h_P4Tnj6g/)
 
-["SVRP AWARDS CEREMONY 2019" article by Association of Information Security Professionals, Singapore](https://www.aisp.sg/svrp_2019.html)
-
-
+["SVRP AWARDS CEREMONY 2020" article by Association of Information Security Professionals, Singapore](https://www.aisp.sg/svrp_2020.html)
 
