@@ -2,7 +2,8 @@
 title: (ISC)2 Candidate Badge
 date: 2023-05-08
 draft: false
-description: (ISC)² Candidates are individuals pursuing or considering a cybersecurity certification. To become a Candidate, the individual must apply online and provide minimum identifying information, as well as affirm that they will abide by the (ISC)² Code of Ethics and Privacy Policy.
+description: An (ISC)² Candidate is a part of a diverse community of cybersecurity professionals working to build a safe and secure cyber world.
+
 noindex: false
 comments: true
 series:
