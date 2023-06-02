@@ -47,6 +47,10 @@ The inaugural Student Volunteer & Recognition Programme (SVRP) Award Ceremony wa
 
 The ceremony was graced by Senior Minister of State for Communications and Information Sim Ann. SMS Sim Ann presented four students with the SVRP Gold Award. There were also 33 Silver and 47 Bronze Award recipients, presented by Mr Selwyn Scharnhorst, Director of Ecosystem Development at the Cyber Security Agency of Singapore (CSA) and Mr Freddy Tan, Association of Information Security (AiSP) SRVP Exco Lead.
 
+## Awarding Institution
+
+Association of Information Security Professionals (AISP), Singapore
+
 ## Which award did I get?
 
 Silver

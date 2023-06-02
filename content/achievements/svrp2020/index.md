@@ -2,6 +2,8 @@
 title: Student Volunteer Recognition Programme Award (SVRP) 2020
 date: 2021-03-24
 draft: false
+featured: true
+pinned: true
 description: Developed by Association of Information Security Professionals (AiSP) and Cyber Security Agency of Singapore (CSA), the SVRP aims to encourage volunteerism amongst students while honing their interest and skills in cybersecurity. SVRP, an initiative under CSA’s SG Cyber Youth Programme, has received strong participation and support from local Institutes of Higher Learning (IHLs) as well as AiSP’s industry partners.
 
 noindex: false
@@ -43,10 +45,13 @@ Developed by Association of Information Security Professionals (AiSP) and Cyber 
 
 ## What took place?
 
-
 The second edition of the Student Volunteer & Recognition Programme (SVRP) Awards Ceremony was held on 24 March 2021 to recognise student volunteers for their contributions to the cybersecurity community. In 2020, close to 100 student volunteers in the SVRP contributed more than 9,000 hours of volunteering to the cybersecurity community.
 
 Dr. Janil Puthucheary, Senior Minister of State for Communications and Information and Health, graced the event. A total of 64 Gold, Silver and Bronze awards were given to the student volunteers this year. Award recipients contributed at least 120 hours of volunteer work, with six Gold Award recipients contributing at least 150 hours each.
+
+## Awarding Institution
+
+Association of Information Security Professionals (AISP), Singapore
 
 ## Which award did I get?
 

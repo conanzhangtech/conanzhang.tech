@@ -9,7 +9,7 @@ comments: true
 series:
   - About Me
 categories:
-  - Awards and Achievements
+  - Cerificate of participation
   
 tags:
   - certificate
@@ -60,9 +60,17 @@ The categories are:
 - Social Engineering (SE)
 - Web
 
+## What have I got?
+
+Certificate of participation
+
 ## Awarding Institution
 
 Government Technology Agency of Singapore (GOVTECH)
+
+## Which award did I obtain?
+
+Certificate of participation
 
 ## View my credentials
 

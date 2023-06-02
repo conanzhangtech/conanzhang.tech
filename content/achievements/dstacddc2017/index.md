@@ -9,7 +9,7 @@ comments: true
 series:
   - About Me
 categories:
-  - Awards and Achievements
+  - Cerificate of participation
   
 tags:
   - certificate
@@ -49,6 +49,10 @@ Held at the Singapore University of Technology and Design (SUTD), the camp kicke
 ## Awarding Institution
 
 Defence Science and Technology Agency of Singapore (DSTA)
+
+## Which award did I get?
+
+Certificate of participation
 
 ## View my credentials
 

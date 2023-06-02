@@ -9,7 +9,7 @@ comments: true
 series:
   - About Me
 categories:
-  - Awards and Achievements
+  - Professional Cerificate
   
 tags:
   - awards
