@@ -16,6 +16,7 @@ tags:
   - achievements
   - professional
   - personal
+  - digitalverification
 
 images:
 # menu:
@@ -30,8 +31,13 @@ authors:
   - conanzhangtech
 
 ---
+{{< bs/alert success >}}
+{{% markdownify %}}
+Digital Verification - Provided by Credly.
+{{% /markdownify %}}
+{{< /bs/alert >}}
 ---
-
+---
 ## What Is It?
 
 An (ISC)² Candidate is a part of a diverse community of cybersecurity professionals working to build a safe and secure cyber world.

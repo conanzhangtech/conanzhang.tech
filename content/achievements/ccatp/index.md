@@ -2,7 +2,7 @@
 title: Co-Curriculum Activity (Temasek Polytechnic)
 date: 2021-04-01
 draft: false
-description: The Service Star Award is one platform through which ITE College recognises students who have displayed excellent service mindset towards other individuals or institutions and/or are involved in community service or have contributed to the college in notable ways.
+description: CCAs are an integral part of campus life and play a fundamental role in the holistic development of students. They contribute towards personal enrichment and pride in the institution. In fact, TP is abuzz with exciting CCAs ranging from the sports and arts to leadership training and community involvement.
 
 noindex: false
 comments: true
@@ -37,13 +37,11 @@ authors:
 
 ## What Is It?
 
-CCA
+The Student Development & Alumni Affairs (SDAA) department provides students with a well-rounded educational experience through a variety of engaging CCAs.
+
+CCAs are an integral part of campus life and play a fundamental role in the holistic development of students. They contribute towards personal enrichment and pride in the institution. In fact, TP is abuzz with exciting CCAs ranging from the sports and arts to leadership training and community involvement.
 
 ---
-
-## What took place?
-
-CCA
 
 ## Awarding Institution
 
@@ -55,18 +53,12 @@ Distinction
 
 ## View my credentials
 
-{{< bs/alert info >}}
+{{< bs/alert danger >}}
+Encrypted PDF. Please request for it 
 {{% markdownify %}}
-Content updating **come back later!**
+{{< bs/alert-link "here" "#https://form.gov.sg/6476c575f127a10011b3a2e1?6476c38fbd534c001199dee6={{< param  categories >}}/{{< param  title >}}" >}}
 {{% /markdownify %}}
-{{< /bs/alert >}}
-
-## How did I get the award?
-
-{{< bs/alert info >}}
-{{% markdownify %}}
-Content updating **come back later!**
-{{% /markdownify %}}
+and I will send it to you.
 {{< /bs/alert >}}
 
 ## Reflection / takeaway / thoughts
