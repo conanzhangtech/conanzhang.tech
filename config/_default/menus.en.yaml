@@ -19,3 +19,13 @@ main:
       icon:
         vendor: bs
         name: patch-check
+
+  - name: Events and Projects
+    identifier: eventsandprojects
+    weight: 102
+    url: /projects
+    params:
+      header: Events and Projects (All domains)
+      icon:
+        vendor: bs
+        name: archive-fill

@@ -28,8 +28,8 @@ authors:
   <a class="btn btn-lg btn-primary fw-semibold mb-2 py-3 mx-2" href="{{< relref `achievements` >}}">
     {{< icons/icon vendor=bootstrap name=patch-check className="me-1" >}} Achievements
   </a>
-  <a class="btn btn-lg btn-primary fw-semibold mb-2 py-3 mx-2" href="error/404">
-    {{< icons/icon vendor=bootstrap name= archive-fill className="me-1" >}} Projects
+  <a class="btn btn-lg btn-primary fw-semibold mb-2 py-3 mx-2" href="{{< relref `projects` >}}">
+    {{< icons/icon vendor=bootstrap name=archive-fill className="me-1" >}} Projects
   </a>
  
 </div>
