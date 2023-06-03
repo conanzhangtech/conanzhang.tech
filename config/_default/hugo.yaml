@@ -1,7 +1,7 @@
 baseURL: https://www.conanzhang.tech
 title: Facets of Conan Zhang
 # Copyright, the {year} is the placeholder of this year.
-copyright: "Copyright © 2023 [Conan ZHANG](/) All Rights Reserved."
+copyright: "Copyright © 2023 [Conan ZHANG](/about) All Rights Reserved."
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: false # disable this to remove the default language code from URL, i.e. /en/docs -> /docs.
 enableRobotsTXT: true
@@ -9,7 +9,8 @@ timeout: 120s # images processing takes a long time, it's recommended to commit 
 enableEmoji: true
 
 permalinks:
-  achievements: /achievements/:day/:year/:title
+  achievements: /achievements/:title
+  projects: /projects/:title
 
 module:
   # For some regions can not access the proxy.golang.org, i.e. China.
