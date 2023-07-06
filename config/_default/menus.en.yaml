@@ -1,6 +1,6 @@
 main:
 
-  - name: About
+  - name: About Me
     identifier: aboutme
     weight: 100
     url: /about
@@ -10,7 +10,7 @@ main:
         vendor: bs
         name: person-badge
 
-  - name: Achievements
+  - name: Awards and Achievements
     identifier: awardsandachievements
     weight: 101
     url: /achievements
