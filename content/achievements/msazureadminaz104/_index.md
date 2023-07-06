@@ -1,6 +1,6 @@
 ---
-title: (ISC)2 Candidate Badge
-date: 2023-05-08
+title: AZ-104 - Microsoft Azure Administrator
+date: 2023-07-06
 draft: false
 description: An (ISC)² Candidate is a part of a diverse community of cybersecurity professionals working to build a safe and secure cyber world.
 
