@@ -56,12 +56,10 @@ Certified in Cybersecurity professional certificate and verified badge
 <hr>
 
 ## View, Download and Print
-[{{< icons/icon vendor=bootstrap name=download color=white >}}](https://conanzhangtech.sharepoint.com/sites/DocumentLibrary-Certification/_layouts/15/download.aspx?SourceUrl=%2Fsites%2FDocumentLibrary%2DCertification%2FShared%20Documents%2FMain%20Document%20Library%2FAll%2FISC2CC%20%2D%20ZHANG%20TIANCI%20CONAN%20ID1617512%2Epdf) | [{{< icons/icon vendor=bootstrap name=printer color=white >}}](https://conanzhangtech.sharepoint.com/sites/DocumentLibrary-Certification/Shared%20Documents/Main%20Document%20Library/All/ISC2CC%20-%20ZHANG%20TIANCI%20CONAN%20ID1617512.pdf)
+[{{< icons/icon vendor=bootstrap name=download color=white >}}](https://conanzhangtech.sharepoint.com/sites/DocumentLibrary-Certification/_layouts/15/download.aspx?SourceUrl=%2Fsites%2FDocumentLibrary%2DCertification%2FShared%20Documents%2FMain%20Document%20Library%2FAll%2FISC2CC%20%2D%20ZHANG%20TIANCI%20CONAN%20ID1617512%2Epdf) | [{{< icons/icon vendor=bootstrap name=printer color=white >}}](https://conanzhangtech.sharepoint.com/sites/DocumentLibrary-Certification/Shared%20Documents/Main%20Document%20Library/All/ISC2CC%20-%20ZHANG%20TIANCI%20CONAN%20ID1617512.pdf) | [{{< icons/icon vendor=bootstrap name=patch-check-fill color=green >}}](https://conanzhangtech.sharepoint.com/sites/DocumentLibrary-Certification/Shared%20Documents/Main%20Document%20Library/All/ISC2CC%20-%20ZHANG%20TIANCI%20CONAN%20ID1617512.pdf) - Digital Credential Avaliable
 
 <iframe src="https://conanzhangtech.sharepoint.com/sites/DocumentLibrary-Certification/_layouts/15/embed.aspx?UniqueId=64560574-4eb3-4dd5-bd43-3b498e99a4b6" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen title="ISC2CC - ZHANG TIANCI CONAN ID1617512.pdf"></iframe>
 
 ## Reference
 
 NIL
-
-
