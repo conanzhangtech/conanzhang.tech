@@ -1,5 +1,5 @@
 ---
-title: (ISC)2 Candidate Badge
+title: (ISC)² Candidate Badge
 date: 2023-05-08
 draft: false
 description: An (ISC)² Candidate is a part of a diverse community of cybersecurity professionals working to build a safe and secure cyber world.
@@ -50,11 +50,11 @@ NA
 
 ## Awarding Institution
 
-(ISC)2
+(ISC)²
 
 ## Which award did I get?
 
-ISC2 Verified Candidate Badge
+(ISC)² Verified Candidate Badge
 
 ## View my credentials (Badge)
 {{< bs/alert success >}}
