@@ -54,16 +54,16 @@ NA
 
 ## Which award did I get?
 
-Candidate Badge
+ISC2 Verified Candidate Badge
 
-## View my credentials
+## View my credentials (Badge)
 {{< bs/alert success >}}
 {{% markdownify %}}
-Verify via {{< bs/alert-link "Credly" "https://www.credly.com/badges/2e454727-b25d-41b8-810d-30aa6321534c/linked_in?t=rue0yr" >}}
+Verify via {{< bs/alert-link "Credly" "https://www.credly.com/badges/2e454727-b25d-41b8-810d-30aa6321534c/public_url" >}}
 {{% /markdownify %}}
 {{< /bs/alert >}}
 
-![(ISC)2 Candidate Badge](credential1.jpg)
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="2e454727-b25d-41b8-810d-30aa6321534c" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 
 ## How did I get the award?
 

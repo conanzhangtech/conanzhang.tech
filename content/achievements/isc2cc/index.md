@@ -42,15 +42,11 @@ Digital Verification - Provided by Credly.
 
 An (ISC)² Cerified in Cybersecurity (CC) certificate demonstrate that an individual has the foundational knowledge of industry terminology, network security, security operations and policies and procedures.
 
-Note from ISC2: 
-
-TIANCI CONAN ZHANG, the credential of Certified in Cybersecurity, having met all of the certification requirements, adoption of the ISC2 Code of Ethics, and successful performance on the required competency examination, subject to recertification every three years, this individual is entitled to all of the rights and privileges associated with this designation, as defined in the ISC2 Bylaws.
-
 ---
 
-## What took place?
+## Note from ISC2
 
-NA
+TIANCI CONAN ZHANG, the credential of Certified in Cybersecurity, having met all of the certification requirements, adoption of the ISC2 Code of Ethics, and successful performance on the required competency examination, subject to recertification every three years, this individual is entitled to all of the rights and privileges associated with this designation, as defined in the ISC2 Bylaws.
 
 ## Awarding Institution
 
@@ -58,14 +54,18 @@ NA
 
 ## Which award did I get?
 
-Professional Certificate and Certificate Badge
+Certified in Cybersecurity professional certificate and verified badge
 
-## View my credentials
+## View my credentials (Badge)
 {{< bs/alert success >}}
 {{% markdownify %}}
-<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="7e9ce762-1eca-4787-9cff-6639c91cd3c6" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+Verify via {{< bs/alert-link "Credly" "https://www.credly.com/badges/2e454727-b25d-41b8-810d-30aa6321534c/public_url" >}}
 {{% /markdownify %}}
 {{< /bs/alert >}}
+
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="7e9ce762-1eca-4787-9cff-6639c91cd3c6" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+
+## View my credentials (Cerificate)
 
 ![(ISC)2 Cerified in Cybersecurity Professional Cerificate](credential1.jpg)
 
