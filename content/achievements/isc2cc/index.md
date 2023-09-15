@@ -64,4 +64,5 @@ Certified in Cybersecurity professional certificate and verified badge
 
 ## Reference
 
-NIL
+LinkedIn Post
+<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7108501011643723777" height="696" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
