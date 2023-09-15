@@ -1,8 +1,8 @@
 ---
-title: (ISC)2 Cerified in Cybersecurity Professional Certificate
+title: (ISC)2 Certified in Cybersecurity Professional Certificate
 date: 2023-09-15
 draft: false
-description: An (ISC)² Cerified in Cybersecurity (CC) certificate demonstrate that an individual has the foundational knowledge of industry terminology, network security, security operations and policies and procedures.
+description: An (ISC)² Certified in Cybersecurity (CC) certificate demonstrate that an individual has the foundational knowledge of industry terminology, network security, security operations and policies and procedures.
 
 noindex: false
 comments: true
@@ -36,7 +36,7 @@ authors:
 ---
 ## What Is It?
 
-An (ISC)² Cerified in Cybersecurity (CC) certificate demonstrate that an individual has the foundational knowledge of industry terminology, network security, security operations and policies and procedures.
+An (ISC)² Certified in Cybersecurity (CC) certificate demonstrate that an individual has the foundational knowledge of industry terminology, network security, security operations and policies and procedures.
 
 ---
 
