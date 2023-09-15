@@ -1,5 +1,5 @@
 ---
-title: (ISC)2 Cerified in Cybersecurity Professional Cerificate
+title: (ISC)2 Cerified in Cybersecurity Professional Certificate
 date: 2023-05-08
 draft: false
 description: An (ISC)² Cerified in Cybersecurity (CC) certificate demonstrate that an individual has the foundational knowledge of industry terminology, network security, security operations and policies and procedures.
@@ -31,12 +31,8 @@ authors:
   - conanzhangtech
 
 ---
-{{< bs/alert success >}}
-{{% markdownify %}}
-Digital Verification - Provided by Credly.
-{{% /markdownify %}}
-{{< /bs/alert >}}
----
+
+
 ---
 ## What Is It?
 
@@ -56,35 +52,13 @@ TIANCI CONAN ZHANG, the credential of Certified in Cybersecurity, having met all
 
 Certified in Cybersecurity professional certificate and verified badge
 
-## View my credentials (Badge)
-{{< bs/alert success >}}
-{{% markdownify %}}
-Verify via {{< bs/alert-link "Credly" "https://www.credly.com/badges/2e454727-b25d-41b8-810d-30aa6321534c/public_url" >}}
-{{% /markdownify %}}
-{{< /bs/alert >}}
 
-<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="7e9ce762-1eca-4787-9cff-6639c91cd3c6" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+<hr>
 
-## View my credentials (Cerificate)
+## View, Download and Print
+[{{< icons/icon vendor=bootstrap name=download color=white >}}](https://conanzhangtech.sharepoint.com/sites/DocumentLibrary-Certification/_layouts/15/download.aspx?SourceUrl=%2Fsites%2FDocumentLibrary%2DCertification%2FShared%20Documents%2FMain%20Document%20Library%2FAll%2FISC2CC%20%2D%20ZHANG%20TIANCI%20CONAN%20ID1617512%2Epdf) | [{{< icons/icon vendor=bootstrap name=printer color=white >}}](https://conanzhangtech.sharepoint.com/sites/DocumentLibrary-Certification/Shared%20Documents/Main%20Document%20Library/All/ISC2CC%20-%20ZHANG%20TIANCI%20CONAN%20ID1617512.pdf)
 
-![(ISC)2 Cerified in Cybersecurity Professional Cerificate](credential1.jpg)
-
-## How did I get the award?
-
-{{< bs/alert info >}}
-{{% markdownify %}}
-Content updating **come back later!**
-{{% /markdownify %}}
-{{< /bs/alert >}}
-
-## Reflection / takeaway / thoughts
-
-{{< bs/alert info >}}
-{{% markdownify %}}
-Content updating **come back later!**
-{{% /markdownify %}}
-{{< /bs/alert >}}
-
+<iframe src="https://conanzhangtech.sharepoint.com/sites/DocumentLibrary-Certification/_layouts/15/embed.aspx?UniqueId=64560574-4eb3-4dd5-bd43-3b498e99a4b6" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen title="ISC2CC - ZHANG TIANCI CONAN ID1617512.pdf"></iframe>
 
 ## Reference
 
