@@ -32,7 +32,6 @@ authors:
 
 ---
 
-
 ---
 ## What Is It?
 
@@ -58,11 +57,14 @@ Certified in Cybersecurity professional certificate and verified badge
 ## View, Download and Print
 {{< icons/icon vendor=bootstrap name=patch-check color=green >}} - Credly | [{{< icons/icon vendor=bootstrap name=box-arrow-up-right color=white >}}](https://www.credly.com/badges/7e9ce762-1eca-4787-9cff-6639c91cd3c6/public_url)
 
-{{< icons/icon vendor=bootstrap name=eye color=white >}} - Problem viewing? Click [here](https://file.conanzhang.tech/ISC2CC@ZHANG_TIANCI_CONAN_ID1617512.pdf) to view it on the web.
-
-<iframe src="https://file.conanzhang.tech/ISC2CC@ZHANG_TIANCI_CONAN_ID1617512.pdf" height="100%" width="100%" frameborder="0" scrolling="no" allowfullscreen title="(ISC)²CC@ZHANG_TIANCI_CONAN_ID1617512.pdf"></iframe>
-
+{{< embed-pdf url="https://file.conanzhang.tech/ISC2CC@ZHANG_TIANCI_CONAN_ID1617512.pdf" >}}
 ## Reference
 
-LinkedIn Post
-<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7108501011643723777" height="696" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+
+
+{{< linkedin 
+embed="https://www.linkedin.com/embed/feed/update/urn:li:share:7108501011643723777" 
+source="https://www.linkedin.com/feed/update/urn:li:activity:7108501012197363712/" 
+>}}
+
+<br><br>
