@@ -31,6 +31,10 @@ authors:
   <a class="btn btn-lg btn-primary fw-semibold mb-2 py-3 mx-2" href="{{< relref `projects` >}}">
     {{< icons/icon vendor=bootstrap name=archive-fill className="me-1" >}} Projects
   </a>
+
+  <a class="btn btn-lg btn-primary fw-semibold mb-2 py-3 mx-2" href="{{< relref `partners` >}}">
+    {{< icons/icon vendor=bootstrap name=percent className="me-1" >}} Partners Discount
+  </a>
  
 </div>
 {{< /hero >}}

@@ -1,5 +1,5 @@
 ---
-title: Awards and Achievements
+title: Partners Discount
 date: 2023-05-28
 draft: false
 description: I work with various partners to give visitors to "Facets of Conan ZHANG" exclusive perks offered by my partners.

@@ -1,10 +1,10 @@
 ---
-title: Student Volunteer Recognition Programme Award (SVRP) 2020
+title: 10% OFF all products at MuscleBlaze
 date: 2023-03-24
 draft: false
 featured: true
 pinned: true
-description: Get 10% OFF at MuscleBlaze when you enter "CONMB" during checkout | conanzhangtech X MuscleBlaze
+description: Get 10% OFF all products at MuscleBlaze when you enter "CONMB" during checkout | conanzhangtech X MuscleBlaze
 
 noindex: false
 comments: true
@@ -60,3 +60,7 @@ Please contact me for support.
 ## Extra
 
 Existing deals by MB will also be applicable on top of the discount code.
+
+## Terms
+
+The code is only applicaable at MuscleBlaze.sg and NOT MuscleBlaze.com.

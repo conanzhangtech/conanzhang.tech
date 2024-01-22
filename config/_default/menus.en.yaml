@@ -29,3 +29,13 @@ main:
       icon:
         vendor: bs
         name: archive-fill
+
+  - name: Partners Discount
+    identifier: partners
+    weight: 103
+    url: /partners
+    params:
+      header: Partners Discount
+      icon:
+        vendor: bs
+        name: percent
