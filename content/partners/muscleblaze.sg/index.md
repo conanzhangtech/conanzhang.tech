@@ -37,7 +37,7 @@ authors:
 ---
 ---
 
-## Colllaboration Partner
+## Collaboration Partner
 
 MuscleBlaze - MuscleBlaze was founded in 2012 with the mission to provide the world with sports nutrition supplements that are focused explicitly on consumer needs and listen to their sentiments day in and day out.
 
@@ -49,13 +49,26 @@ Click [here](https://muscleblaze.sg/pages/about-us) to learn more
 
 CONMB
 
+## MuscleBlaze online product collection?
+
+Click [here](https://muscleblaze.sg/collections/all) to view the entire product collection.
+
 ## How to use the discount code?
 
-Simply select a product in their [product catelog](https://muscleblaze.sg/collections/all) and enter "CONMB" discount code to get your 10% OFF.
+Simply select an item in their product collection page and enter "CONMB" discount code during checkout to get your 10% OFF (on top of the ongoing promotion by MB).
 
-Detailed guide will be available soon.
+Detailed Guide:
+{{< embed-pdf url="https://file.conanzhang.tech/ISC2CC@ZHANG_TIANCI_CONAN_ID1617512.pdf" >}}
 
-Please contact me for support.
+## Payment Methods available
+
+- American Express (AMEX)
+- Mastercard
+- Visa
+- PayPal
+- ShopPay
+- Apple Pay (Option avaiable when access from an Apple Device)
+- Google Pay
 
 ## Extra
 
