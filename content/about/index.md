@@ -25,15 +25,11 @@ authors:
 ---
 Innovation meets inspiration. 
 
-Embark on an exciting journey into the vast world of me, where you can explore and contribute your creativity and imagination. Discover valuable insights and inspiration to enhance your pursuits.
-
 ---
 
 ## Biography 
 
 Hi There! <br> {{< icons/icon bootstrap emoji-smile-fill >}}
-
-
 
 > My name is Conan, and I am a passionate, innovative, self-driven, and reliable individual with a strong commitment to giving back to society through technology. 
 > <br> <br>
