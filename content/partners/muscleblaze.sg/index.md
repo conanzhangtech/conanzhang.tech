@@ -58,7 +58,7 @@ Click [here](https://muscleblaze.sg/collections/all) to view the entire product 
 Simply select an item in their product collection page and enter "CONMB" discount code during checkout to get your 10% OFF (on top of the ongoing promotion by MB).
 
 Detailed Guide:
-{{< embed-pdf url="https://file.conanzhang.tech/ISC2CC@ZHANG_TIANCI_CONAN_ID1617512.pdf" >}}
+{{< embed-pdf url="https://file.conanzhang.tech/How-to-use-my-discount-code-for-a-10P-OFF-all-products-on-MuscleBlaze.sg.pdf" >}}
 
 ## Payment Methods available
 
@@ -72,7 +72,7 @@ Detailed Guide:
 
 ## Extra
 
-Existing deals by MB will also be applicable on top of the discount code.
+Existing deals by MB is still applicable on top of the discount code.
 
 ## Terms
 
