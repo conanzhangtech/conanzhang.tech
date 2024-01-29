@@ -44,7 +44,11 @@ NordVPN - Level Up Your Online Security with NordVPN's Thread Protection: Save u
 
 I have partnered with NordVPN to bring you an exclusive 67% OFF on NordVPN subscription, and backed by 30-days money-back guarentee.
 
-**Why NordVPN's Thread Protection?**
+Ready to take the leap into a safer online experience? [Discover NordVPN Now](https://go.nordvpn.net/aff_c?offer_id=725&aff_id=100533&url_id=22219&source=https://www.conanzhang.tech/partners/0124002-nordvpn.com)!
+
+---
+
+## Why NordVPN's Thread Protection?**
 
 - **Block Malicious Downloads, Trackers, and Ads**: Say goodbye to annoying pop-ups and protect your devices from sneaky cyber threats. NordVPN's advanced thread protection keeps your digital world secure.
 
@@ -52,13 +56,11 @@ I have partnered with NordVPN to bring you an exclusive 67% OFF on NordVPN subsc
 
 - **Avoid Malware-Ridden Websites**: NordVPN's Thread Protection acts as your virtual bodyguard, steering you clear of dangerous online neighborhoods. Browse confidently, knowing you're safe from malware attacks.
 
-Ready to take the leap into a safer online experience? [Discover NordVPN Now](https://go.nordvpn.net/aff_c?offer_id=725&aff_id=100533&url_id=22219&source=https://www.conanzhang.tech/partners/0124002-nordvpn.com)!
-
 ---
 
 ## How to redeem the offer?
 
-Simply click on "Get Thread Protection" and select the plan that you wish to subscribe to.
+Simply click on "Get Thread Protection" [here](https://go.nordvpn.net/aff_c?offer_id=725&aff_id=100533&url_id=22219&source=https://www.conanzhang.tech/partners/0124002-nordvpn.com) and select the plan that you wish to subscribe to.
 
 ## How to get your 30-days money-back guarantee Refund?
 
