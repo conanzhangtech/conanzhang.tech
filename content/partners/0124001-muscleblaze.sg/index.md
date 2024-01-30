@@ -1,10 +1,10 @@
 ---
-title: 10% OFF all products at MuscleBlaze
+title: Additional 10% OFF all products at MuscleBlaze!
 date: 2023-03-24
 draft: false
 featured: true
 pinned: true
-description: Get 10% OFF all products at MuscleBlaze when you enter "CONMB" during checkout | conanzhangtech X MuscleBlaze
+description: Get an additional 10% OFF all products at MuscleBlaze when you enter "CONMB" during checkout | conanzhangtech X MuscleBlaze
 
 noindex: false
 comments: true
