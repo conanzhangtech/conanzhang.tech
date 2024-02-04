@@ -1,7 +1,7 @@
 ---
 title: Microsoft Series - discounted certification eBooks from InformIT.
-date: 2024-01-30
-draft: true
+date: 2024-02-03
+draft: false
 pinned: true
 description: Pearson IT Certification is a leader in IT Certification learning solutions, with a long tradition of delivering proven learning tools and educational training materials that have helped instructors teach, students learn, and certification exam candidates succeed. | conanzhangtech X Pearson IT Certification
 
