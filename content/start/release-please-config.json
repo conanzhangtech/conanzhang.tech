@@ -1,0 +1,47 @@
+{
+    "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+    "monorepo-tags": true,
+    "release-type": "go",
+    "tag-separator": "/",
+    "changelog-sections": [
+        { "type": "chore", "section": "Miscellaneous Chores", "hidden": true },
+        { "type": "ci", "section": "Continuous Integration" },
+        { "type": "docs", "section": "Documentation 📝" },
+        { "type": "feat", "section": "Features ✨" },
+        { "type": "feature", "section": "Features ✨" },
+        { "type": "fix", "section": "Bug Fixes 🐞" },
+        { "type": "perf", "section": "Performance Improvements ⚡️" },
+        { "type": "style", "section": "Styles 🎨" }
+    ],
+    "packages": {
+        ".": {
+            "exclude-paths": [
+                "engines"
+            ]
+        },
+        "engines/baidu": {
+            "component": "engines/baidu"
+        },
+        "engines/bing": {
+            "component": "engines/bing"
+        },
+        "engines/duckduckgo": {
+            "component": "engines/duckduckgo"
+        },
+        "engines/google": {
+            "component": "engines/google"
+        },
+        "engines/sogou": {
+            "component": "engines/sogou"
+        },
+        "engines/wikipedia": {
+            "component": "engines/wikipedia"
+        },
+        "engines/yahoo": {
+            "component": "engines/yahoo"
+        },
+        "engines/yandex": {
+            "component": "engines/yandex"
+        }
+    }
+}

@@ -1,0 +1,74 @@
+{{- with site.Menus.apps }}
+  {{- with where . "HasChildren" true }}
+    <ul
+      role="tablist"
+      class="hb-start-app-taxonomies nav nav-underline justify-content-center mb-3">
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link hb-start-app-taxonomy active"
+          aria-selected="true"
+          role="tab"
+          data-id="">
+          {{ i18n "all_sites" }}
+        </button>
+      </li>
+      {{- range . }}
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link hb-start-app-taxonomy"
+            data-id="{{ .Identifier }}"
+            aria-selected="false"
+            role="tab"
+            title="{{ .Name }}">
+            {{ .Name }}
+          </button>
+        </li>
+      {{- end }}
+    </ul>
+  {{- end }}
+  <div
+    class="hb-start-apps d-flex flex-wrap row row-cols-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6">
+    {{- range . }}
+      {{- if .HasChildren }}
+        {{- range .Children }}
+          {{ template "hb-start-app" . }}
+        {{- end }}
+      {{- else }}
+        {{ template "hb-start-app" . }}
+      {{- end }}
+    {{- end }}
+  </div>
+{{- end }}
+
+{{ define "hb-start-app" }}
+  {{- $url := urls.Parse .URL }}
+  {{- $favicon := printf "%s://%s/favicon.ico" $url.Scheme $url.Host }}
+  <a
+    class="col hb-start-app d-flex flex-column justify-content-center align-items-center rounded text-decoration-none text-body px-2 py-3"
+    href="{{ .URL }}"
+    title="{{ .Name }}"
+    {{ with .Parent }}data-parent="{{ . }}"{{ end }}
+    target="_blank"
+    rel="external">
+    <div
+      class="hb-start-app-img-container border border-2 position-relative overflow-hidden bg-body-secondary rounded-circle d-flex justify-content-center align-items-center mb-2">
+      {{- with .Params.icon }}
+        {{ partial "icons/icon" (merge (dict "width" "2em" "height" "2em") .) }}
+      {{- else }}
+        <img
+          alt="{{ .Name }}"
+          onload="this.parentElement.classList.add('loaded')"
+          class="hb-start-app-img position-absolute top-0 w-100 h-100"
+          loading="lazy"
+          src="{{ $favicon }}" />
+        <span
+          class="hb-start-app-img-placeholder position-absolute top-0 w-100 h-100">
+          {{ substr .Name 0 1 | upper }}
+        </span>
+      {{- end }}
+    </div>
+    <div class="hb-start-app-title text-center text-truncate w-100">
+      {{ .Name }}
+    </div>
+  </a>
+{{ end }}

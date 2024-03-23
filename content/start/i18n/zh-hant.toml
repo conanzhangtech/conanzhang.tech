@@ -1,0 +1,44 @@
+[all_sites]
+other = "全部"
+
+[search_engine_baidu]
+other = "百度"
+
+[search_engine_bing]
+other = "必應"
+
+[search_engine_duckduckgo]
+other = "DuckDuckGo"
+
+[search_engine_google]
+other = "谷歌"
+
+[search_engine_sogou]
+other = "搜狗"
+
+[search_engine_wikipedia]
+other = "維基百科"
+
+[search_engine_yahoo]
+other = "雅虎"
+
+[search_engine_yandex]
+other = "Yandex"
+
+[search_input_placeholder]
+other = "搜索"
+
+[search_result_type_images]
+other = "圖片"
+
+[search_result_type_maps]
+other = "地圖"
+
+[search_result_type_news]
+other = "新聞"
+
+[search_result_type_organic]
+other = "網頁"
+
+[search_result_type_videos]
+other = "視頻"

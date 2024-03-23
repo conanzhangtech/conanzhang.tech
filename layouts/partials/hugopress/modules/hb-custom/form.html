@@ -1,0 +1,27 @@
+{{- $engines := partialCached "hb/modules/theme-start/functions/engines" . }}
+{{- $preferredType := index (index $engines 0).types 0 }}
+{{- $inputText := default "" site.Params.hb.theme_start.search_input_text }}
+{{ partialCached "hb/modules/theme-start/result-types" $engines }}
+<form
+  class="form hb-start-search-form position-relative mb-3 mb-md-5"
+  action="{{ $preferredType.url }}"
+  target="_blank">
+  <input
+    class="form-control form-control-lg rounded-pill w-100 hb-start-search-input shadow-sm"
+    aria-label="Keywords"
+    placeholder="{{ i18n `search_input_placeholder` }}"
+    {{ with $inputText }}value="{{ . }}"{{ end }}
+    name="{{ $preferredType.input_name }}" />
+  {{ partialCached "hb/modules/theme-start/engines" $engines }}
+  <button
+    class="bg-transparent position-absolute end-0 top-0 border-0 py-2 px-3 btn-hb-start-search text-body-secondary"
+    aria-label="Submit"
+    type="submit">
+    {{- partial "icons/icon" (dict
+      "vendor" "bootstrap"
+      "name" "search"
+      "width" "1.25rem"
+      "height" "1.25rem")
+    }}
+  </button>
+</form>

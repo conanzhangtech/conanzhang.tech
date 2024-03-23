@@ -1,0 +1,25 @@
+{{- $engines := slice }}
+{{- range $id, $engine := site.Params.hb.theme_start.search_engines }}
+  {{- if .disable }}{{ continue }}{{ end }}
+  {{- $icon := partial "icons/icon" (dict
+    "vendor" (default "simple" .icon_vendor)
+    "name" .icon
+    "width" "1.25rem"
+    "height" "1.25rem"
+    "color" .icon_color
+    "className" "hb-start-search-engine-icon")
+  }}
+  {{- $types := slice }}
+  {{- range $id, $type := .types }}
+    {{- $types = $types | append (merge (dict "id" $id) $type) }}
+  {{- end }}
+  {{- $engines = $engines | append (dict
+    "id" $id
+    "weight" (default 100 .weight)
+    "title" (default ($id | title) ($id | printf "search_engine_%s" | i18n))
+    "types" (sort $types "weight")
+    "icon" $icon)
+  }}
+{{- end }}
+{{- $engines = sort $engines "weight" }}
+{{- return $engines }}
