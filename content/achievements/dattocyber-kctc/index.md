@@ -1,6 +1,6 @@
 ---
 title: Datto Certification - Kaseya Certified Technician in Cybersecurity
-date: 2021-04-07
+date: 2024-04-07
 draft: false
 featured: false
 pinned: true
