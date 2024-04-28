@@ -57,7 +57,7 @@ Acronis Tech Associate Cybersecurity 2024
 
 ## View, Download and Print
 
-{{< icons/icon vendor=bootstrap name=patch-check color=green >}} - Credly (Come back later) | [{{< icons/icon vendor=bootstrap name=box-arrow-up-right color=white >}}](https://www.conanzhang.tech)
+{{< icons/icon vendor=bootstrap name=patch-check color=green >}} - Credly | [{{< icons/icon vendor=bootstrap name=box-arrow-up-right color=white >}}](https://www.credly.com/badges/6a9901a6-653b-4062-a9fb-bbfd11de87c0/public_url)
 
 {{< embed-pdf url="https://file.conanzhang.tech/acronis-atac2024-12042024-11042025.pdf" >}}
 
