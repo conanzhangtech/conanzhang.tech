@@ -1,9 +1,9 @@
 ---
 title: SMTP Relay Server on Ubuntu Server 24.04.1 LTS
 date: 2023-10-11
-draft: true
+draft: false
 description: How to
-noindex: false
+noindex: true
 comments: true
 series:
   - About Me

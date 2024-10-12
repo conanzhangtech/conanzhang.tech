@@ -1,9 +1,9 @@
 ---
 title: Fishing or Phishing?
 date: 2023-05-28
-draft: true
+draft: false
 description: The purpose is to showcase the effort and commitment I have invested in achieving my objectives and each accomplishment is described in detail to walk you throught the honourable moments and people that made these happen.
-noindex: false
+noindex: true
 comments: true
 series:
   - About Me
