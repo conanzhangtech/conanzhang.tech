@@ -8,7 +8,7 @@ comments: true
 series:
   - About Me
 categories:
-  - Events and Projects (All domains)
+  - Project Hub
 
 tags:
   - events
