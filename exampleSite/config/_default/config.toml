@@ -1,7 +1,7 @@
 ######################## default configuration ####################
 baseURL = "https://demo.statichunt.com/geeky-hugo/"
 title = "Geeky | Hugo Personal Blog Template"
-theme = "geeky-hugo"
+theme = "www-staging.conanzhang.tech"
 languageName = "En"
 languageCode = "en-us"
 # post pagination
