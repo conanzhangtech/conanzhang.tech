@@ -14,6 +14,21 @@ authors:
   - conanzhangtech
 ---
 
+{{< bs/alert warning >}}
+{{% markdownify %}}
+Dear Visitors,
+
+Thank you for visiting my website!
+
+I am currently working on an upgrade to improve the overall design and user experience. During this process, additional features and resources will be available for your benefit.
+
+In the meantime, feel free to explore the existing content, and I appreciate your patience as I make these improvements.
+
+Thank you for your understanding!
+
+{{% /markdownify %}}
+{{< /bs/alert >}}
+
 {{< hero >}}
 {{< hero-img "images/logo.png" >}}
 {{< hero-heading "Facets of Conan Zhang" >}}
