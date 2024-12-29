@@ -8,7 +8,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -446,7 +446,7 @@ function createValidAbsoluteUrl(url, baseUrl = null, options = null) {
       if (options.addDefaultProtocol && url.startsWith("www.")) {
         const dots = url.match(/\./g);
         if (dots && dots.length >= 2) {
-          url = `http://${url}`;
+          url = `https://${url}`;
         }
       }
       if (options.tryConvertEncoding) {
@@ -3901,7 +3901,7 @@ exports.loadScript = loadScript;
 exports.setLayerDimensions = setLayerDimensions;
 var _base_factory = __w_pdfjs_require__(7);
 var _util = __w_pdfjs_require__(1);
-const SVG_NS = "http://www.w3.org/2000/svg";
+const SVG_NS = "https://www.w3.org/2000/svg";
 const AnnotationPrefix = "pdfjs_internal_id_";
 exports.AnnotationPrefix = AnnotationPrefix;
 class PixelsPerInch {
@@ -14239,8 +14239,8 @@ exports.SVGGraphics = SVGGraphics;
     fontWeight: "normal",
     fillColor: "#000000"
   };
-  const XML_NS = "http://www.w3.org/XML/1998/namespace";
-  const XLINK_NS = "http://www.w3.org/1999/xlink";
+  const XML_NS = "https://www.w3.org/XML/1998/namespace";
+  const XLINK_NS = "https://www.w3.org/1999/xlink";
   const LINE_CAP_STYLES = ["butt", "round", "square"];
   const LINE_JOIN_STYLES = ["miter", "round", "bevel"];
   const createObjectURL = function (data, contentType = "", forceDataSchema = false) {

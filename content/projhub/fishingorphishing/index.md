@@ -89,7 +89,7 @@ TO
 
 4.1 Load the website on your browser.
 
-> http://internet-banking.dbs.com.sg/IB/Welcome
+> https://internet-banking.dbs.com.sg/IB/Welcome
 
 4.2 Start capturing the user inputs by opening 1 terminal.
 
@@ -111,7 +111,7 @@ Run it!
 
 5.1 Load the website on your browser.
 
-> http://internet-banking.dbs.com.sg/IB/Welcome
+> https://internet-banking.dbs.com.sg/IB/Welcome
 
 5.2 Go through all the steps in entering the details (VERY SIMPLE!!!)
 
