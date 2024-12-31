@@ -2,55 +2,51 @@
 
 # main menu
 [[main]]
-name = "Home"
+name = "$>home"
 url = ""
 weight = 1
 
 [[main]]
-name = "About"
-url = "about/"
+name = "$>whoami"
+url = "whoami/"
 weight = 2
 
 [[main]]
-name = "Contact"
-url = "contact/"
-weight = 3
+name = "$>getintouch"
+url = "getintouch/"
+weight = 100
 
 [[main]]
-name = "Pages"
+name = "#ProjectFOCZOmni"
+url = "projectfoczomni/"
+weight = 99
+
+[[main]]
+name = "$>ls -l"
 url = "#"
-weight = 3
+weight = 5
 hasChildren = true
 
   [[main]]
-  parent = "Pages"
-  name = "Tags"
-  url = "tags/"
-  weight = 1
-
-  [[main]]
-  parent = "Pages"
-  name = "Categories"
-  url = "categories/"
+  parent = "$>ls -l"
+  name = "Awards and Achievements"
+  url = "achievements/"
   weight = 2
 
+  [[main]]
+  parent = "$>ls -l"
+  name = "Projects"
+  url = "projects/"
+  weight = 3
+
 # footer menu
-[[footer]]
-name = "Home"
-url = "/"
-weight = 1
 
 [[footer]]
-name = "About"
-url = "about/"
-weight = 2
-
-[[footer]]
-name = "Contact"
-url = "contact/"
+name = "Terms of Use"
+url = "terms-of-use/"
 weight = 3
 
 [[footer]]
-name = "Privacy Policy"
-url = "privacy-policy/"
+name = "Privacy Statement"
+url = "privacy-statement/"
 weight = 4

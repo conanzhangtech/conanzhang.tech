@@ -1,0 +1,69 @@
+{{ define "main" }}
+
+<!--=================== contact section start ===================-->
+<section class="section contact">
+  <div class="container">
+    {{ $bgImage:= resources.Get "images/map.png" }}
+    {{ $bgImage:= $bgImage.Resize "1400x webp" }}
+    <div class="pt-0" style="background-image: url('{{ $bgImage.RelPermalink }}')">
+      <div class="col-lg-6">
+        <div class="content pt-lg-5 pb-3 pb-lg-0">
+          <h2>{{ .Params.message | markdownify }}</h2>
+        </div>
+      </div>
+      
+      <div class="row g-4">
+        {{ with site.Params.email }}
+        <div class="col-lg-4">
+          <div class="card text-center">
+            <a href="mailto:{{.}}"><i class="fa fa-envelope text"></i>{{.}}</a>
+          </div>
+          </div>
+          {{ end }}
+      <div class="row g-4">
+        {{ with site.Params.socialusername }}
+        <div class="col-lg-4">
+          <div class="card text-center">
+            <a href="https://linkedin.com/in/{{.}}"><i class="fab fa-linkedin text"></i>{{.}}</a>
+          </div>
+          </div>
+          {{ end }}
+    <div class="row g-4">
+      {{ with site.Params.socialusername }}
+      <div class="col-lg-4">
+        <div class="card text-center">
+          <a href="https://instagram.com/{{.}}"><i class="fab fa-instagram text"></i>{{.}}</a>
+        </div>
+        </div>
+      {{ end }}
+      <div class="row g-4">
+        {{ with site.Params.socialusername }}
+        <div class="col-lg-4">
+          <div class="card text-center">
+            <a href="https://github.com/{{.}}"><i class="fab fa-github text"></i>{{.}}</a>
+          </div>
+          </div>
+          {{ end }}
+          <div class="row g-4">
+            {{ with site.Params.socialusername }}
+            <div class="col-lg-4">
+              <div class="card text-center">
+                <a href="https://facebook.com/{{.}}"><i class="fab fa-facebook text"></i>{{.}}</a>
+              </div>
+              </div>
+              {{ end }}
+              <div class="row g-4">
+                {{ with site.Params.discordusername }}
+                <div class="col-lg-4">
+                  <div class="card text-center">
+                    <a href="https://discord.com/user/{{.}}"><i class="fab fa-discord text"></i>{{.}}</a>
+                  </div>
+                  </div>
+                  {{ end }}
+
+    </div>
+  </div>
+</section>
+<!--=================== contact section start ===================-->
+
+{{ end }}

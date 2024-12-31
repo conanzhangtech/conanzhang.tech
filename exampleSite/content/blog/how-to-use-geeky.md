@@ -104,7 +104,7 @@ $ hugo server --themesDir ../..
 ```
 <br>
 
-Awesome we can now access the site at: `http://localhost:1313/geeky-hugo/`
+Awesome we can now access the site at: `https://localhost:1313/geeky-hugo/`
 
 <br>
 
@@ -160,7 +160,7 @@ disableLanguages = ["fr"] # example: ["fr"] for disable french language
 baseURL = "https://blog.example.com"
 ```
 
-Ensure it starts with "https://" or "http://".
+Ensure it starts with "https://" or "https://".
 
 - **Define the `title`**, which serves as the meta title tag. Choose a title that reflects your blog's content:
 
@@ -238,7 +238,7 @@ navbar_fixed = false
 
 ```toml
 description = "This is meta description"
-author = "Themefisher"
+author = "conanzhang"
 image = "images/logo.png"
 ```
 

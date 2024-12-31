@@ -6,7 +6,8 @@
         <nav class="navbar navbar-expand-lg navbar-light p-0">
           <!-- navbar brand/logo -->
           <a class="navbar-brand" href="{{ site.BaseURL | relLangURL }}">
-            {{ partial "logo.html" }}
+            <!--{{ partial "logo.html" }}-->
+             Facets of Conan ZHANG
           </a>
 
           <!-- buttons -->
@@ -63,14 +64,6 @@
               {{ end }}
             </ul>
 
-            <!-- social -->
-            <ul class="list-unstyled social-icons">
-              {{ range site.Params.social }}
-              <li class="list-inline-item">
-                <a href="{{ .link | safeURL }}"><i class="{{.icon}}"></i></a>
-              </li>
-              {{ end }}
-            </ul>
 
             {{ if site.Params.search }}
             <ul class="list-unstyled search d-none d-lg-block">

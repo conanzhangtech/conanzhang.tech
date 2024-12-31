@@ -79,7 +79,7 @@
 // Builds on `abbr`
 .initialism {
   @include font-size($initialism-font-size);
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 // Blockquotes

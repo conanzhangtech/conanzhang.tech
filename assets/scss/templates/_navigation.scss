@@ -60,7 +60,7 @@
 
     .nav-link {
       color: $text-dark;
-      text-transform: capitalize;
+      text-transform: none;
       font-family: $font-secondary;
       font-size: 0.9rem;
       font-weight: 400;
@@ -134,7 +134,7 @@
       }
 
       .dropdown-item {
-        text-transform: capitalize;
+        text-transform: none;
         transition: 0.3s;
         font-family: $font-secondary;
 
@@ -225,7 +225,7 @@
       margin-bottom: 15px;
 
       a {
-        text-transform: capitalize;
+        text-transform: none;
         color: black;
         font-size: 26px;
         padding: 20px;
