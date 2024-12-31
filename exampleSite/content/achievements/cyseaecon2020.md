@@ -30,7 +30,8 @@ images:
 authors:
   - conanzhangtech
 
----
+
+image: images/achievements/cyseaecon2020-1.jpg
 ---
 
 
@@ -41,6 +42,8 @@ EAEcon served as an avenue for secondary school students to learn and hone the s
 
 CYS also engaged with the youths by inviting past successful EAE applicants to share more about their experiences as well as the tips and tricks that they had used to get through the exercise.
 
+
+image: images/achievements/cyseaecon2020-1.jpg
 ---
 
 ## What took place?

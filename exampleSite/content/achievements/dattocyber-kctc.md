@@ -34,13 +34,16 @@ images:
 authors:
   - conanzhangtech
 
----
+
+image: images/achievements/dattocyber-kctc-1.jpg
 ---
 
 ## What Is It?
 
 Kaseya University Certifications are designed to increase the value of you and your team, as well as validate broader and deeper skills in content-specific areas to maintain your company's relevance in a growing industry. This will let you improve your onboarding efficiency and increase marketability by attracting new customers to your business and setting yourself apart from the competition.
 
+
+image: images/achievements/dattocyber-kctc-1.jpg
 ---
 
 ## Awarding Institution

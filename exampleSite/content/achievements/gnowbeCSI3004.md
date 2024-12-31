@@ -30,6 +30,8 @@ images:
 authors:
   - conanzhangtech
 
+
+image: images/achievements/gnowbeCSI3004-1.jpg
 ---
 
 ## What Is It?
@@ -38,6 +40,8 @@ This course will equip participants to deliver oral presentations in their workp
 
 Participants who are interested to acquire the skills in planning and preparing effective oral presentations for workplace settings.
 
+
+image: images/achievements/gnowbeCSI3004-1.jpg
 ---
 
 ## What took place?

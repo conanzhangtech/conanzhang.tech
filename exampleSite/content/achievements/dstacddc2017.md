@@ -31,7 +31,8 @@ images:
 authors:
   - conanzhangtech
 
----
+
+image: images/achievements/dstacddc2017-1.jpeg
 ---
 
 
@@ -40,6 +41,8 @@ authors:
 
 Nurturing Future Cyber Defenders | At the Cyber Defenders Discovery Camp held in June 2017, 400 students from 26 junior colleges, Integrated Programme schools and tertiary institutions sharpened their cyber defence skills and gained first-hand insights into a career in cybersecurity. 
 
+
+image: images/achievements/dstacddc2017-1.jpg
 ---
 
 ## What took place?

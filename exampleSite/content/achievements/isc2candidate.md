@@ -30,11 +30,13 @@ images:
 authors:
   - conanzhangtech
 
+
+image: images/achievements/isc2candidate-1.png
 ---
+
 ## What Is It?
 
 An (ISC)² Candidate is a part of a diverse community of cybersecurity professionals working to build a safe and secure cyber world.
-
 ---
 
 ## What took place?

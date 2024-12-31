@@ -30,7 +30,8 @@ images:
 authors:
   - conanzhangtech
 
----
+
+image: images/achievements/awsbosasean2020-1.jpg
 ---
 
 
@@ -39,6 +40,8 @@ authors:
 
 Build On ASEAN is an event hosted by AWS (Amazon Web Services) that brings together school students in teams to solve complex, real-world IT challenges. Each team partners with an expert industry mentor to help them hone their skills and plan their projects.
 
+
+image: images/achievements/awsbosasean2020-1.jpg
 ---
 
 ## What took place?

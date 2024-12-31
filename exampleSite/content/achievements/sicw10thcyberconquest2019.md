@@ -31,7 +31,11 @@ images:
 authors:
   - conanzhangtech
 
+
+image: images/achievements/sicw10thcyberconquest2019-1.jpg
 ---
+
+image: images/achievements/sicw10thcyberconquest2019-1.jpg
 ---
 
 
@@ -42,6 +46,8 @@ The 10th edition of the Singapore Cyber Conquest (SCC), a Capture-the-Flag compe
 
 This is the second year IHLs from ASEAN Member States have participated in the competition, enabling students within the region to interact and learn from one another.
 
+
+image: images/achievements/sicw10thcyberconquest2019-1.jpg
 ---
 
 ## What took place?

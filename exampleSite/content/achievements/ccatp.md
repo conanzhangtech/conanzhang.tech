@@ -32,8 +32,10 @@ images:
 authors:
   - conanzhangtech
 
+
+image: images/achievements/ccatp-1.jpg
 ---
----
+
 
 ## What Is It?
 
@@ -41,6 +43,8 @@ The Student Development & Alumni Affairs (SDAA) department provides students wit
 
 CCAs are an integral part of campus life and play a fundamental role in the holistic development of students. They contribute towards personal enrichment and pride in the institution. In fact, TP is abuzz with exciting CCAs ranging from the sports and arts to leadership training and community involvement.
 
+
+image: images/achievements/ccatp-1.jpg
 ---
 
 ## Awarding Institution

@@ -30,6 +30,8 @@ images:
 authors:
   - conanzhangtech
 
+
+image: images/achievements/gnowbeCSI3004-2-1.jpg
 ---
 
 ## What Is It?
@@ -37,6 +39,8 @@ authors:
 This course will equip participants with the knowledge and skills to build a client-focused service culture within their organizations.
 
 Participants and customer service practitioners who are interested to develop and establish a customer service culture within their areas of work and elevate service standards for their customers.
+
+image: images/achievements/gnowbeCSI3004-2-1.jpg
 ---
 
 ## What took place?

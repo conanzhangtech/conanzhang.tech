@@ -30,6 +30,8 @@ images:
 authors:
   - conanzhangtech
 
+
+image: images/achievements/bundle-az104-1.jpg
 ---
 ## What Is It?
 
@@ -37,6 +39,8 @@ An Azure administrator often serves as part of a larger team dedicated to implem
 
 Familiar with operating systems, networking, servers, and virtualization. In addition, professionals in this role should have experience using PowerShell, Azure CLI, the Azure portal, Azure Resource Manager templates (ARM templates), and Microsoft Azure Active Directory (Azure AD), part of Microsoft Entra.
 
+
+image: images/achievements/bundle-az104-1.jpg
 ---
 
 ## Awarding Institution
