@@ -5,7 +5,9 @@
   "author": "statichunt",
   "scripts": {
     "dev": "cd exampleSite; hugo server || hugo server --themesDir ../..",
-    "local": "hugo server || hugo server --themesDir ../ --bind 0.0.0.0 --port 80 --baseURL http://FOCZ-build01.tech.conanzhang",
+    "www-staging": "hugo server --source exampleSite/ --config exampleSite/config/_default/config.toml --themesDir ../ -b https://www-staging.conanzhang.tech --port 443",
+    "prod": "hugo server --source exampleSite/ --config exampleSite/config/_default/config.toml --themesDir ../ -b https://www.conanzhang.tech --port 443",
+    "local": "hugo server --source exampleSite/ --config exampleSite/config/_default/config.toml --themesDir ../ -b http://focz-build01.tech.conanzhang --port 80 --bind 0.0.0.0",
     "test": "cd exampleSite; hugo server --themesDir ../.. --disableFastRender --navigateToChanged --templateMetrics --templateMetricsHints --verbose --verboseLog --buildDrafts --buildExpired --buildFuture --watch --forceSyncStatic -e production --minify|| hugo server --disableFastRender --navigateToChanged --templateMetrics --templateMetricsHints --verbose --verboseLog --buildDrafts --buildExpired --buildFuture --watch --forceSyncStatic -e production --minify",
     "build": "cd exampleSite; hugo || hugo --themesDir ../.. --gc --minify --templateMetrics --templateMetricsHints --verbose --verboseLog --buildDrafts --buildExpired --buildFuture --forceSyncStatic",
     "update": "hugo mod clean && hugo mod get -u ./... && hugo mod tidy"

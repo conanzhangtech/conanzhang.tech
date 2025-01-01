@@ -6,33 +6,10 @@ featured: false
 pinned: true
 description: Kaseya University Certifications are designed to increase the value of you and your team, as well as validate broader and deeper skills in content-specific areas to maintain your company's relevance in a growing industry. This will let you improve your onboarding efficiency and increase marketability by attracting new customers to your business and setting yourself apart from the competition.
 
-noindex: false
-comments: true
-series:
-  - About Me
 categories:
-  - Awards and Achievements
-  
-tags:
-  - awards
-  - achievements
-  - timeline
-  - government
-  - events
-  - personal
-  - volunteer
-
-images:
-# menu:
-#   main:
-#     weight: 100
-#     params:
-#       icon:
-#         vendor: bs
-#         name: book
-#         color: '#e24d0e'
-authors:
-  - conanzhangtech
+  - Cybersecurity
+  - Information Technology
+sitemapExclude: false
 
 
 image: images/achievements/dattocyber-kctc-1.jpg
@@ -41,9 +18,6 @@ image: images/achievements/dattocyber-kctc-1.jpg
 ## What Is It?
 
 Kaseya University Certifications are designed to increase the value of you and your team, as well as validate broader and deeper skills in content-specific areas to maintain your company's relevance in a growing industry. This will let you improve your onboarding efficiency and increase marketability by attracting new customers to your business and setting yourself apart from the competition.
-
-
-image: images/achievements/dattocyber-kctc-1.jpg
 ---
 
 ## Awarding Institution

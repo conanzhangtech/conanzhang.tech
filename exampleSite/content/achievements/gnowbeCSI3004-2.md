@@ -4,32 +4,9 @@ date: 2020-07-10
 draft: false
 description: This course will equip participants with the knowledge and skills to build a client-focused service culture within their organizations.
 
-noindex: false
-comments: true
-series:
-  - About Me
 categories:
-  - Professional Certificate
-  
-tags:
-  - awards
-  - achievements
-  - professional
-  - personal
-  - singapore
-
-images:
-# menu:
-#   main:
-#     weight: 100
-#     params:
-#       icon:
-#         vendor: bs
-#         name: book
-#         color: '#e24d0e'
-authors:
-  - conanzhangtech
-
+  - Personal
+sitemapExclude: false
 
 image: images/achievements/gnowbeCSI3004-2-1.jpg
 ---
@@ -39,8 +16,6 @@ image: images/achievements/gnowbeCSI3004-2-1.jpg
 This course will equip participants with the knowledge and skills to build a client-focused service culture within their organizations.
 
 Participants and customer service practitioners who are interested to develop and establish a customer service culture within their areas of work and elevate service standards for their customers.
-
-image: images/achievements/gnowbeCSI3004-2-1.jpg
 ---
 
 ## What took place?

@@ -4,36 +4,12 @@ date: 2019-10-01
 draft: false
 description: The 10th edition of the Singapore Cyber Conquest (SCC), a Capture-the-Flag competition for students from Institutes of Higher Learning (IHL), took place during the Singapore International Cyber Week 2019. A total of 37 teams from both Singapore and ASEAN Member States, competed in a simulated real-world cyber range designed to test cybersecurity skills and knowledge. This is the second year IHLs from ASEAN Member States have participated in the competition, enabling students within the region to interact and learn from one another.
 
-noindex: false
-comments: true
-series:
-  - About Me
 categories:
-  - Cerificate of participation
-  
-tags:
-  - certificate
-  - achievements
-  - timeline
-  - personal
-  - government
-  - cybersecurity
+  - Cybersecurity
+  - Information Technology
+  - CTF
+sitemapExclude: false
 
-images:
-# menu:
-#   main:
-#     weight: 100
-#     params:
-#       icon:
-#         vendor: bs
-#         name: book
-#         color: '#e24d0e'
-authors:
-  - conanzhangtech
-
-
-image: images/achievements/sicw10thcyberconquest2019-1.jpg
----
 
 image: images/achievements/sicw10thcyberconquest2019-1.jpg
 ---

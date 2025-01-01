@@ -4,32 +4,11 @@ date: 2020-12-22
 draft: false
 description: STACK the Flags is a 48Hr online, jeopardy style Capture-the-Flag (CTF) competition organised by GovTech’s Cyber Security Group (CSG). It aims to engage the tech community and is open to everyone, except for employees of GovTech or officers that are seconded to GovTech.
 
-noindex: false
-comments: true
-series:
-  - About Me
 categories:
-  - Cerificate of participation
-  
-tags:
-  - certificate
-  - achievements
-  - timeline
-  - personal
-  - government
-  - cybersecurity
-
-images:
-# menu:
-#   main:
-#     weight: 100
-#     params:
-#       icon:
-#         vendor: bs
-#         name: book
-#         color: '#e24d0e'
-authors:
-  - conanzhangtech
+  - Cybersecurity
+  - Information Technology
+  - CTF
+sitemapExclude: false
 
 
 image: images/achievements/govtechstf-1.jpg
@@ -40,9 +19,6 @@ image: images/achievements/govtechstf-1.jpg
 ## What Is It?
 
 STACK the Flags is a 48Hr online, jeopardy style Capture-the-Flag (CTF) competition organised by GovTech’s Cyber Security Group (CSG). It aims to engage the tech community and is open to everyone, except for employees of GovTech or officers that are seconded to GovTech.
-
-
-image: images/achievements/govtechstf-1.jpg
 ---
 
 ## What took place?

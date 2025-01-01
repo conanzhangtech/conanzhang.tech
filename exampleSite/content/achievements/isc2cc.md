@@ -4,31 +4,10 @@ date: 2023-09-15
 draft: false
 description: An (ISC)² Certified in Cybersecurity (CC) certificate demonstrate that an individual has the foundational knowledge of industry terminology, network security, security operations and policies and procedures.
 
-noindex: false
-comments: true
-series:
-  - About Me
 categories:
-  - Professional Certificate
-  
-tags:
-  - awards
-  - achievements
-  - professional
-  - personal
-  - digitalverification
-
-images:
-# menu:
-#   main:
-#     weight: 100
-#     params:
-#       icon:
-#         vendor: bs
-#         name: book
-#         color: '#e24d0e'
-authors:
-  - conanzhangtech
+  - Cybersecurity
+  - Information Technology
+sitemapExclude: false
 
 
 image: images/achievements/isc2cc-1.png

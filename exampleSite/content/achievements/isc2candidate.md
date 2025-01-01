@@ -4,31 +4,10 @@ date: 2023-05-08
 draft: false
 description: An (ISC)² Candidate is a part of a diverse community of cybersecurity professionals working to build a safe and secure cyber world.
 
-noindex: false
-comments: true
-series:
-  - About Me
 categories:
-  - Professional Cerificate
-  
-tags:
-  - awards
-  - achievements
-  - professional
-  - personal
-  - digitalverification
-
-images:
-# menu:
-#   main:
-#     weight: 100
-#     params:
-#       icon:
-#         vendor: bs
-#         name: book
-#         color: '#e24d0e'
-authors:
-  - conanzhangtech
+  - Cybersecurity
+  - Information Technology
+sitemapExclude: false
 
 
 image: images/achievements/isc2candidate-1.png

@@ -4,31 +4,9 @@ date: 2020-05-14
 draft: false
 description: EAEcon served as an avenue for secondary school students to learn and hone the skills needed to take part in the Early Admissions Exercise, in order to secure a spot in a diploma of their choice before O levels. CYS hosted a simple web development lesson for the students to help craft and onboard their portfolios as a website. CYS also engaged with the youths by inviting past successful EAE applicants to share more about their experiences as well as the tips and tricks that they had used to get through the exercise.
 
-noindex: false
-comments: true
-series:
-  - About Me
 categories:
-  - Cerificate of appreciation
-  
-tags:
-  - certificate
-  - achievements
-  - timeline
-  - personal
-  - hackathon
-
-images:
-# menu:
-#   main:
-#     weight: 100
-#     params:
-#       icon:
-#         vendor: bs
-#         name: book
-#         color: '#e24d0e'
-authors:
-  - conanzhangtech
+  - Personal
+sitemapExclude: false
 
 
 image: images/achievements/cyseaecon2020-1.jpg

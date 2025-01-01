@@ -4,31 +4,10 @@ date: 2023-07-06
 draft: false
 description: This exam measures my ability to accomplish the following technical tasks; manage Azure identities and governance; implement and manage storage; deploy and manage Azure compute resources; configure and manage virtual networking; and monitor and maintain Azure resources.
 
-noindex: false
-comments: true
-series:
-  - About Me
 categories:
-  - Professional Cerificate
-  
-tags:
-  - awards
-  - achievements
-  - professional
-  - personal
-  - digitalverification
-
-images:
-# menu:
-#   main:
-#     weight: 100
-#     params:
-#       icon:
-#         vendor: bs
-#         name: book
-#         color: '#e24d0e'
-authors:
-  - conanzhangtech
+  - Microsoft
+  - Information Technology
+sitemapExclude: false
 
 
 image: images/achievements/bundle-az104-1.jpg

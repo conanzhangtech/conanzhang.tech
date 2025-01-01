@@ -4,31 +4,9 @@ date: 2020-07-10
 draft: false
 description: This course will equip participants to deliver oral presentations in their workplaces and in business settings with poise and professionalism.
 
-noindex: false
-comments: true
-series:
-  - About Me
 categories:
-  - Professional Certificate
-  
-tags:
-  - awards
-  - achievements
-  - professional
-  - personal
-  - singapore
-
-images:
-# menu:
-#   main:
-#     weight: 100
-#     params:
-#       icon:
-#         vendor: bs
-#         name: book
-#         color: '#e24d0e'
-authors:
-  - conanzhangtech
+  - Personal
+sitemapExclude: false
 
 
 image: images/achievements/gnowbeCSI3004-1.jpg
@@ -39,9 +17,6 @@ image: images/achievements/gnowbeCSI3004-1.jpg
 This course will equip participants to deliver oral presentations in their workplaces and in business settings with poise and professionalism.
 
 Participants who are interested to acquire the skills in planning and preparing effective oral presentations for workplace settings.
-
-
-image: images/achievements/gnowbeCSI3004-1.jpg
 ---
 
 ## What took place?

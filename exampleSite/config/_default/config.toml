@@ -1,7 +1,8 @@
 ######################## default configuration ####################
 baseURL = "https://www.conanzhang.tech"
+relativeURLs = "false"
 title = "Facets of Conan ZHANG"
-theme = "www-staging-conanzhang-tech"
+theme = ""
 languageName = "En"
 languageCode = "en-us"
 # post pagination
