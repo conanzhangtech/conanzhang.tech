@@ -22,19 +22,25 @@ url = "projectfoczomni/"
 weight = 99
 
 [[main]]
-name = "$>ls -l"
+name = "$>diary"
 url = "#"
 weight = 5
 hasChildren = true
 
+[[main]]
+  parent = "$>diary"
+  name = "View my Digital Diary"
+  url = "diary/"
+  weight = 1
+
   [[main]]
-  parent = "$>ls -l"
+  parent = "$>diary"
   name = "Awards and Achievements"
   url = "achievements/"
   weight = 2
 
   [[main]]
-  parent = "$>ls -l"
+  parent = "$>diary"
   name = "Projects"
   url = "projects/"
   weight = 3
