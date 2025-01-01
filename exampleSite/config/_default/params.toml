@@ -69,8 +69,8 @@ button_link = "whoami/"
 
 # Advertise
 [advertisement]
-image = "images/promotion.png"
-link = "https://gethugothemes.com/"
+image = "images/affiliate/728x90v10.gif"
+link = "https://go.nordvpn.net/SH9Hb"
 
 # cookies
 [cookies]
@@ -95,8 +95,8 @@ newsletter_reminder_a = "By subscribing, You Agree To"
 newsletter_reminder_b = "Privacy Statement"
 newsletter_button = "Subscribe"
 # mailchimp subsciption
-mailchimp_form_action = "https://gmail.us4.list-manage.com/subscribe/post?u=463ee871f45d2d93748e77cad&amp;id=a0a2c6d074" # replace this url with yours
-mailchimp_form_name = "b_463ee871f45d2d93748e77cad_a0a2c6d074" # replace this code with yours
+mailchimp_form_action = "https://mailchi.mp/9ca899dee0f0/conanzhangtech" # replace this url with yours
+mailchimp_form_name = "Facets of Conan ZHANG" # replace this code with yours
 
 
 ############################# social site ########################
