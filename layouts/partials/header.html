@@ -8,6 +8,7 @@
           <a class="navbar-brand" href="{{ site.BaseURL | relLangURL }}">
             <!--{{ partial "logo.html" }}-->
              Facets of Conan ZHANG
+             
           </a>
 
           <!-- buttons -->
@@ -60,8 +61,10 @@
                 <a class="nav-link" {{if findRE `^http` .URL}}target="_blank" rel="noopener" {{end}}
                   href="{{if findRE `^#` .URL}}{{if not $.IsHome}}{{site.BaseURL | relLangURL}}{{end}}{{ .URL }}{{else}}{{.URL | relLangURL}}{{end}}">{{ .Name }}</a>
               </li>
+              
               {{ end }}
               {{ end }}
+              
             </ul>
 
 
@@ -71,6 +74,7 @@
                 <button class="toggle-search" data-target="#search-wrap"><i class="fas fa-search"></i></button>
               </li>
             </ul>
+
             {{ end }}
           </div>
         </nav>

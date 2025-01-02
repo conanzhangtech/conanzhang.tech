@@ -6,17 +6,20 @@
         <!-- footer brand/logo -->
         <a class="footer-brand mb-4 d-block" href="{{ site.BaseURL | relLangURL }}">
           Facets of Conan ZHANG
-        </a>
+          </a>
+          
+
         <p class="text-light mb-4">{{site.Params.footer_content | markdownify}}</p>
         <ul class="list-unstyled mb-5 footer-menu">
           {{ range site.Menus.footer }}
+  
           <li class="list-inline-item">
             <a {{if findRE `^http` .URL}}target="_blank" rel="noopener" {{end}}
               href="{{if findRE `^#` .URL}}{{if not $.IsHome}}{{site.BaseURL | relLangURL}}{{end}}{{ .URL }}{{else}}{{.URL | relLangURL}}{{end}}">{{
               .Name }}</a>
           </li>
           {{ end }}
-        </ul>
+          <hr>
         <ul class="list-unstyled social-icons">
           {{ range site.Params.social }}
           <li class="list-inline-item">
@@ -24,6 +27,9 @@
           </li>
           {{ end }}
         </ul>
+        <a href="https://tokenring.monoxane.io/#conanzhangtech" target="_blank" rel="noopener">
+          <img src="https://tokenring.monoxane.io/icon.light.svg" width="32" height="32" alt="The Token Ring webring"/><br>Connect with other like-minded individuals.
+          </a>
         <p>{{site.Params.copyright | markdownify}} {{if site.Params.theme_copyright}}{{end}}
         </p>
       </div>
