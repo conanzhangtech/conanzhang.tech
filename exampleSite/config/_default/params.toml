@@ -36,7 +36,7 @@ showing_posts = "You are at:"
 no_categories_found = "No Categories Found"
 no_tags_found = "No Tags Found"
 
-mainSections = ["blog", "achievements"]
+mainSections = ["diary", "achievements"]
 # about widget content
 about_widget_content = "Hi there, I am Conan, a Leader / IT and Cybersecurity Practitional / Technical Experise or whatever you might associate with. I write tech stuff (ok, maybe sometimes not so techkie), but do stay here and look around hehe. ^_^"
 # footer content
@@ -63,7 +63,7 @@ title_large = "Welcome **!**"
 title_small = "to Facets of Conan ZHANG!"
 image = "images/banner.png"
 background_image = "/images/banner-bg-shape.svg"
-content = "My Digital Diary"
+content = "Hi there, I am Conan, a Leader / IT and Cybersecurity Practitional / Technical Experise or whatever you might associate with. I write tech stuff (ok, maybe sometimes not so techkie), but do stay here and look around hehe. ^_^"
 button_label = "$>whoami"
 button_link = "whoami/"
 
