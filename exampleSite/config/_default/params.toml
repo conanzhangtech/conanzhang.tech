@@ -38,7 +38,7 @@ no_tags_found = "No Tags Found"
 
 mainSections = ["blog", "achievements"]
 # about widget content
-about_widget_content = "My Digital Diary"
+about_widget_content = "Hi there, I am Conan, a Leader / IT and Cybersecurity Practitional / Technical Experise or whatever you might associate with. I write tech stuff (ok, maybe sometimes not so techkie), but do stay here and look around hehe. ^_^"
 # footer content
 footer_content = "Hi there, I am Conan, a Leader / IT and Cybersecurity Practitional / Technical Experise or whatever you might associate with. I write tech stuff (ok, maybe sometimes not so techkie), but do stay here and look around hehe. ^_^"
 # custom script on header, example: custom_script= "<script>console.log(\"Hello World\")</script>" 
