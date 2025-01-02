@@ -2,7 +2,7 @@
 # favicon
 favicon = "images/favicon.png"
 # logo
-logo = "images/logo.png"
+logo = ""
 # use `x` with logo_width, example: "100x".
 # Note: logo_width is not work with .svg file
 logo_width = "150x"
@@ -13,7 +13,7 @@ navbar_fixed = true
 # OpenGraph / Twitter Card metadata
 description = ""
 author = "conanzhangtech"
-image = "images/logo.png" # this image will be used as fallback if a page has no image of its own
+image = "" # this image will be used as fallback if a page has no image of its own
 # contact info
 discordusername = "141732959534317569"
 socialusername = "conanzhangtech"
@@ -40,7 +40,7 @@ mainSections = ["blog", "achievements"]
 # about widget content
 about_widget_content = "My Digital Diary"
 # footer content
-footer_content = "My Digital Diary"
+footer_content = "Hi there, I am Conan, a Leader / IT and Cybersecurity Practitional / Technical Experise or whatever you might associate with. I write tech stuff (ok, maybe sometimes not so techkie), but do stay here and look around hehe. ^_^"
 # custom script on header, example: custom_script= "<script>console.log(\"Hello World\")</script>" 
 custom_script= ""
 # copyright
