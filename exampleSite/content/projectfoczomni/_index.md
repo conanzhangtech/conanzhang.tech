@@ -16,59 +16,34 @@ draft: false
 
 The following is a high-level overview of my infrastructure:
 
-- __**Virtualised Infrastructure:**__
+---
 
-Powered by VMware ESXi and managed by vSphere, it allows me to seamlessly create, manage and virtualise servers and services.
+## Hardware Setup
+- **Server**:  
+  - Brand/Model: [e.g., Dell PowerEdge, HP ProLiant, Custom Build]  
+  - CPU: [e.g., Intel Xeon E5-2670]  
+  - RAM: [e.g., 64GB DDR4]  
+  - Storage: [e.g., 2TB SSD, 4TB HDD RAID 5]  
 
-- __**Comprehensive Networking:**__
-
-A virtual Switch forms the backbone of my network, allowing me to have more control.
-
-- **Firewall and Security:**
-  pfSense acts as the dedicated firewall, providing advanced threat protection, traffic shaping, and VPN capabilities. Nessus is employed for vulnerability assessment, ensuring the lab remains secure from potential exploits.
-
-- **Automation and Orchestration:**
-  Tools like Ansible streamline configuration management and automated deployments, enhancing efficiency and reducing manual overhead.
-
-- **Monitoring and Logging:**
-  Grafana and Zabbix deliver real-time monitoring and logging, offering insights into system performance and availability.
-
-- **Cloud Integration:**
-  Azure Cloud extends the capabilities of the lab, enabling hybrid cloud experiments and scalability testing.
-
-- **Tech Stack:**
-  - **Virtualization:** VMware ESXi, vCenter Server Appliance (vSphere), Proxmox
-  - **Networking:** Cisco Switch
-  - **Firewall & Security:** pfSense, Nessus
-  - **Automation & Monitoring:** Ansible, Grafana, Zabbix
-  - **Cloud:** Azure Cloud
+- **Network Devices**:  
+  - Router: [e.g., Ubiquiti UniFi Dream Machine]  
+  - Switch: [e.g., Netgear 16-Port Gigabit Switch]  
+  - Access Points: [e.g., TP-Link Deco M5 Mesh Wi-Fi System]  
 
 ---
 
-## 🚀 App Name 3: A Unique or Experimental Project
+## Networking and Connectivity
+- **Network Configuration**:  
+  - IP Schema: 192.168.1.0/24  
+  - VLANs:  
+    - VLAN 10: Management  
+    - VLAN 20: IoT Devices  
+    - VLAN 30: Guests  
 
-**Pushing boundaries in a specific domain.**
+- **Firewall and NAT**:  
+  - Firewall: pfSense or equivalent  
+  - Port Forwarding: Enabled for specific services  
 
-- **Overview:** Describe the concept and its potential impact.
-- **Key Features:**
-  - Highlight 1
-  - Highlight 2
-- **Tech Stack:** Angular, Flask, SQLite
-
-[👉 Explore the App](#) | [🔗 GitHub Repo](#)
-
----
-
-## Why My Web Apps Stand Out
-
-- 💻 **Modern Tech:** Leveraging the latest tools and frameworks to ensure cutting-edge performance.
-- 🎨 **Beautiful Design:** Sleek and intuitive interfaces for an unparalleled user experience.
-- 🔒 **Secure by Default:** Built with security as a core principle, protecting users and data.
-- 🚀 **Scalable Solutions:** Designed to grow alongside user needs and demands.
-
-## What’s Next?
-
-I’m always exploring new ideas and building impactful solutions. Feel free to:
-
-- **Explore More Projects** [👉 Link to Portfolio]
-- **Collaborate or Reach Out** [📩 Contact Form Link or Email]
+- **DNS and DHCP**:  
+  - Local DNS: Pi-hole or AdGuard Home  
+  - DHCP: Manage
