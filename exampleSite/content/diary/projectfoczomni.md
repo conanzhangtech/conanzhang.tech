@@ -1,7 +1,7 @@
 ---
 title: "Project FOCZOmni: Home Lab Built with Passio"
 description: "#ProjectFOCZOmni is my dedicated home lab environment, developed to simulate and showcases how I build and manage a small-scale IT environment for personal and professional growth. It enables me to explore, learn, and innovate."
-image: "images/diary/projectfoczomni-1.png"
+image: "images/diary/projectfoczomni-main.png"
 date: 2025-01-03
 categories: ["Technology"]
 type: "featured" # available types: [featured/regular]
