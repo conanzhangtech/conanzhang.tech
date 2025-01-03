@@ -37,14 +37,21 @@ sitemapExclude: false
 ## Networking and Security
 
 - **Domain Names I own**:  
-  - conanzhang.tech
+  - conanzhang.tech (Purchased from Namecheap)
+  - ztcc.ink (Purchased from Namecheap)
 
-- **DNS Management**:  
-  - Cloudflare for Name Server
-  - 
+- **Information Security Profile**:  
+  - Cloudflare for DNS Management
+  - Cloudflare Zero Trust for Zero Trust Network Access (ZTNA) implementation
+  - Microsoft EntraID for Identity Access Management (IdP)
+  - Microsoft Azure Network Gateway as Site-to-Site and Point-to-Site configuration.
+  
+- **Virtualisation Technology**: 
+- VMWare EXSI set up as Type 1 Hypervisor
+- VMWare vSphere (VCSA) set up to manage the ESXI server
+- 
 
-- **VPN**:  
-  - Secure remote access using OpenVPN or WireGuard.  
+ 
 
 - **Firewall Rules**:  
   - Minimal and well-documented port forwarding for external access.  
