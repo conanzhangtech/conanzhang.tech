@@ -10,40 +10,68 @@ draft: false
 > **A personal playground for experimentation and innovation.**
 
 #### Overview
-#ProjectFOCZOmni is my dedicated home lab environment, developed to simulate real-world infrastructure and test technologies. It enables me to explore, learn, and innovate by building a controlled environment for deploying and managing different systems. 
+#ProjectFOCZOmni is my dedicated home lab environment, developed to simulate and showcases how I build and manage a small-scale IT environment for personal and professional growth. It enables me to explore, learn, and innovate.
 
 **The lab also serves as a testing ground me to do Proof-of-Concept before turning ideas into reality.**
+---
 
-The following is a high-level overview of my infrastructure:
+# My Home Lab Setup
+
+## Introduction
+Welcome to my home lab documentation! This setup serves as a personal playground for learning, experimentation, and development.
 
 ---
 
-## Hardware Setup
-- **Server**:  
-  - Brand/Model: [e.g., Dell PowerEdge, HP ProLiant, Custom Build]  
-  - CPU: [e.g., Intel Xeon E5-2670]  
-  - RAM: [e.g., 64GB DDR4]  
-  - Storage: [e.g., 2TB SSD, 4TB HDD RAID 5]  
-
-- **Network Devices**:  
-  - Router: [e.g., Ubiquiti UniFi Dream Machine]  
-  - Switch: [e.g., Netgear 16-Port Gigabit Switch]  
-  - Access Points: [e.g., TP-Link Deco M5 Mesh Wi-Fi System]  
+## Table of Contents
+1. [Purpose and Goals](#purpose-and-goals)
+2. [Hardware Overview](#hardware-overview)
+3. [Networking and Security](#networking-and-security)
+4. [Virtualization and Containers](#virtualization-and-containers)
+5. [Core Services](#core-services)
+6. [Backup and Storage](#backup-and-storage)
+7. [Future Projects](#future-projects)
+8. [Resources and Credits](#resources-and-credits)
 
 ---
 
-## Networking and Connectivity
-- **Network Configuration**:  
-  - IP Schema: 192.168.1.0/24  
-  - VLANs:  
-    - VLAN 10: Management  
-    - VLAN 20: IoT Devices  
-    - VLAN 30: Guests  
+## Purpose and Goals
+- **Learning**: Experiment with new technologies and enhance skills in networking, system administration, and DevOps.  
+- **Development**: Host personal projects and explore automation, containerization, and cloud technologies.  
+- **Sharing**: Provide insights and inspiration for others interested in building their own home lab.
 
-- **Firewall and NAT**:  
-  - Firewall: pfSense or equivalent  
-  - Port Forwarding: Enabled for specific services  
+---
 
-- **DNS and DHCP**:  
-  - Local DNS: Pi-hole or AdGuard Home  
-  - DHCP: Manage
+## Hardware Overview
+- **Core Server**:  
+  - Brand/Model: Custom Build or [Generic Server Name]  
+  - CPU: Multi-core processor for virtualization (e.g., Intel Xeon or AMD Ryzen).  
+  - RAM: [e.g., 32GB DDR4, expandable for future needs].  
+  - Storage: Combination of SSDs and HDDs for speed and redundancy.  
+
+- **Networking Equipment**:  
+  - **Router**: [e.g., Ubiquiti, pfSense appliance].  
+  - **Switch**: Managed gigabit switch with VLAN support.  
+  - **Access Points**: Reliable Wi-Fi for multiple devices.  
+
+---
+
+## Networking and Security
+- **Network Segmentation**:  
+  - Separate VLANs for management, IoT devices, and guests.  
+  - Enhanced security using a firewall.  
+
+- **DNS and Ad-blocking**:  
+  - Running Pi-hole for network-wide ad-blocking and DNS management.  
+
+- **VPN**:  
+  - Secure remote access using OpenVPN or WireGuard.  
+
+- **Firewall Rules**:  
+  - Minimal and well-documented port forwarding for external access.  
+
+---
+
+## Virtualization and Containers
+- **Virtualization Platform**:  
+  - Proxmox VE or VMware ESXi for hosting virtual
+
