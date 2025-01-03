@@ -15,14 +15,7 @@ draft: false
 **The lab also serves as a testing ground me to do Proof-of-Concept before turning ideas into reality.**
 ---
 
-# My Home Lab Setup
-
-## Introduction
-Welcome to my home lab documentation! This setup serves as a personal playground for learning, experimentation, and development.
-
----
-
-## Table of Contents
+#### Table of Contents
 1. [Purpose and Goals](#purpose-and-goals)
 2. [Hardware Overview](#hardware-overview)
 3. [Networking and Security](#networking-and-security)
@@ -34,11 +27,10 @@ Welcome to my home lab documentation! This setup serves as a personal playground
 
 ---
 
-## Purpose and Goals
-- **Learning**: Experiment with new technologies and enhance skills in networking, system administration, and DevOps.  
-- **Development**: Host personal projects and explore automation, containerization, and cloud technologies.  
-- **Sharing**: Provide insights and inspiration for others interested in building their own home lab.
-
+##### Purpose and Goals
+- **Self Learning**: Experiment with new technologies and enhance my skills in networking, system administration, and DevOps.  
+- **Professional Development**: Host personal projects and explore virtualisation, containerisation, and integration with cloud technologies.  
+- **Sharing and Exchange**: Provide and exchange insights and inspiration for others interested in building their own home lab.
 ---
 
 ## Hardware Overview
