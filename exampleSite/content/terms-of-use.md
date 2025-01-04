@@ -1,6 +1,6 @@
 ---
 title: "Terms of Use"
-description: "This Terms of Use explains the rules and guidelines that users must agree to in order to use the website www.conanzhang.tech (also referred to as Facets of Conan ZHANG). This includes sections on acceptable use, intellectual property, user content, privacy, disclaimers, limitation of liability, and governing law."
+description: "This Terms of Use explains the rules and guidelines that users must agree to in order to use the website conanzhang.tech (also referred to as Facets of Conan ZHANG). This includes sections on acceptable use, intellectual property, user content, privacy, disclaimers, limitation of liability, and governing law."
 draft: false
 
 ---
@@ -11,7 +11,7 @@ draft: false
 
 #### 1. Acceptance of Terms
 
-By accessing and using the website www.conanzhang.tech (also referred to as Facets of Conan ZHANG), you accept and agree to be bound by these Terms of Use. If you do not agree to these terms, please do not use our website.
+By accessing and using the website conanzhang.tech (also referred to as Facets of Conan ZHANG), you accept and agree to be bound by these Terms of Use. If you do not agree to these terms, please do not use our website.
 
 #### 2. Changes to Terms
 

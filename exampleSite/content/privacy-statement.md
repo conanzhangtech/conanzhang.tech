@@ -1,6 +1,6 @@
 ---
 title: "Privacy Statement"
-description: "This Privacy Statement explains how we collect, use, disclose, and safeguard your information when you visit our website www.conanzhang.tech (also referred to as Facets of Conan ZHANG)."
+description: "This Privacy Statement explains how we collect, use, disclose, and safeguard your information when you visit our website conanzhang.tech (also referred to as Facets of Conan ZHANG)."
 draft: false
 ---
 
@@ -9,7 +9,7 @@ draft: false
 #### **Effective Date:** 30 December 2024
 
 #### Introduction
-We are committed to protecting your personal information and your right to privacy. This Privacy Statement explains how we collect, use, disclose, and safeguard your information when you visit our website www.conanzhang.tech (also referred to as Facets of Conan ZHANG). Should you have any questions or concerns regarding this statement or our practices with respect to your personal information, please contact us at dataprotection@conanzhang.tech.
+We are committed to protecting your personal information and your right to privacy. This Privacy Statement explains how we collect, use, disclose, and safeguard your information when you visit our website conanzhang.tech (also referred to as Facets of Conan ZHANG). Should you have any questions or concerns regarding this statement or our practices with respect to your personal information, please contact us at dataprotection@conanzhang.tech.
 
 #### Information We Collect
 

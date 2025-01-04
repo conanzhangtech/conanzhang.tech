@@ -6,7 +6,7 @@
 
 
 ######################### site variables ##############################
-baseURL = "https://www.conanzhang.tech"
+baseURL = "https://conanzhang.tech"
 # customize your color and font from here.
 [params.variables]
 color_primary = "darkgreen"

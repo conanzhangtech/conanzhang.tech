@@ -1,5 +1,5 @@
 ######################## default configuration ####################
-baseURL = "https://www.conanzhang.tech"
+baseURL = "https://conanzhang.tech"
 relativeURLs = "false"
 title = "Facets of Conan ZHANG"
 theme = ""
