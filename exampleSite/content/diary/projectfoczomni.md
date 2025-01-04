@@ -1,5 +1,5 @@
 ---
-title: "Project FOCZOmni: Home Lab Built with Passion by [@conanzhangtech](site.BaseURL/getintouch)"
+title: "Project FOCZOmni: Home Lab Built with Passion by [@conanzhangtech](getintouch)"
 description: "#ProjectFOCZOmni is my dedicated home lab environment, developed to simulate and showcases how I build and manage a small-scale IT environment for personal and professional growth. It enables me to explore, learn, and innovate."
 image: "images/diary/ProjectFOCZOmni-main.png"
 date: 2025-01-03

@@ -2,17 +2,17 @@
 
 # main menu
 [[main]]
-name = "$>home"
+name = "home"
 url = ""
 weight = 1
 
 [[main]]
-name = "$>whoami"
+name = "whoami"
 url = "whoami/"
 weight = 2
 
 [[main]]
-name = "$>getintouch"
+name = "getintouch"
 url = "getintouch/"
 weight = 100
 
@@ -22,25 +22,25 @@ url = "diary/projectfoczomni/"
 weight = 99
 
 [[main]]
-name = "$>diary"
+name = "diary"
 url = "#"
 weight = 5
 hasChildren = true
 
 [[main]]
-  parent = "$>diary"
+  parent = "diary"
   name = "View my Digital Diary"
   url = "diary/"
   weight = 1
 
   [[main]]
-  parent = "$>diary"
+  parent = "diary"
   name = "Awards and Achievements"
   url = "achievements/"
   weight = 2
 
   [[main]]
-  parent = "$>diary"
+  parent = "diary"
   name = "Projects"
   url = "projects/"
   weight = 3
