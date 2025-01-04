@@ -41,7 +41,7 @@ The homelab also serves as a testing ground me to do Proof-of-Concept before tur
   - Cloudflare Zero Trust for Zero Trust Network Access (ZTNA) implementation
   - Microsoft EntraID for Identity Access Management (IdP)
   - Microsoft Azure Network Gateway as Site-to-Site and Point-to-Site configuration.
-  - Nessus for Vulnerability Accessment.
+  - Nessus for Vulnerability Assessment.
 
 #### Virtualisation
 

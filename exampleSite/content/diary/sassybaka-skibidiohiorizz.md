@@ -13,3 +13,13 @@ My friend wants a placement of his ugly-ass face on my diary, so here u go
 
 ^_^
 
+Please see below... 
+
+{{< image src="images/diary/WhatsApp Image 2025-01-04 at 16.15.14.jpeg" height="800" width="800" command="fill" option="q100" class="img-fluid" >}}
+
+<br>
+
+IMH Patient
+{{< video src="images/diary/WhatsApp Video 2025-01-04 at 16.14.53.mp4" height="800" width="800" command="fill" option="q100" class="img-fluid" >}}
+
+
