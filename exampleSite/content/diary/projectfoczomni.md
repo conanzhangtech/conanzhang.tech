@@ -41,6 +41,7 @@ The homelab also serves as a testing ground me to do Proof-of-Concept before tur
   - Cloudflare Zero Trust for Zero Trust Network Access (ZTNA) implementation
   - Microsoft EntraID for Identity Access Management (IdP)
   - Microsoft Azure Network Gateway as Site-to-Site and Point-to-Site configuration.
+  - Nessus for Vulnerability Accessment.
 
 #### Virtualisation
 
@@ -76,8 +77,24 @@ Key features include:
 
 Learn how to [host your own teleport server](diary/host-your-own-teleport-server).
 
-
 <br>
+
+- [**FOCZ - Fortress Server**](https://fortress.conanzhang.tech)
+
+FOCZ - Fortress Server is a self-hosted VMWare *(by BroadCom)* vCentre Server, on top of my EXSI Type 1 Hypervisor.
+
+VMWare *(by BroadCom)* vCentre server allows me to manage all of my VMs at ease.
+
+Learn how to [host your own VMWare *(by BroadCom)* vCentre Server server](diary/host-your-own-vcentre-server) - This is a paid server subscription, not open-source.
+
+- [**FOCZ - Compliance**](https://compliance.conanzhang.tech)
+
+FOCZ - Compliance is a self-hosted Nessus server.
+
+Nessus checks for common vulnerabilities (CVSS) in my environment and gives recommendations to patch them.
+
+Learn how to [host your own Nessus server using Nessus Community Edition](diary/host-your-own-nessus-server-nessus-community-edition).
+
 
 - [**FOCZ - ztcc.ink**](https://www.short.io)
 
@@ -89,8 +106,8 @@ Learn how to [USE ShortIO](https://short.io/).
 ---
 
 #### Backup
-- **VEEAM Backup and Replication Server**:  
-- **Synology NAS**:  
+- **VEEAM Backup and Replication Server**
+- **Azure Cloud**
 ---
 
 ### Future Improvements
