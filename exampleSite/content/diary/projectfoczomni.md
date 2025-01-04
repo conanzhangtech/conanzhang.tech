@@ -24,13 +24,13 @@ The homelab also serves as a testing ground me to do Proof-of-Concept before tur
 6. [Future Improvements](diary/projectfoczomni/#future-improvements)
 
 ---
-### .Goals
+#### Goals
 - **Self Learning**: Experiment with new technologies and enhance my skills in networking, system administration, and DevOps.  
 - **Professional Development**: Host personal projects and explore virtualisation, containerisation, and integration with cloud technologies.  
 - **Sharing and Exchange**: Provide and exchange insights and inspiration for others interested in building their own home lab.
 ---
 
-### Security and Infrastructure
+#### Security and Infrastructure
 
 - **Domain Names I own**:  
   - conanzhang.tech (Purchased from Namecheap)
@@ -42,7 +42,7 @@ The homelab also serves as a testing ground me to do Proof-of-Concept before tur
   - Microsoft EntraID for Identity Access Management (IdP)
   - Microsoft Azure Network Gateway as Site-to-Site and Point-to-Site configuration.
 
-### Virtualisation
+#### Virtualisation
 
 - **Virtualisation Platform**:  
 
@@ -50,7 +50,7 @@ The homelab also serves as a testing ground me to do Proof-of-Concept before tur
   - VMWare vSphere (VCSA) set up to manage the ESXI server
 ---
 
-### Web Applications
+#### Web Applications
 
 - [**FOCZ - Build Server**](https://build.conanzhang.tech)
 
@@ -88,7 +88,7 @@ Learn how to [USE ShortIO](https://short.io/).
 
 ---
 
-### Backup
+#### Backup
 - **VEEAM Backup and Replication Server**:  
 - **Synology NAS**:  
 ---
