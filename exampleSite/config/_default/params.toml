@@ -28,7 +28,7 @@ featured_post_title = "Featured Post"
 recent_post_title = "Recent Post"
 featured_post_button = "Featured"
 recent_post_button = "Recent"
-read_more_button = "$>more"
+read_more_button = "Read More"
 previous_button = "Previous"
 next_button = "Next"
 related_posts = "Related Posts"
@@ -49,7 +49,7 @@ copyright = "Copyright 2025 © Facets of Conan ZHANG"
 
 # 404
 error_404_text = "ERROR 404!"
-error_404_button = "$>home"
+error_404_button = "home"
 
 # Preloader
 [preloader]
@@ -64,7 +64,7 @@ title_small = "to Facets of Conan ZHANG!"
 image = "images/banner.png"
 background_image = "/images/banner-bg-shape.svg"
 content = "Hi there, I am Conan, a Leader / IT and Cybersecurity Practitional / Technical Experise or whatever you might associate with. I write tech stuff (ok, maybe sometimes not so techkie), but do stay here and look around hehe. ^_^"
-button_label = "$>whoami"
+button_label = "whoami"
 button_link = "whoami/"
 
 # Advertise

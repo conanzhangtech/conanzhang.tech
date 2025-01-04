@@ -1,6 +1,6 @@
 ---
 title: "My Digital Diary"
-description: "meta description"
+description: ""
 draft: false
 ---
 

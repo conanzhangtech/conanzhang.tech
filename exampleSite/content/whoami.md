@@ -1,5 +1,5 @@
 ---
-title: "$>whoami"
+title: "whoami"
 description: ""
 image: "images/author.jpg"
 layout: "whoami"
