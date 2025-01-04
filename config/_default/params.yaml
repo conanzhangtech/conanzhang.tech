@@ -34,18 +34,18 @@ hb:
       featured_posts: # the number of the featured posts.
       main_sections: # leave it empty to include all regular pages.
     giscus:
-      repo: conanzhangtech/www.conanzhang.tech
+      repo: conanzhangtech/conanzhang.tech
       repo_id: R_kgDOJP3qtA
       category_id: DIC_kwDOJP3qtM4CVavM
   docs:
     giscus:
-      repo: conanzhangtech/www.conanzhang.tech
+      repo: conanzhangtech/conanzhang.tech
       repo_id: R_kgDOJP3qtA
       category_id: DIC_kwDOJP3qtM4CVavM
   content_panel:
     repo:
       service: github # github or gitlab.
-      repo: conanzhangtech/www.conanzhang.tech
+      repo: conanzhangtech/conanzhang.tech
       branch: main
       # subpath: exampleSite
   # gallery:

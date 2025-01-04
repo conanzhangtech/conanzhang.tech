@@ -45,4 +45,4 @@ To be updated
 
 # CREDIT AND SUPPORT
 
-#### Conan Zhang | https://www.conanzhang.tech
+#### Conan Zhang | https://conanzhang.tech
