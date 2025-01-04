@@ -48,6 +48,10 @@ maxAge = "720h"
 [markup.goldmark.renderer]
 unsafe = true
 
+[markup.tableOfContents]
+    startLevel = 4
+    ordered = false
+    endLevel = 6
 
 ############################ Media types ############################
 [mediaTypes]
