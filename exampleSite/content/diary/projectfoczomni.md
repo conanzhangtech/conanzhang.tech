@@ -3,7 +3,7 @@ title: "Project FOCZOmni: Home Lab Built with Passion by [@conanzhangtech](getin
 description: "#ProjectFOCZOmni is my dedicated home lab environment, developed to simulate and showcases how I build and manage a small-scale IT environment for personal and professional growth. It enables me to explore, learn, and innovate."
 image: "images/diary/ProjectFOCZOmni-main.png"
 date: 2025-01-03
-categories: ["Technology"]
+categories: []
 type: "featured" # available types: [featured/regular]
 draft: false
 sitemapExclude: false
