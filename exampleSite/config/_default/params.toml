@@ -38,9 +38,9 @@ no_tags_found = "No Tags Found"
 
 mainSections = ["diary", "achievements"]
 # about widget content
-about_widget_content = "Hi there, I am Conan, a Leader / IT and Cybersecurity Practitional / Technical Experise or whatever you might associate with. I write tech stuff (ok, maybe sometimes not so techkie), but do stay here and look around hehe. ^_^"
+about_widget_content = "Hi there, I am Conan, a Leader / IT and Cybersecurity Practitioner / Technical Experise or whatever you might associate with. I write tech stuff (ok, maybe sometimes not so techkie), but do stay here and look around hehe. ^_^"
 # footer content
-footer_content = "Hi there, I am Conan, a Leader / IT and Cybersecurity Practitional / Technical Experise or whatever you might associate with. I write tech stuff (ok, maybe sometimes not so techkie), but do stay here and look around hehe. ^_^"
+footer_content = "Hi there, I am Conan, a Leader / IT and Cybersecurity Practitioner / Technical Experise or whatever you might associate with. I write tech stuff (ok, maybe sometimes not so techkie), but do stay here and look around hehe. ^_^"
 # custom script on header, example: custom_script= "<script>console.log(\"Hello World\")</script>" 
 custom_script= ""
 # copyright
@@ -63,7 +63,7 @@ title_large = "Welcome **!**"
 title_small = "to Facets of Conan ZHANG!"
 image = "images/banner.png"
 background_image = "/images/banner-bg-shape.svg"
-content = "Hi there, I am Conan, a Leader / IT and Cybersecurity Practitional / Technical Experise or whatever you might associate with. I write tech stuff (ok, maybe sometimes not so techkie), but do stay here and look around hehe. ^_^"
+content = "Hi there, I am Conan, a Leader / IT and Cybersecurity Practitioner / Technical Experise or whatever you might associate with. I write tech stuff (ok, maybe sometimes not so techkie), but do stay here and look around hehe. ^_^"
 button_label = "whoami"
 button_link = "whoami/"
 
