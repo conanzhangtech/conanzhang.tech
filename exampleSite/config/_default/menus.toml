@@ -17,8 +17,8 @@ url = "getintouch/"
 weight = 100
 
 [[main]]
-name = "#ProjectFOCZOmni"
-url = "diary/projectfoczomni/"
+name = "#projectCodenameFortress"
+url = "projects/codenamefortress/"
 weight = 99
 
 [[main]]

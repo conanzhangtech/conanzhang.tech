@@ -5,9 +5,8 @@
       <div class="col-xl-6 text-center">
         <!-- footer brand/logo -->
         <a class="footer-brand mb-4 d-block" href="{{ site.BaseURL | relLangURL }}">
-          Facets of Conan ZHANG
+          {{ partial "logo.html" }} <br> Facets of Conan ZHANG
           </a>
-          
 
         <p class="text-light mb-4">{{site.Params.footer_content | markdownify}}</p>
         <ul class="list-unstyled mb-5 footer-menu">

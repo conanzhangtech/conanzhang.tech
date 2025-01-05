@@ -2,14 +2,14 @@
 # favicon
 favicon = "images/favicon.png"
 # logo
-logo = ""
+logo = "images/banner.png"
 # use `x` with logo_width, example: "100x".
 # Note: logo_width is not work with .svg file
 logo_width = "150x"
 # logo text will only show when logo is missing.
 logo_text = "Facets of Conan ZHANG"
 # navbar fixed to top
-navbar_fixed = true
+navbar_fixed = false
 # OpenGraph / Twitter Card metadata
 description = ""
 author = "conanzhangtech"
@@ -36,7 +36,7 @@ showing_posts = "You are at:"
 no_categories_found = "No Categories Found"
 no_tags_found = "No Tags Found"
 
-mainSections = ["diary", "achievements"]
+mainSections = ["diary", "achievements", "projects"]
 # about widget content
 about_widget_content = "Hi there, I am Conan, a Leader / IT and Cybersecurity Practitioner / Technical Experise or whatever you might associate with. I write tech stuff (ok, maybe sometimes not so techkie), but do stay here and look around hehe. ^_^"
 # footer content
