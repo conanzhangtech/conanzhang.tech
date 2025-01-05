@@ -1,12 +1,12 @@
 ---
 title: "#projectCodenameFortress: Home Lab Built with Passion by [@conanzhangtech](getintouch)"
-description: "This site has been moved to`https://conanzhangtech/projects/codenamefortress."
+description: "This site has been moved to`https://conanzhang.tech/projects/codenamefortress."
 date: 2025-01-03
-image: "images/projects/codenamefortress-main.png"
+image: "images/projects/projectCodenameFortress.png"
 categories: []
 type: "regular" # available types: [featured/regular]
-draft: false
-sitemapExclude: false
+draft: true
+sitemapExclude: true
 ---
 
 You are being redirected to the new location in 5 seconds, please hold....
