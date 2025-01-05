@@ -11,6 +11,10 @@ sitemapExclude: false
 
 > A personal playground for experimentation and innovation.
 
+```Bash
+Codename: Fortress
+```
+
 #### Overview
 #ProjectFOCZOmni is my dedicated home lab environment, developed to simulate and showcases how I build and manage a small-scale IT environment for personal and professional growth. It enables me to explore, learn, and innovate.
 
