@@ -64,45 +64,6 @@
 {{ partialCached "adsense-script.html" . }}
 
 
-<!-- 
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    // Get the full URL (domain + path + query string, if any)
-    var requestURL = window.location.href;
-
-    // Display the full request URL in the table
-    document.getElementById('request_url').textContent = requestURL;
-
-    // Get the base URL to compare paths
-    var baseURL = "{{ .Site.BaseURL }}";  // This will get the base URL from Hugo's configuration
-
-    // Strip the base URL from the full URL to get the relative path
-    var relativeURL = requestURL.replace(baseURL, "");
-
-    // Define redirect mappings for the relative paths (paths after the base URL)
-    var redirects = {
-      '/1': '/new-url1',
-      '/old-url2': '/new-url2',
-      '/old-url3': '/new-url3'
-    };
-
-    // Determine the redirection URL or show 404
-    var newURL = redirects[requestURL] || '404 Error - Page Not Found';
-    var redirectCell = document.getElementById('redirect_link');
-
-    // Update the table with either the new URL or the 404 message
-    if (newURL === '404 Error - Page Not Found') {
-      redirectCell.textContent = newURL;
-    } else {
-      var link = document.createElement('a');
-      link.href = baseURL + newURL;  // Append the new path to the base URL
-      link.textContent = 'Click Here';
-      redirectCell.appendChild(link);
-    }
-  });
-</script> -->
-
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     // Fetch the current URL path from the browser
@@ -113,7 +74,7 @@
 
     // Define redirect mappings
     var redirects = {
-      '/diary/projectfoczomni': '/projects/codenamefortress',
+      '/diary/projectfoczomni': '/new-url1'
     };
 
     // Determine the redirection URL or show 404
@@ -121,7 +82,7 @@
     var redirectCell = document.getElementById('redirect_link');
 
     // Update the table with either the new URL or the 404 message
-    if (newURL === 'The Requested URL is non-existent') {
+    if (newURL === '404 Error - Page Not Found') {
       redirectCell.textContent = newURL;
     } else {
       var link = document.createElement('a');
