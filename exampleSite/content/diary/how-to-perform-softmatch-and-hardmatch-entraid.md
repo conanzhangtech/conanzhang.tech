@@ -1,0 +1,575 @@
+---
+title: "How to Perform Soft Match or Hard Match for Hybrid Identity Sync Between Microsoft Entra ID and Multiple On-Premises Domain Controllers (DCs)."
+
+description: "Managing hybrid identities across multiple on-premises Domain Controllers (DCs) synced to a single Microsoft Entra ID can be challenging.
+
+In a recent scenario, an object had to be moved between two separate on-premises DCs syncing to the same Microsoft Entra ID. This resulted in identity duplication, leading to conflicting passwords and policies, as the existing hybrid identity and the new on-premises object were treated as separate entities. 
+
+This guide provides a step-by-step walkthrough for seamlessly moving an on-premises object between two DCs while correctly linking the existing cloud hybrid identity to the new on-premises object using Soft Match or Hard Match techniques."
+
+image: "https://r2-apac.conanzhang.tech/HOW%20TO%20SM%20HM.png"
+date: 2025-01-07
+categories: [How To]
+type: "featured" # available types: [featured/regular]
+draft: false
+sitemapExclude: false
+---
+
+> It is not as difficult as you would have imagined ^_-.
+
+
+#### Overview
+Managing hybrid identities across multiple on-premises Domain Controllers (DCs) synced to a single Microsoft Entra ID can be challenging.
+
+In a recent scenario, an object had to be moved between two separate on-premises DCs syncing to the same Microsoft Entra ID. This resulted in identity duplication, leading to conflicting passwords and policies, as the existing hybrid identity and the new on-premises object were treated as separate entities.
+
+This guide provides a step-by-step walkthrough for seamlessly moving an on-premises object between two DCs while correctly linking the existing cloud hybrid identity to the new on-premises object using Soft Match or Hard Match techniques.
+
+1. [Goals](diary/how-to-perform-softmatch-and-hardmatch-entraid/#goals)  
+   - [What is Hybrid Identity?](diary/how-to-perform-softmatch-and-hardmatch-entraid/#what-is-hybrid-identity)  
+   - [What is Soft Match and Hard Match?](diary/how-to-perform-softmatch-and-hardmatch-entraid/#what-is-soft-match-and-hard-match)
+
+2. [UAT Scenario](diary/how-to-perform-softmatch-and-hardmatch-entraid/#uat-scenario)
+
+3. [Expected downtime for user](diary/how-to-perform-softmatch-and-hardmatch-entraid/#expected-downtime-for-user)
+
+4. [Prerequisites](diary/how-to-perform-softmatch-and-hardmatch-entraid/#prerequisites)
+
+5. [Solution 1: Softmatch via UserPrincipalName](diary/how-to-perform-softmatch-and-hardmatch-entraid/#solution-1-softmatch-via-userprincipalname)  
+   - [Step 1: Information Gathering (Microsoft Entra ID)](diary/how-to-perform-softmatch-and-hardmatch-entraid/#step-1-information-gathering-microsoft-entra-id)  
+   - [Step 2: Modify synchronisation setting for the respective Entra Connect Servers](diary/how-to-perform-softmatch-and-hardmatch-entraid/#step-2-modify-synchronisation-setting-for-the-respective-entra-connect-servers)  
+   - [Step 3: Move object1 to the unsynchronised OU in DC1 and DC2 respectively.](diary/how-to-perform-softmatch-and-hardmatch-entraid/#step-3-move-object1-to-the-unsynchronised-ou-in-dc1-and-dc2-respectively)  
+   - [Step 4: Run first delta sync in DC1 and DC2 respectively](diary/how-to-perform-softmatch-and-hardmatch-entraid/#step-4-run-first-delta-sync-in-dc1-and-dc2-respectively)  
+   - [Step 5: Restore the deleted user object1@conanzhang.tech from Microsoft Entra ID and verify the current configuration.](diary/how-to-perform-softmatch-and-hardmatch-entraid/#step-5-restore-the-deleted-user-object1conanzhangtech-from-microsoft-entra-id-and-verify-the-current-configuration)  
+   - [Step 6: Remove object1@conanzhang.tech's ImmutableID via MSOnline Powershell.](diary/how-to-perform-softmatch-and-hardmatch-entraid/#step-6-remove-object1conanzhangtechs-immutableid-via-msonline-powershell)  
+   - [Step 7: Perform Soft Match](diary/how-to-perform-softmatch-and-hardmatch-entraid/#step-7-perform-soft-match)  
+   - [Step 8: Run second delta sync in DC1](diary/how-to-perform-softmatch-and-hardmatch-entraid/#step-8-run-second-delta-sync-in-dc1)  
+   - [Step 9: Verify that the user's On-Premise ImmutableID and On-premise Domain Name is now changed.](diary/how-to-perform-softmatch-and-hardmatch-entraid/#step-9-verify-that-the-users-on-premise-immutableid-and-on-premise-domain-name-is-now-changed)
+
+6. [Solution 2: Hardmatch by forcefully modifying the On-premise ImmutableID attribute to the correct one.](diary/how-to-perform-softmatch-and-hardmatch-entraid/#solution-2-hardmatch-by-forcefully-modifying-the-on-premise-immutableid-attribute-to-the-correct-one)  
+   - [Step 1: Information Gathering (Microsoft Entra ID)](diary/how-to-perform-softmatch-and-hardmatch-entraid/#step-1-information-gathering-microsoft-entra-id)  
+   - [Step 2: Replace object1@conanzhang.tech's ImmutableID from miLlmU1fMk2U8Mnd2lKzHg== to jWmHz8UnMkCgcoJF/Rl5Xw== via MSOnline Powershell.](diary/how-to-perform-softmatch-and-hardmatch-entraid/#step-2-replace-object1conanzhangtechs-immutableid-from-millmu1fmk2u8mnd2lkzhg-to-jwmhz8unmkcgcojf-rl5xw-via-msonline-powershell)  
+   - [Step 3: Run delta sync in DC1](diary/how-to-perform-softmatch-and-hardmatch-entraid/#step-3-run-delta-sync-in-dc1)  
+   - [Step 4: Verify that the user's On-Premise ImmutableID and On-premise Domain Name is now changed.](diary/how-to-perform-softmatch-and-hardmatch-entraid/#step-4-verify-that-the-users-on-premise-immutableid-and-on-premise-domain-name-is-now-changed)
+
+7. [Conclusion](diary/how-to-perform-softmatch-and-hardmatch-entraid/#conclusion)
+
+8. [Resources](diary/how-to-perform-softmatch-and-hardmatch-entraid/#resources)
+
+
+---
+#### Goals
+
+You need to ensure that their on-premise AD account is linked correctly to the existing cloud hybrid identity using Soft Match or Hard Match techniques.
+
+By doing so, we can preserve the data, role permission, audit logs etc. for the user in the cloud.
+
+###### What is Hybrid Identity?
+Hybrid identity enables users to access resources seamlessly across on-premises and cloud environments. It relies on synchronisation between Microsoft Entra ID (formerly Azure AD) and on-premises Active Directory (AD).
+
+###### What is Soft Match and Hard Match?
+- **Soft Match:** Matches objects based on the UserPrincipalName, Email, or the primary proxyAddress attribute.
+- **Hard Match:** Matches objects by explicitly setting an immutableID (sourceAnchor) in Microsoft Entra ID to match the on-premises object.
+
+---
+
+#### UAT Scenario
+*Refer to the architecture diagram at the top of this page for additional details.*
+
+In this scenario:
+
+- **Object1** (`object1@conanzhang.tech`) is currently linked to Location 2 (represented by **DC2**) and exists as `DC2\object1@domainC.com`.
+- **Object1** needs to be moved to Location 1 (represented by **DC1**), where IT administrators have already created an AD account for it.
+- As a result of this move, a duplicate entry is created in Microsoft Entra ID because Object1's cloud identity (with Entra ObjectID `aabbcc-aabbcc-aabbcc`) remains linked to DC2 in Location 2.
+
+- {{< image src="images/diary/Screenshot 2025-01-08 at 23.08.10.png" command="fill" option="q100" class="img-fluid" >}}
+
+To preserve Object1's data, role permissions, audit logs, and other configurations in the cloud, we need to link the existing cloud account to the newly created AD account in Location 1.
+
+We will first attempt a **Soft Match** approach, as it is the simplest method. If Soft Matching does not work, we will proceed with a **Hard Match** to explicitly associate the cloud and on-premises objects.
+
+#### Expected downtime for user.
+
+1 Hour (Depends on how quickily IT Admins perform the steps)
+
+#### Prerequisites
+- Access to a x64 bit Windows 10/11 host and have local admin access (x32 bit, ARM devices are NOT supported.)
+- Domain Admin access to the respective primary DCs.
+- Local Admin access to the respective Entra Connect Servers
+- Global Administrator OR Hybrid Identity Administrator and User Administrator
+- Install MSOnline Powershell Module
+
+---
+
+
+#### Solution 1: Softmatch via UserPrincipalName
+
+
+###### Step 1: Information Gathering (Microsoft Entra ID).
+1a. Log in to the [Microsoft Entra ID admin portal](https://entra.microsoft.com) with your admin credentials.
+
+{{< image src="images/diary/Screenshot 2025-01-08 at 23.21.47.png" command="fill" option="q100" class="img-fluid" >}}
+
+1b. Navigate to [Users > AllUsers](https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndTenants/UserManagementMenuBlade/~/AllUsers/menuId/) blade and look for the 2 objects: `object1@conanzhang.tech` and `object1anotheridentity@conanzhang.tech`
+
+{{< image src="images/diary/Screenshot 2025-01-08 at 23.31.45.png" command="fill" option="q100" class="img-fluid" >}}
+
+1c: Navigate to each object, and under properties, record down the following (The value is editable, so you can edit it here and copy to your notes, this is client-side processsing, data is NOT sent to my server for processing).:
+
+object1@conanzhang.tech
+<table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
+    <tr>
+      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Property</th>
+      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Value</th>
+    </tr>
+        <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID User principal name</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">object1@conanzhang.tech</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID Object ID</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">b48bcbb9-945b-4145-9622-7860d0e5a819</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises sync enabled</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">Yes</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises immutable ID</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">jWmHz8UnMkCgcoJF/Rl5Xw==</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises domain name</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">tech.conanzhang</td>
+    </tr>
+  </table>
+
+<br>
+
+object1anotheridentity@conanzhang.tech
+<table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
+  <tr>
+    <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Property</th>
+    <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Value</th>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID User principal name</td>
+    <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">object1anotheridentity@conanzhang.tech</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID Object ID</td>
+    <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">61a6e220-21aa-4f06-ba7f-f1b3bff27dae</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises sync enabled</td>
+    <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">Yes</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises immutable ID</td>
+    <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">miLlmU1fMk2U8Mnd2lKzHg==</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises domain name</td>
+    <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">tech.conanzhang.UAT</td>
+  </tr>
+</table>
+
+
+###### Step 2: Modify synchronisation setting for the respective Entra Connect Servers.
+
+**You will only need to perform this step if your Entra Connect Server is set to "Sync all domains and OUs" because you will need to move the user to an unsynced OU.** Skip to [Step 3: Move object1 to the unsynchronised OU in DC1 and DC2 respectively.](diary/how-to-perform-softmatch-and-hardmatch-entraid/#step-3-move-object1-to-the-unsynchronised-ou-in-dc1-and-dc2-respectively) if your Entra Connect Server is not under this setting.
+
+2a: Remote to the respective Entra Connect Servers with your Adminstrator Account via rdp, bastion or https.
+
+2b: Launch the Azure AD Connect application.
+
+{{< image src="images/diary/Screenshot 2025-01-09 at 00.10.46.png" command="fill" option="q100" class="img-fluid" >}}
+
+2c: Click "Configure".
+
+{{< image src="images/diary/Screenshot 2025-01-09 at 00.12.52.png" command="fill" option="q100" class="img-fluid" >}}
+
+2d: Click "Customise synchronization options" and click "Next".
+
+{{< image src="images/diary/Screenshot 2025-01-09 at 00.14.37.png" command="fill" option="q100" class="img-fluid" >}}
+
+2e: Enter your Microsoft Entra ID Admin credentials, login, and click "Next".
+
+{{< image src="images/diary/Screenshot 2025-01-09 at 00.17.02.png" command="fill" option="q100" class="img-fluid" >}}
+
+2f: Leave all the settings as default and Click "Next" (No image here).
+
+2g: Change the option from "Sync all domains and OUs" to "Sync selected domains and OUs" and untick the OU that you do not wish to synchronise.
+
+{{< image src="images/diary/Screenshot 2025-01-09 at 00.21.14.png" command="fill" option="q100" class="img-fluid" >}}
+
+2h: Leave all the settings as default and Click "Next" (No image here).
+
+2i: Tick the option "start the synchronization process when configuration completes" and click "Configure"
+
+{{< image src="images/diary/Screenshot 2025-01-09 at 00.29.32.png" command="fill" option="q100" class="img-fluid" >}}
+
+2j: Click "Exit" - IMPORTANT
+
+{{< image src="images/diary/Screenshot 2025-01-09 at 00.36.19.png" command="fill" option="q100" class="img-fluid" >}}
+
+
+###### Step 3: Move object1 to the unsynchronised OU in DC1 and DC2 respectively.
+
+3a. Just move them how you usually does (No image here)
+
+###### Step 4: Run first delta sync in DC1 and DC2 respectively.
+
+This deletes `object1@conanzhang.tech` and `object1anotheridentity@conanzhang.tech`, flipping their "On-premises sync enabled" to "false".
+
+Launch Powershell as administrator, and run the following command.
+```powershell
+Start-ADSyncSyncCycle -PolicyType Delta
+```
+{{< image src="images/diary/Screenshot 2025-01-09 at 00.41.55.png" command="fill" option="q100" class="img-fluid" >}}
+
+The users, `object1@conanzhang.tech` and `object1anotheridentity@conanzhang.tech` are now DELETED in Microsft Entra ID
+
+###### Step 5: Restore the deleted user object1@conanzhang.tech from Microsoft Entra ID and verify the current configuration.
+
+5a. Log in to the [Microsoft Entra ID admin portal](https://entra.microsoft.com) with your admin credentials.
+
+{{< image src="images/diary/Screenshot 2025-01-08 at 23.21.47.png" command="fill" option="q100" class="img-fluid" >}}
+
+5b. Navigate to [Users > DeletedUsers](https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndTenants/UserManagementMenuBlade/~/DeletedUsers/menuId/DeletedUsers) blade and restore the object `object1@conanzhang.tech`.
+
+{{< image src="images/diary/Screenshot 2025-01-09 at 00.52.39.png" command="fill" option="q100" class="img-fluid" >}}
+
+5c: Once restored, navigate to `object1@conanzhang.tech`, and under properties, ensure that it is the following (The value is editable, so you can edit it here and copy to your notes, this is client-side processsing, data is NOT sent to my server for processing).:
+
+object1@conanzhang.tech
+<table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
+    <tr>
+      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Property</th>
+      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Value</th>
+    </tr>
+        <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID User principal name</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">object1@conanzhang.tech</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID Object ID</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">b48bcbb9-945b-4145-9622-7860d0e5a819</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises sync enabled</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">No</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises immutable ID</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">jWmHz8UnMkCgcoJF/Rl5Xw==</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises domain name</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">tech.conanzhang</td>
+    </tr>
+  </table>
+
+<br>
+
+
+###### Step 6: Remove `object1@conanzhang.tech`'s ImmutableID via MSOnline Powershell.
+
+6a. Run powershell as Administrator, and run the following:
+
+   ```powershell
+   Set-ExecutionPolicy bypass
+   Install-Module -Name MSOnline
+   Import-Module -Name MSOnline
+   ```
+
+{{< image src="images/diary/Screenshot 2025-01-09 at 01.02.32.png" command="fill" option="q100" class="img-fluid" >}}
+
+6b. Connect to MSOLservice with your admin credetials.
+
+   ```powershell
+connect-msolservice
+   ```
+
+{{< image src="images/diary/Screenshot 2025-01-09 at 01.05.50.png" command="fill" option="q100" class="img-fluid" >}}
+
+6c. Run the following and remove the existing ImmutableID from `object1@conanzhang.tech`.
+
+   ```powershell
+Get-MsolUser -UserPrincipalName object1@conanzhang.tech | Set-MsolUser -ImmutableId "$null"
+   ```
+
+6d: Navigate to `object1@conanzhang.tech`, and under properties, ensure that it is the following (The value is editable, so you can edit it here and copy to your notes, this is client-side processsing, data is NOT sent to my server for processing).:
+
+object1@conanzhang.tech
+<table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
+    <tr>
+      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Property</th>
+      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Value</th>
+    </tr>
+        <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID User principal name</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">object1@conanzhang.tech</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID Object ID</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">b48bcbb9-945b-4145-9622-7860d0e5a819</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises sync enabled</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">No</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises immutable ID</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;"></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises domain name</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">tech.conanzhang</td>
+    </tr>
+  </table>
+
+<br>
+
+###### Step 7: Perform Soft Match.
+
+7a. Navigate to `DC1\object1@conanzhang.tech` object on your AD, and update its UPN, email, SMTP: address to match `object1@conanzhang.tech` on Microsoft Entra ID.
+
+**You may have a different attribute for synchronising UPN, for example, ExtensionAttribute. Update that accordingly.**
+
+###### Step 8: Run second delta sync in DC1. 
+
+This action will replace the ImmutableID to the current user in Location A and linking it to the right user.
+
+Launch Powershell as administrator, and run the following command.
+```powershell
+Start-ADSyncSyncCycle -PolicyType Delta
+```
+{{< image src="images/diary/Screenshot 2025-01-09 at 00.41.55.png" command="fill" option="q100" class="img-fluid" >}}
+
+The users `object1@conanzhang.tech` is now synchronised with DC1 instead of DC2.
+
+
+###### Step 9: Verify that the user's On-Premise ImmutableID and On-premise Domain Name is now changed.
+
+Please compare the table recprded in the previous step.
+
+object1@conanzhang.tech
+<table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
+    <tr>
+      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Property</th>
+      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Value</th>
+    </tr>
+        <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID User principal name</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">object1@conanzhang.tech</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID Object ID</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">b48bcbb9-945b-4145-9622-7860d0e5a819</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises sync enabled</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">Yes</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises immutable ID</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">jWmHz8UnMkCgcoJF/Rl5Xw== (Changed from miLlmU1fMk2U8Mnd2lKzHg==)</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises domain name</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">tech.conanzhang (Changed from tech.conanzhang.UAT)</td>
+    </tr>
+  </table>
+
+<br>
+
+#### Solution 2: Hardmatch by forcefully modifying the On premise ImmutableID attribute to the correct one.
+
+**This is not recommended as forcefully matching may result in unexpected behaviours.**
+
+###### Step 1: Information Gathering (Microsoft Entra ID).
+1a. Log in to the [Microsoft Entra ID admin portal](https://entra.microsoft.com) with your admin credentials.
+
+{{< image src="images/diary/Screenshot 2025-01-08 at 23.21.47.png" command="fill" option="q100" class="img-fluid" >}}
+
+1b. Navigate to [Users > AllUsers](https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndTenants/UserManagementMenuBlade/~/AllUsers/menuId/) blade and look for the 2 objects: `object1@conanzhang.tech` and `object1anotheridentity@conanzhang.tech`
+
+{{< image src="images/diary/Screenshot 2025-01-08 at 23.31.45.png" command="fill" option="q100" class="img-fluid" >}}
+
+1c: Navigate to each object, and under properties, record down the following (The value is editable, so you can edit it here and copy to your notes, this is client-side processsing, data is NOT sent to my server for processing).:
+
+object1@conanzhang.tech
+<table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
+    <tr>
+      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Property</th>
+      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Value</th>
+    </tr>
+        <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID User principal name</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">object1@conanzhang.tech</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID Object ID</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">b48bcbb9-945b-4145-9622-7860d0e5a819</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises sync enabled</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">Yes</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises immutable ID</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">jWmHz8UnMkCgcoJF/Rl5Xw==</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises domain name</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">tech.conanzhang</td>
+    </tr>
+  </table>
+
+<br>
+
+object1anotheridentity@conanzhang.tech
+<table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
+  <tr>
+    <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Property</th>
+    <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Value</th>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID User principal name</td>
+    <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">object1anotheridentity@conanzhang.tech</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID Object ID</td>
+    <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">61a6e220-21aa-4f06-ba7f-f1b3bff27dae</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises sync enabled</td>
+    <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">Yes</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises immutable ID</td>
+    <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">miLlmU1fMk2U8Mnd2lKzHg==</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises domain name</td>
+    <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">tech.conanzhang.UAT</td>
+  </tr>
+</table>
+
+
+###### Step 2: Replace `object1@conanzhang.tech`'s ImmutableID from miLlmU1fMk2U8Mnd2lKzHg== to jWmHz8UnMkCgcoJF/Rl5Xw== via MSOnline Powershell.
+
+2a. Run powershell as Administrator, and run the following:
+
+   ```powershell
+   Set-ExecutionPolicy bypass
+   Install-Module -Name MSOnline
+   Import-Module -Name MSOnline
+   ```
+
+{{< image src="images/diary/Screenshot 2025-01-09 at 01.02.32.png" command="fill" option="q100" class="img-fluid" >}}
+
+2b. Connect to MSOLservice with your admin credetials.
+
+   ```powershell
+connect-msolservice
+   ```
+
+{{< image src="images/diary/Screenshot 2025-01-09 at 01.05.50.png" command="fill" option="q100" class="img-fluid" >}}
+
+2c. Run the following and remove the existing ImmutableID from `object1@conanzhang.tech`.
+
+   ```powershell
+Get-MsolUser -UserPrincipalName object1@conanzhang.tech | Set-MsolUser -ImmutableId "jWmHz8UnMkCgcoJF/Rl5Xw=="
+   ```
+
+2d: Navigate to `object1@conanzhang.tech`, and under properties, ensure that it is the following (The value is editable, so you can edit it here and copy to your notes, this is client-side processsing, data is NOT sent to my server for processing).:
+
+object1@conanzhang.tech
+<table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
+    <tr>
+      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Property</th>
+      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Value</th>
+    </tr>
+        <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID User principal name</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">object1@conanzhang.tech</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID Object ID</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">b48bcbb9-945b-4145-9622-7860d0e5a819</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises sync enabled</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">No</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises immutable ID</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">jWmHz8UnMkCgcoJF/Rl5Xw==</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises domain name</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">tech.conanzhang</td>
+    </tr>
+  </table>
+
+<br>
+
+###### Step 3: Run delta sync in DC1. 
+
+This action will replace the rebase to the current user in Location A and linking it to the right user.
+
+Launch Powershell as administrator, and run the following command.
+```powershell
+Start-ADSyncSyncCycle -PolicyType Delta
+```
+{{< image src="images/diary/Screenshot 2025-01-09 at 00.41.55.png" command="fill" option="q100" class="img-fluid" >}}
+
+The users `object1@conanzhang.tech` is now synchronised with DC1 instead of DC2.
+
+
+###### Step 4: Verify that the user's On-Premise ImmutableID and On-premise Domain Name is now changed.
+
+Please compare the table recorded in the previous step.
+
+object1@conanzhang.tech
+<table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
+    <tr>
+      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Property</th>
+      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Value</th>
+    </tr>
+        <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID User principal name</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">object1@conanzhang.tech</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID Object ID</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">b48bcbb9-945b-4145-9622-7860d0e5a819</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises sync enabled</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">Yes</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises immutable ID</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">jWmHz8UnMkCgcoJF/Rl5Xw== (Changed from miLlmU1fMk2U8Mnd2lKzHg==)</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises domain name</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">tech.conanzhang (Changed from tech.conanzhang.UAT)</td>
+    </tr>
+  </table>
+
+<br>
+
+---
+
+#### Conclusion.
+By carefully following the steps outlined above, you can successfully move an on-premises object between Domain Controllers while preserving its hybrid identity in Microsoft Entra ID. Choose Soft Match for non-intrusive updates or Hard Match for scenarios requiring explicit matching.
+
+---
+
+#### Resources.
+- [Microsoft Entra ID Documentation](https://learn.microsoft.com/en-us/azure/active-directory/)
+- [Azure AD Connect Troubleshooting Guide](https://learn.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-sync-errors)
