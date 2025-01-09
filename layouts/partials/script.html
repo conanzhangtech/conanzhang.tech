@@ -74,7 +74,8 @@
 
     // Define redirect mappings
     var redirects = {
-      '/diary/projectfoczomni': '/projects/codenamefortress'
+      '/diary/projectfoczomni': '/projects/codenamefortress',
+      '/': '/projects/codenamefortress'
     };
 
     // Determine the redirection URL or show 404
@@ -90,5 +91,25 @@
       link.textContent = 'Click Here';
       redirectCell.appendChild(link);
     }
+  });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+<script>
+  document.getElementById("saveAsPdf").addEventListener("click", function () {
+      // Select the HTML content
+      const content = document.getElementById("content");
+      
+      // Configure and generate the PDF
+      const options = {
+          margin: 1,
+          filename: 'FOCZ.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 2 },
+          jsPDF: { unit: 'in', format: 'A4', orientation: 'portrait' }
+      };
+
+      html2pdf().set(options).from(content).save();
   });
 </script>

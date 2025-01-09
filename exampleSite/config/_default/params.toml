@@ -36,7 +36,7 @@ showing_posts = "You are at:"
 no_categories_found = "No Categories Found"
 no_tags_found = "No Tags Found"
 
-mainSections = ["diary", "achievements", "projects"]
+mainSections = ["diary", "achievements", "projects", "kb"]
 # about widget content
 about_widget_content = "Hi there, I am Conan, a Leader / IT and Cybersecurity Practitioner / Technical Experise or whatever you might associate with. I write tech stuff (ok, maybe sometimes not so techkie), but do stay here and look around hehe. ^_^"
 # footer content

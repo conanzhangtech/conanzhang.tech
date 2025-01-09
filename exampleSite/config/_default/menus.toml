@@ -29,23 +29,34 @@ hasChildren = true
 
 [[main]]
   parent = "diary"
-  name = "View my Digital Diary"
+  name = "Knowledge Base"
   url = "diary/"
   weight = 1
+
+[[main]]
+  parent = "diary"
+  name = "Knowledge Base"
+  url = "kb/"
+  weight = 2
 
   [[main]]
   parent = "diary"
   name = "Awards and Achievements"
   url = "achievements/"
-  weight = 2
+  weight = 5
 
   [[main]]
   parent = "diary"
   name = "Projects"
   url = "projects/"
-  weight = 3
+  weight = 6
 
 # footer menu
+
+[[footer]]
+name = "Knowledge Base"
+url = "kb/"
+weight = 2
 
 [[footer]]
 name = "Terms of Use"
