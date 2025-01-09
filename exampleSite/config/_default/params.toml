@@ -48,8 +48,10 @@ theme_copyright = true
 copyright = "Copyright 2025 © Facets of Conan ZHANG"
 
 # 404
-error_404_text = "ERROR 404!"
+error_404_text = "The URL you have requested is not found or have been moved."
 error_404_button = "home"
+error_404_requesturl = "Request URL"
+error_404_newurl = "New URL"
 
 # Preloader
 [preloader]

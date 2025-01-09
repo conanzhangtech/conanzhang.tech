@@ -9,6 +9,30 @@
       </div>
     </div>
   </div>
+
+  <br>
+  <div class="container">
+    <div class="row">
+      <table>
+        <thead>
+          <tr>
+            <th>{{ site.Params.error_404_requesturl }}</th>
+            <th>{{ site.Params.error_404_newurl }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="request_url">
+              <!-- Initially set to empty. JavaScript will fill this -->
+            </td>
+            <td id="redirect_link">
+              <!-- Initially set to empty. JavaScript will fill this -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>
 
 {{ end }}

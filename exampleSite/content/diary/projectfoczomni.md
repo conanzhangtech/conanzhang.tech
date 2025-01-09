@@ -8,7 +8,3 @@ type: "regular" # available types: [featured/regular]
 draft: true
 sitemapExclude: true
 ---
-
-You are being redirected to the new location in 5 seconds, please hold....
-
-<meta http-equiv="refresh" content="5; url=projects/codenamefortress/"/>'
