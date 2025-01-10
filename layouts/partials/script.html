@@ -63,54 +63,41 @@
 <!-- google adsense -->
 {{ partialCached "adsense-script.html" . }}
 
-
 <script>
+
   document.addEventListener("DOMContentLoaded", function() {
-    // Fetch the current URL path from the browser
-    var requestURL = window.location.pathname;
+  // Fetch the current URL path from the browser and remove trailing slashes
+  var requestURL = window.location.pathname.replace(/\/$/, '');
 
-    // Display the request URL in the table
-    document.getElementById('request_url').textContent = requestURL;
+  // Log the request URL for debugging purposes
+  console.log("Request URL:", requestURL);
 
-    // Define redirect mappings
-    var redirects = {
-      '/diary/projectfoczomni': '/projects/codenamefortress',
-      '/diary/how-to-perform-softmatch-and-hardmatch-entraid': '/kb/MS001',
-      '/about': '/whoami'
-    };
+  // Display the request URL in the table
+  document.getElementById('request_url').textContent = requestURL;
 
-    // Determine the redirection URL or show 404
-    var newURL = redirects[requestURL] || '404 Error - Page Not Found';
-    var redirectCell = document.getElementById('redirect_link');
+  // Define redirect mappings with consistent leading slashes and no trailing slashes
+  var redirects = {
+    '/diary/projectfoczomni': '/projects/codenamefortress',
+    '/diary/how-to-perform-softmatch-and-hardmatch-entraid': '/kb/MS001',
+    '/about': '/whoami',
+    '/diary/a': '/whoami'
+  };
 
-    // Update the table with either the new URL or the 404 message
-    if (newURL === '404 Error - Page Not Found') {
-      redirectCell.textContent = newURL;
-    } else {
-      var link = document.createElement('a');
-      link.href = newURL;
-      link.textContent = 'Click Here';
-      redirectCell.appendChild(link);
-    }
-  });
-</script>
+  // Normalize the request URL and check for redirects
+  var normalizedRequestURL = requestURL.replace(/\/$/, ''); // Ensure no trailing slash
+  var newURL = redirects[normalizedRequestURL] || '404 Error - Page Not Found';
+  
+  var redirectCell = document.getElementById('redirect_link');
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  // Update the table with either the new URL or the 404 message
+  if (newURL === '404 Error - Page Not Found') {
+    redirectCell.textContent = newURL;
+  } else {
+    var link = document.createElement('a');
+    link.href = newURL;
+    link.textContent = 'Click Here';
+    redirectCell.appendChild(link);
+  }
+});
 
-<script>
-  document.getElementById("saveAsPdf").addEventListener("click", function () {
-      // Select the HTML content
-      const content = document.getElementById("content");
-      
-      // Configure and generate the PDF
-      const options = {
-          margin: 1,
-          filename: 'FOCZ.pdf',
-          image: { type: 'jpeg', quality: 0.98 },
-          html2canvas: { scale: 2 },
-          jsPDF: { unit: 'in', format: 'A4', orientation: 'portrait' }
-      };
-
-      html2pdf().set(options).from(content).save();
-  });
 </script>
