@@ -31,13 +31,8 @@
         {{ end }}
 
 
-<a href="../">Go back to the Previous Page</a>
         <h1 class="h3 mb-4">{{.Title | markdownify}}</h1>
         <ul class="list-inline card-meta d-flex align-items-center mb-4">
-          <li class="list-inline-item d-flex align-items-center">
-            <i class="fa-solid fa-chevron-left me-2"></i>
-            <a href="../"><span>Go back</span></a> 
-          </li>
           <li class="list-inline-item d-flex align-items-center">
             <i class="fa-solid fa-thumbtack me-2"></i>
             You are at: <span id="request_url"></span>
@@ -52,7 +47,7 @@
           </li>
           <li class="list-inline-item d-flex align-items-center">
             <i class="fas fa-calendar me-2"></i>
-            <a onclick="window.print()"><span>PDF</span></a> 
+            <a onclick="window.print()"><span>Print</span></a> 
           </li>
         </ul>
 
