@@ -1,14 +1,12 @@
 ---
-title: "KB - MS001: How to Perform Soft Match or Hard Match for Hybrid Identity Sync Between Microsoft Entra ID and Multiple On-Premises Domain Controllers (DCs)."
+title: "KB - VMWARE001: How to replace a vCenter (vSphere) Server Machine SSL Certificate from self-signed to Domain Controller CA-signed?."
 
-description: "Managing hybrid identities across multiple on-premises Domain Controllers (DCs) synced to a single Microsoft Entra ID can be challenging.
+description: "This comprehensive guide provides detailed instructions on replacing the default self-signed SSL certificate on a vCenter Server Appliance (vSphere) with a Certificate Authority (CA)-signed certificate issued by a Domain Controller. 
 
-In a recent scenario, an object had to be moved between two separate on-premises DCs syncing to the same Microsoft Entra ID. This resulted in identity duplication, leading to conflicting passwords and policies, as the existing hybrid identity and the new on-premises object were treated as separate entities. 
+Leveraging vSphere's inbuilt GUI certificate manager, the process includes exporting Certificate Signing Requests (CSRs), configuring the Domain Controller CA to issue certificates, importing the signed certificates, and updating the vCenter Server settings."
 
-This guide provides a step-by-step walkthrough for seamlessly moving an on-premises object between two DCs while correctly linking the existing cloud hybrid identity to the new on-premises object using Soft Match or Hard Match techniques."
-
-image: "https://r2-apac.conanzhang.tech/HOW%20TO%20SM%20HM.png"
-date: 2025-01-07
+image: "images/kb/How to Cert.png"
+date: 2025-01-20
 categories: []
 type: "featured" # available types: [featured/regular]
 draft: false
@@ -22,78 +20,94 @@ sitemapExclude: false
 MS001
 
 #### Overview
-Managing hybrid identities across multiple on-premises Domain Controllers (DCs) synced to a single Microsoft Entra ID can be challenging.
+This comprehensive guide provides detailed instructions on replacing the default self-signed SSL certificate on a vCenter Server Appliance (vSphere) with a Certificate Authority (CA)-signed certificate issued by a Domain Controller. 
 
-In a recent scenario, an object had to be moved between two separate on-premises DCs syncing to the same Microsoft Entra ID. This resulted in identity duplication, leading to conflicting passwords and policies, as the existing hybrid identity and the new on-premises object were treated as separate entities.
+Leveraging vSphere's inbuilt GUI certificate manager, the process includes exporting Certificate Signing Requests (CSRs), configuring the Domain Controller CA to issue certificates, importing the signed certificates, and updating the vCenter Server settings.
 
-This guide provides a step-by-step walkthrough for seamlessly moving an on-premises object between two DCs while correctly linking the existing cloud hybrid identity to the new on-premises object using Soft Match or Hard Match techniques.
+# Table of Contents  
 
-1. [Goals](kb/ms001/#goals)  
-   - [What is Hybrid Identity?](kb/ms001/#what-is-hybrid-identity)  
-   - [What is Soft Match and Hard Match?](kb/ms001/#what-is-soft-match-and-hard-match)
+1. [Goals](kb/vmware001/#goals)
+   - [Why Replace the Default SSL Certificate?](kb/vmware001/#why-replace-the-default-ssl-certificate)  
+   - [Benefits of Using a Domain Controller CA-signed Certificate](kb/vmware001/#benefits-of-using-a-domain-controller-ca-signed-certificate)
 
-2. [UAT Scenario](kb/ms001/#uat-scenario)
+2. [UAT Scenario](kb/vmware001/#uat-scenario)
 
-3. [Expected downtime for user](kb/ms001/#expected-downtime-for-user)
 
-4. [Prerequisites](kb/ms001/#prerequisites)
 
-5. [Solution 1: Softmatch via UserPrincipalName](kb/ms001/#solution-1-softmatch-via-userprincipalname)  
-   - [Step 1: Information Gathering (Microsoft Entra ID)](kb/ms001/#step-1-information-gathering-microsoft-entra-id)  
-   - [Step 2: Modify synchronisation setting for the respective Entra Connect Servers](kb/ms001/#step-2-modify-synchronisation-setting-for-the-respective-entra-connect-servers)  
-   - [Step 3: Move object1 to the unsynchronised OU in DC1 and DC2 respectively.](kb/ms001/#step-3-move-object1-to-the-unsynchronised-ou-in-dc1-and-dc2-respectively)  
-   - [Step 4: Run first delta sync in DC1 and DC2 respectively](kb/ms001/#step-4-run-first-delta-sync-in-dc1-and-dc2-respectively)  
-   - [Step 5: Restore the deleted user object1@conanzhang.tech from Microsoft Entra ID and verify the current configuration.](kb/ms001/#step-5-restore-the-deleted-user-object1conanzhangtech-from-microsoft-entra-id-and-verify-the-current-configuration)  
-   - [Step 6: Remove object1@conanzhang.tech's ImmutableID via MSOnline Powershell.](kb/ms001/#step-6-remove-object1conanzhangtechs-immutableid-via-msonline-powershell)  
-   - [Step 7: Perform Soft Match](kb/ms001/#step-7-perform-soft-match)  
-   - [Step 8: Run second delta sync in DC1](kb/ms001/#step-8-run-second-delta-sync-in-dc1)  
-   - [Step 9: Verify that the user's On-Premise ImmutableID and On-premise Domain Name is now changed.](kb/ms001/#step-9-verify-that-the-users-on-premise-immutableid-and-on-premise-domain-name-is-now-changed)
+3. [Expected Downtime](kb/vmware001/#expected-downtime)
 
-6. [Solution 2: Hardmatch by forcefully modifying the On-premise ImmutableID attribute to the correct one.](kb/ms001/#solution-2-hardmatch-by-forcefully-modifying-the-on-premise-immutableid-attribute-to-the-correct-one)  
-   - [Step 1: Information Gathering (Microsoft Entra ID)](kb/ms001/#step-1-information-gathering-microsoft-entra-id)  
-   - [Step 2: Replace object1@conanzhang.tech's ImmutableID from miLlmU1fMk2U8Mnd2lKzHg== to jWmHz8UnMkCgcoJF/Rl5Xw== via MSOnline Powershell.](kb/ms001/#step-2-replace-object1conanzhangtechs-immutableid-from-millmu1fmk2u8mnd2lkzhg-to-jwmhz8unmkcgcojf-rl5xw-via-msonline-powershell)  
-   - [Step 3: Run delta sync in DC1](kb/ms001/#step-3-run-delta-sync-in-dc1)  
-   - [Step 4: Verify that the user's On-Premise ImmutableID and On-premise Domain Name is now changed.](kb/ms001/#step-4-verify-that-the-users-on-premise-immutableid-and-on-premise-domain-name-is-now-changed)
+3. [Prerequisites](kb/vmware001/#prerequisites)  
+   - [vSphere GUI Certificate Manager](kb/vmware001/#vsphere-gui-certificate-manager)  
+   - [Access to the Domain Controller CA](kb/vmware001/#access-to-the-domain-controller-ca)  
+   - [Backup and Recovery Preparation](kb/vmware001/#backup-and-recovery-preparation)
 
-7. [Conclusion](kb/ms001/#conclusion)
+4. [Step-by-Step Process](kb/vmware001/#step-by-step-process)  
+   - [Step 1: Export a Certificate Signing Request (CSR)](kb/vmware001/#step-1-export-a-certificate-signing-request-csr)  
+   - [Step 2: Issue the Certificate via Domain Controller CA](kb/vmware001/#step-2-issue-the-certificate-via-domain-controller-ca)  
+   - [Step 3: Import the CA-signed Certificate into vSphere](kb/vmware001/#step-3-import-the-ca-signed-certificate-into-vsphere)  
+   - [Step 4: Update vCenter Server Settings](kb/vmware001/#step-4-update-vcenter-server-settings)  
+   - [Step 5: Validate and Verify the Certificate](kb/vmware001/#step-5-validate-and-verify-the-certificate)
 
-8. [Resources](kb/ms001/#resources)
+5. [Troubleshooting Common Issues](kb/vmware001/#troubleshooting-common-issues)  
+   - [CSR Export Errors](kb/vmware001/#csr-export-errors)  
+   - [Certificate Import Issues](kb/vmware001/#certificate-import-issues)  
+   - [Post-Implementation Connectivity Problems](kb/vmware001/#post-implementation-connectivity-problems)
+
+6. [Conclusion](kb/vmware001/#conclusion)
+
+7. [Resources and References](kb/vmware001/#resources-and-references)
+
 
 
 ---
 #### Goals
 
-You need to ensure that their on-premise AD account is linked correctly to the existing cloud hybrid identity using Soft Match or Hard Match techniques.
+The goal of this article is to guide administrators through the process of replacing the default self-signed SSL certificate on a vCenter Server Appliance with a Domain Controller CA-signed certificate.
 
-By doing so, we can preserve the data, role permission, audit logs etc. for the user in the cloud.
+###### Why Replace the Default SSL Certificate?
+The default self-signed SSL certificate on vCenter Server is not trusted by other systems. Replacing it with a CA-signed certificate enhances security, ensures trust, and complies with organisational policies, while enabling seamless integration with domain services.
 
-###### What is Hybrid Identity?
-Hybrid identity enables users to access resources seamlessly across on-premises and cloud environments. It relies on synchronisation between Microsoft Entra ID (formerly Azure AD) and on-premises Active Directory (AD).
-
-###### What is Soft Match and Hard Match?
-- **Soft Match:** Matches objects based on the UserPrincipalName, Email, or the primary proxyAddress attribute.
-- **Hard Match:** Matches objects by explicitly setting an immutableID (sourceAnchor) in Microsoft Entra ID to match the on-premises object.
+###### Benefits of Using a Domain Controller CA-signed Certificate
+- **Trust**: Trusted by all major systems and browsers.  
+- **Security**: Provides stronger encryption and protection.  
+- **Compliance**: Meets security standards and regulations.  
+- **Integration**: Ensures smooth compatibility with Active Directory and network services.
 
 ---
 
 #### UAT Scenario
-*Refer to the architecture diagram at the top of this page for additional details.*
+*Assuming that vCenter Server has been deployed and Certificate Authority and its web services roles have been installed*
 
 In this scenario:
 
-- **Object1** (`object1@conanzhang.tech`) is currently linked to Location 2 (represented by **DC2**) and exists as `DC2\object1@domainC.com`.
-- **Object1** needs to be moved to Location 1 (represented by **DC1**), where IT administrators have already created an AD account for it.
-- As a result of this move, a duplicate entry is created in Microsoft Entra ID because Object1's cloud identity (with Entra ObjectID `aabbcc-aabbcc-aabbcc`) remains linked to DC2 in Location 2.
+**Characters:**
 
-- {{< image src="images/kb/Screenshot 2025-01-08 at 23.08.10.png" command="fill" option="q100" class="img-fluid" >}}
+- **Xiao Ming (IT Administrator)** – Responsible for managing the vCenter and CA server and ensuring the security of the VMware infrastructure.
+- **Da Ming (Manager)** – Focuses on maintaining security compliance across the organisation.
 
-To preserve Object1's data, role permissions, audit logs, and other configurations in the cloud, we need to link the existing cloud account to the newly created AD account in Location 1.
+---
 
-We will first attempt a **Soft Match** approach, as it is the simplest method. If Soft Matching does not work, we will proceed with a **Hard Match** to explicitly associate the cloud and on-premises objects.
+**Initial Discussion**
+
+**Xiao Ming**: *"Da Ming, our VAPT report shows flagged out that our vCenter Server is still using the default self-signed SSL certificate. We need to replace it with a Domain Controller CA-signed certificate to improve security and ensure compliance."*
+
+**Da Ming**: *"I agree. A self-signed certificate could create security risks and trust issues. I think it is time we implement a trusted CA-signed certificate. Do you have a plan for this?"*
+
+**Xiao Ming**: *"Yes, I have already outlined the steps. First, I will export a CSR from the vCenter Certificate Manager GUI, then we can use the Domain Controller's certificate web enrollment service to issue the CA-signed certificate. After that, I will import it back into vCenter and update the server settings."*
+
+**Da Ming**: *"Great. Make sure to run a few tests to verify the installation is successful and that everything works without disruptions. We don't want any downtime affecting operations."*
+
+---
+
+**Testing and Validation**
+
+*Xiao Ming and Da Ming begin testing the changes.*
+
+**Da Ming**: *"I have verified that the new CA certificate is trusted by the browser and I have tested the login process for all users. So far, no issues with authentication, and everything is loading without certificate errors."*
 
 #### Expected downtime for user.
 
-1 Hour (Depends on how quickily IT Admins perform the steps)
+10 Mins (Depends on how quickily IT Admins perform the steps)
 
 #### Prerequisites
 - Access to a x64 bit Windows 10/11 host and have local admin access (x32 bit, ARM devices are NOT supported.)
@@ -180,7 +194,7 @@ object1anotheridentity@conanzhang.tech
 
 ###### Step 2: Modify synchronisation setting for the respective Entra Connect Servers.
 
-**You will only need to perform this step if your Entra Connect Server is set to "Sync all domains and OUs" because you will need to move the user to an unsynced OU.** Skip to [Step 3: Move object1 to the unsynchronised OU in DC1 and DC2 respectively.](kb/ms001/#step-3-move-object1-to-the-unsynchronised-ou-in-dc1-and-dc2-respectively) if your Entra Connect Server is not under this setting.
+**You will only need to perform this step if your Entra Connect Server is set to "Sync all domains and OUs" because you will need to move the user to an unsynced OU.** Skip to [Step 3: Move object1 to the unsynchronised OU in DC1 and DC2 respectively.](kb/vmware001/#step-3-move-object1-to-the-unsynchronised-ou-in-dc1-and-dc2-respectively) if your Entra Connect Server is not under this setting.
 
 2a: Remote to the respective Entra Connect Servers with your Adminstrator Account via rdp, bastion or https.
 
