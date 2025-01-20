@@ -64,13 +64,9 @@ Leveraging vSphere's inbuilt GUI certificate manager, the process includes expor
 ---
 
 11. [Conclusion](kb/vmware001/#conclusion)  
-By carefully following the steps outlined above, you can successfully reissue a certificate that is CA trusted.
-
 ---
 
 12. [Resources](kb/vmware001/#resources)  
-[Insert any relevant resources or links for further reading or tools]
-
 
 
 ---
