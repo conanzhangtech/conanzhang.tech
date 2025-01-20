@@ -24,38 +24,52 @@ This comprehensive guide provides detailed instructions on replacing the default
 
 Leveraging vSphere's inbuilt GUI certificate manager, the process includes exporting Certificate Signing Requests (CSRs), configuring the Domain Controller CA to issue certificates, importing the signed certificates, and updating the vCenter Server settings.
 
-# Table of Contents  
+#### Table of Contents  
 
 1. [Goals](kb/vmware001/#goals)
-   - [Why Replace the Default SSL Certificate?](kb/vmware001/#why-replace-the-default-ssl-certificate)  
-   - [Benefits of Using a Domain Controller CA-signed Certificate](kb/vmware001/#benefits-of-using-a-domain-controller-ca-signed-certificate)
 
-2. [UAT Scenario](kb/vmware001/#uat-scenario)
+2. [Why Replace the Default SSL Certificate?](kb/vmware001/#why-replace-the-default-ssl-certificate)  
+   2.1 [Benefits of Using a Domain Controller CA-signed Certificate](kb/vmware001/#benefits-of-using-a-domain-controller-ca-signed-certificate)
 
+3. [UAT Scenario](kb/vmware001/#uat-scenario)
 
+4. [Expected Downtime for User](kb/vmware001/#expected-downtime-for-user)
 
-3. [Expected Downtime](kb/vmware001/#expected-downtime)
+5. [Prerequisites](kb/vmware001/#prerequisites)
 
-3. [Prerequisites](kb/vmware001/#prerequisites)  
-   - [vSphere GUI Certificate Manager](kb/vmware001/#vsphere-gui-certificate-manager)  
-   - [Access to the Domain Controller CA](kb/vmware001/#access-to-the-domain-controller-ca)  
-   - [Backup and Recovery Preparation](kb/vmware001/#backup-and-recovery-preparation)
+6. [Step 1: Take a Snapshot of Your VCSA VM](kb/vmware001/#step-1-take-a-snapshot-of-your-vcsa-vm)  
+   6.1 [Step 1a: Log in to your vSphere](kb/vmware001/#step-1a-log-in-to-your-vsphere)  
+   6.2 [Step 1b: Take a snapshot of your VCSA VM](kb/vmware001/#step-1b-take-a-snapshot-of-your-vcsa-vm)
 
-4. [Step-by-Step Process](kb/vmware001/#step-by-step-process)  
-   - [Step 1: Export a Certificate Signing Request (CSR)](kb/vmware001/#step-1-export-a-certificate-signing-request-csr)  
-   - [Step 2: Issue the Certificate via Domain Controller CA](kb/vmware001/#step-2-issue-the-certificate-via-domain-controller-ca)  
-   - [Step 3: Import the CA-signed Certificate into vSphere](kb/vmware001/#step-3-import-the-ca-signed-certificate-into-vsphere)  
-   - [Step 4: Update vCenter Server Settings](kb/vmware001/#step-4-update-vcenter-server-settings)  
-   - [Step 5: Validate and Verify the Certificate](kb/vmware001/#step-5-validate-and-verify-the-certificate)
+7. [Step 2: Create and Issue a Certificate Template for Web Enrollment](kb/vmware001/#step-2-create-and-issue-a-certificate-template-for-web-enrollment)  
+   7.1 [Step 2a: Log in to your Windows Server installed with the Certificate Authority role](kb/vmware001/#step-2a-log-in-to-your-windows-server-installed-with-the-certificate-authority-role)  
+   7.2 [Step 2b: Launch Certificate Authority](kb/vmware001/#step-2b-launch-certificate-authority)  
+   7.3 [Step 2c: Launch Certificate Template Console](kb/vmware001/#step-2c-launch-certificate-template-console)  
+   7.4 [Step 2d: Create and Issue a New Certificate Template that is Compatible with vSphere](kb/vmware001/#step-2d-create-and-issue-a-new-certificate-template-that-is-compatible-with-vsphere)  
+   7.5 [Step 2e: Change the Permission of the Newly Issued Certificate Template so that it can be Used to Enroll in the Web Enrollment](kb/vmware001/#step-2e-change-the-permission-of-the-newly-issued-certificate-template-so-that-it-can-be-used-to-enroll-in-the-web-enrollment)
 
-5. [Troubleshooting Common Issues](kb/vmware001/#troubleshooting-common-issues)  
-   - [CSR Export Errors](kb/vmware001/#csr-export-errors)  
-   - [Certificate Import Issues](kb/vmware001/#certificate-import-issues)  
-   - [Post-Implementation Connectivity Problems](kb/vmware001/#post-implementation-connectivity-problems)
+8. [Step 3: Generate CSR from the vSphere Certificate Manager GUI and Generate a Certificate to be Used in the vSphere Client](kb/vmware001/#step-3-generate-csr-from-the-vsphere-certificate-manager-gui-and-generate-a-certificate-to-be-used-in-the-vsphere-client)  
+   8.1 [Step 3a: Generate CSR](kb/vmware001/#step-3a-generate-csr)  
+   8.2 [Step 3b: Import the CSR into the Web Enrollment URL, and Download the Base64 Certificate, and Download and Convert the Domain Controller Certificate Chain into Base64 from the CA](kb/vmware001/#step-3b-import-the-csr-into-the-web-enrollment-url-and-download-the-base64-certificate-and-download-and-convert-the-domain-controller-certificate-chain-into-base64-from-the-ca)
 
-6. [Conclusion](kb/vmware001/#conclusion)
+9. [Step 4: Import the CA SSL Certificate and CA Chain Certificate into vSphere](kb/vmware001/#step-4-import-the-ca-ssl-certificate-and-ca-chain-certificate-into-vsphere)  
+   9.1 [Step 4a: Log in to the vSphere Web GUI](kb/vmware001/#step-4a-log-in-to-the-vsphere-web-gui)  
+   9.2 [Step 4b: Select "Import and Replace Certificate"](kb/vmware001/#step-4b-select-import-and-replace-certificate)  
+   9.3 [Step 4c: Browse the respective files](kb/vmware001/#step-4c-browse-the-respective-files)  
+   9.4 [Step 4d: Select "I have backed up vCenter Server and its associated database" and click next](kb/vmware001/#step-4d-select-i-have-backed-up-vcenter-server-and-its-associated-database-and-click-next)  
+   9.5 [Step 4e: Click Finish](kb/vmware001/#step-4e-click-finish)
 
-7. [Resources and References](kb/vmware001/#resources-and-references)
+10. [Step 5: Verify the Certificate is Now CA Signed](kb/vmware001/#step-5-verify-the-certificate-is-now-ca-signed)
+
+---
+
+11. [Conclusion](kb/vmware001/#conclusion)  
+By carefully following the steps outlined above, you can successfully reissue a certificate that is CA trusted.
+
+---
+
+12. [Resources](kb/vmware001/#resources)  
+[Insert any relevant resources or links for further reading or tools]
 
 
 
@@ -414,7 +428,7 @@ g: Click Finish
 
 {{< image src="images/kb/Screenshot 2025-01-20 at 23.01.04.png" command="fill" option="q100" class="img-fluid" >}}
 
-###### Step 5: Verify the certificate is now CA Signed
+#### Step 5: Verify the certificate is now CA Signed
 
 {{< image src="images/kb/Screenshot 2025-01-20 at 23.03.47.png" command="fill" option="q100" class="img-fluid" >}}
 
