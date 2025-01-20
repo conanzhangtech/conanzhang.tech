@@ -124,24 +124,104 @@ In this scenario:
 
 ###### Step 1a: Log in to your vSphere
 
-1a. Log in to your vSphere web GUI with your admin credentials.
+a. Log in to your vSphere web GUI with your admin credentials.
 
 {{< image src="images/kb/Screenshot 2025-01-20 at 17.47.03.png" command="fill" option="q100" class="img-fluid" >}}
 
-1b. Navigate to the VCSA VM, and go to the snapshots tab.
+###### Step 1b: Take a snapshot of your VCSA VM.
+a. Navigate to the VCSA VM, and go to the snapshots tab.
 
 {{< image src="images/kb/Screenshot 2025-01-20 at 17.48.52.png" command="fill" option="q100" class="img-fluid" >}}
 
-1c: Click on "Take Snapshot", uncheck the first option and click "Create"
+b. Click on "Take Snapshot", uncheck the first option and click "Create"
 
 {{< image src="images/kb/Screenshot 2025-01-20 at 17.51.28.png" command="fill" option="q100" class="img-fluid" >}}
 
-1d: Verify that your snapshot has been taken.
+c. Verify that your snapshot has been taken.
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 17.52.54.png" command="fill" option="q100" class="img-fluid" >}}
+
+#### Step 2: Create and publish a certificate template for web enrollment
+
+###### Step 2a: Log in to your Windows Server installed with the Certificate Authority role.
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 20.59.52.png" command="fill" option="q100" class="img-fluid" >}}
+
+###### Step 2b: Launch Certificate Authority
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 21.03.42.png" command="fill" option="q100" class="img-fluid" >}}
+
+###### Step 2c: Launch Certificate Template console
+
+a. Right click on "Certificate Template"
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 21.05.16.png" command="fill" option="q100" class="img-fluid" >}}
+
+b. Select "Manage"
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 21.06.57.png" command="fill" option="q100" class="img-fluid" >}}
+
+c. You should see the Certificate Template console screen.
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 21.09.19.png" command="fill" option="q100" class="img-fluid" >}}
+
+###### Step 2d: Create and Publish a new Certificate Template that is compatible with vSphere.
+
+a. Right click on the "Web Server" Template
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 21.11.49.png" command="fill" option="q100" class="img-fluid" >}}
+
+b. Select "Duplicate Template"
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 21.13.01.png" command="fill" option="q100" class="img-fluid" >}}
+
+c. Navigate to the Extensions Tab and configure as follows:
+
+<table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
+    <tr>
+      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Property</th>
+      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Value</th>
+    </tr>
+        <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">Extensions > Application Policies > Edit</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">Remove all entries <br> {{< image src="images/kb/Screenshot 2025-01-20 at 21.18.55.png" command="fill" option="q100" class="img-fluid" >}}</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID Object ID</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">b48bcbb9-945b-4145-9622-7860d0e5a819</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises sync enabled</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">No</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises immutable ID</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">jWmHz8UnMkCgcoJF/Rl5Xw==</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises domain name</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">tech.conanzhang</td>
+    </tr>
+  </table>
+- Application Policies
+{{< image src="images/kb/Screenshot 2025-01-20 at 21.09.19.png" command="fill" option="q100" class="img-fluid" >}}
+
+
+###### Step 1b: Take a snapshot of your VCSA VM.
+a. Navigate to the VCSA VM, and go to the snapshots tab.
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 17.48.52.png" command="fill" option="q100" class="img-fluid" >}}
+
+b. Click on "Take Snapshot", uncheck the first option and click "Create"
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 17.51.28.png" command="fill" option="q100" class="img-fluid" >}}
+
+c. Verify that your snapshot has been taken.
 
 {{< image src="images/kb/Screenshot 2025-01-20 at 17.52.54.png" command="fill" option="q100" class="img-fluid" >}}
 
 
-###### Step 2: Modify synchronisation setting for the respective Entra Connect Servers.
+###### Step 1b: Modify synchronisation setting for the respective Entra Connect Servers.
 
 **You will only need to perform this step if your Entra Connect Server is set to "Sync all domains and OUs" because you will need to move the user to an unsynced OU.** Skip to [Step 3: Move object1 to the unsynchronised OU in DC1 and DC2 respectively.](kb/vmware001/#step-3-move-object1-to-the-unsynchronised-ou-in-dc1-and-dc2-respectively) if your Entra Connect Server is not under this setting.
 
