@@ -1,9 +1,9 @@
 ---
-title: "KB - VMWARE001: How to replace a vCenter (vSphere) Server Machine SSL Certificate from self-signed to Domain Controller CA-signed?."
+title: "KB - VMWARE001: How to replace a vCenter (vSphere) Server Machine SSL Certificate from self-signed to CA-signed?."
 
-description: "This comprehensive guide provides detailed instructions on replacing the default self-signed SSL certificate on a vCenter Server Appliance (vSphere) with a Certificate Authority (CA)-signed certificate issued by a Domain Controller. 
+description: "This comprehensive guide provides detailed instructions on replacing the default self-signed SSL certificate on a vCenter Server Appliance (vSphere) with a Certificate Authority (CA)-signed certificate issued by a Certificate Authority. 
 
-Leveraging vSphere's inbuilt GUI certificate manager, the process includes exporting Certificate Signing Requests (CSRs), configuring the Domain Controller CA to issue certificates, importing the signed certificates, and updating the vCenter Server settings."
+Leveraging vSphere's inbuilt GUI certificate manager, the process includes exporting Certificate Signing Requests (CSRs), configuring the CA to issue certificates, importing the signed certificates, and updating the vCenter Server settings."
 
 image: "images/kb/How to Cert.png"
 date: 2025-01-20
@@ -20,9 +20,9 @@ sitemapExclude: false
 VMWARE001
 
 #### Overview
-This comprehensive guide provides detailed instructions on replacing the default self-signed SSL certificate on a vCenter Server Appliance (vSphere) with a Certificate Authority (CA)-signed certificate issued by a Domain Controller. 
+This comprehensive guide provides detailed instructions on replacing the default self-signed SSL certificate on a vCenter Server Appliance (vSphere) with a Certificate Authority (CA)-signed certificate issued by a Certificate Authority. 
 
-Leveraging vSphere's inbuilt GUI certificate manager, the process includes exporting Certificate Signing Requests (CSRs), configuring the Domain Controller CA to issue certificates, importing the signed certificates, and updating the vCenter Server settings.
+Leveraging vSphere's inbuilt GUI certificate manager, the process includes exporting Certificate Signing Requests (CSRs), configuring the CA to issue certificates, importing the signed certificates, and updating the vCenter Server settings.
 
 #### Table of Contents  
 
@@ -270,11 +270,7 @@ b. Select "Generate Certificate Signing Request (CSR)"
 
 {{< image src="images/kb/Screenshot 2025-01-20 at 22.02.00.png" command="fill" option="q100" class="img-fluid" >}}
 
-c. Select "Generate Certificate Signing Request (CSR)"
-
-{{< image src="images/kb/Screenshot 2025-01-20 at 22.02.00.png" command="fill" option="q100" class="img-fluid" >}}
-
-d. Enter the following value as per your server: The contents are editable.
+c. Enter the following value as per your server: The contents are editable.
 
 <table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
     <tr>
@@ -325,7 +321,7 @@ d. Enter the following value as per your server: The contents are editable.
     </tr>
   </table>
 
-e: Copy / download the CSR
+d: Copy / download the CSR
 
 ###### Step 3b: Import the CSR into the Web Enrollment URL, and download the Base64 certificate, and download and convert the Domain Controller Ceriifcate Chain into Base64 from the CA. 
 
