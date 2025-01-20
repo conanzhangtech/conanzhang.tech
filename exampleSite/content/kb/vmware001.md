@@ -110,86 +110,35 @@ In this scenario:
 10 Mins (Depends on how quickily IT Admins perform the steps)
 
 #### Prerequisites
-- Access to a x64 bit Windows 10/11 host and have local admin access (x32 bit, ARM devices are NOT supported.)
-- Domain Admin access to the respective primary DCs.
-- Local Admin access to the respective Entra Connect Servers
-- Global Administrator OR Hybrid Identity Administrator and User Administrator
-- Install MSOnline Powershell Module
+
+- Access to a vCenter Server Appliance (vSphere) with administrative privileges (Certificate Manager CLI).
+- A Domain Controller with Certificate Authority and IIS Web Enrollment Services Installed.
+- Access to Create, View, Edit, and Request Certificate Templates.
+- Ability to export and import SSL certificates within the vCenter Server.
 
 ---
 
+*I am using vSphere 8, so the interface might look different on yours as compared to mine.*
 
-#### Solution 1: Softmatch via UserPrincipalName
+#### Step 1. Take a snapshot of your VCSA VM.
 
+###### Step 1a: Log in to your vSphere
 
-###### Step 1: Information Gathering (Microsoft Entra ID).
-1a. Log in to the [Microsoft Entra ID admin portal](https://entra.microsoft.com) with your admin credentials.
+1a. Log in to your vSphere web GUI with your admin credentials.
 
-{{< image src="images/kb/Screenshot 2025-01-08 at 23.21.47.png" command="fill" option="q100" class="img-fluid" >}}
+{{< image src="images/kb/Screenshot 2025-01-20 at 17.47.03.png" command="fill" option="q100" class="img-fluid" >}}
 
-1b. Navigate to [Users > AllUsers](https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndTenants/UserManagementMenuBlade/~/AllUsers/menuId/) blade and look for the 2 objects: `object1@conanzhang.tech` and `object1anotheridentity@conanzhang.tech`
+1b. Navigate to the VCSA VM, and go to the snapshots tab.
 
-{{< image src="images/kb/Screenshot 2025-01-08 at 23.31.45.png" command="fill" option="q100" class="img-fluid" >}}
+{{< image src="images/kb/Screenshot 2025-01-20 at 17.48.52.png" command="fill" option="q100" class="img-fluid" >}}
 
-1c: Navigate to each object, and under properties, record down the following (The value is editable, so you can edit it here and copy to your notes, this is client-side processsing, data is NOT sent to my server for processing).:
+1c: Click on "Take Snapshot", uncheck the first option and click "Create"
 
-object1@conanzhang.tech
-<table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
-    <tr>
-      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Property</th>
-      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Value</th>
-    </tr>
-        <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID User principal name</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">object1@conanzhang.tech</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID Object ID</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">b48bcbb9-945b-4145-9622-7860d0e5a819</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises sync enabled</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">Yes</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises immutable ID</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">jWmHz8UnMkCgcoJF/Rl5Xw==</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises domain name</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">tech.conanzhang</td>
-    </tr>
-  </table>
+{{< image src="images/kb/Screenshot 2025-01-20 at 17.51.28.png" command="fill" option="q100" class="img-fluid" >}}
 
-<br>
+1d: Verify that your snapshot has been taken.
 
-object1anotheridentity@conanzhang.tech
-<table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
-  <tr>
-    <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Property</th>
-    <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Value</th>
-  </tr>
-  <tr>
-    <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID User principal name</td>
-    <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">object1anotheridentity@conanzhang.tech</td>
-  </tr>
-  <tr>
-    <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID Object ID</td>
-    <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">61a6e220-21aa-4f06-ba7f-f1b3bff27dae</td>
-  </tr>
-  <tr>
-    <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises sync enabled</td>
-    <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">Yes</td>
-  </tr>
-  <tr>
-    <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises immutable ID</td>
-    <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">miLlmU1fMk2U8Mnd2lKzHg==</td>
-  </tr>
-  <tr>
-    <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises domain name</td>
-    <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">tech.conanzhang.UAT</td>
-  </tr>
-</table>
+{{< image src="images/kb/Screenshot 2025-01-20 at 17.52.54.png" command="fill" option="q100" class="img-fluid" >}}
 
 
 ###### Step 2: Modify synchronisation setting for the respective Entra Connect Servers.
