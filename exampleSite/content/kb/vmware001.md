@@ -13,11 +13,11 @@ draft: false
 sitemapExclude: false
 ---
 
-> It is not as difficult as you would have imagined ^_-.
+> VMWare is still my first choice
 
 #### KB ID
 
-MS001
+VMWARE001
 
 #### Overview
 This comprehensive guide provides detailed instructions on replacing the default self-signed SSL certificate on a vCenter Server Appliance (vSphere) with a Certificate Authority (CA)-signed certificate issued by a Domain Controller. 
@@ -141,7 +141,7 @@ c. Verify that your snapshot has been taken.
 
 {{< image src="images/kb/Screenshot 2025-01-20 at 17.52.54.png" command="fill" option="q100" class="img-fluid" >}}
 
-#### Step 2: Create and publish a certificate template for web enrollment
+#### Step 2: Create and issue a certificate template for web enrollment
 
 ###### Step 2a: Log in to your Windows Server installed with the Certificate Authority role.
 
@@ -165,7 +165,7 @@ c. You should see the Certificate Template console screen.
 
 {{< image src="images/kb/Screenshot 2025-01-20 at 21.09.19.png" command="fill" option="q100" class="img-fluid" >}}
 
-###### Step 2d: Create and Publish a new Certificate Template that is compatible with vSphere.
+###### Step 2d: Create and Issue a new Certificate Template that is compatible with vSphere.
 
 a. Right click on the "Web Server" Template
 
@@ -175,7 +175,21 @@ b. Select "Duplicate Template"
 
 {{< image src="images/kb/Screenshot 2025-01-20 at 21.13.01.png" command="fill" option="q100" class="img-fluid" >}}
 
-c. Navigate to the Extensions Tab and configure as follows:
+
+c. Navigate to the Compatibility Tab and configure as follows:
+
+<table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
+    <tr>
+      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Property</th>
+      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Value</th>
+    </tr>
+        <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">Compatibility > Compatibility Settings > Certificate Authority and Cerificate Recipient</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">Windows Server 2012 and Windows 7 / Server 2008 R2 <br> {{< image src="images/kb/Screenshot 2025-01-20 at 21.27.13.png" command="fill" option="q100" class="img-fluid" >}}</td>
+    </tr>
+  </table>
+
+d. Navigate to the Extensions Tab and configure as follows:
 
 <table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
     <tr>
@@ -187,435 +201,226 @@ c. Navigate to the Extensions Tab and configure as follows:
       <td style="border: 1px solid black; padding: 8px; text-align: left;">Remove all entries <br> {{< image src="images/kb/Screenshot 2025-01-20 at 21.18.55.png" command="fill" option="q100" class="img-fluid" >}}</td>
     </tr>
     <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID Object ID</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">b48bcbb9-945b-4145-9622-7860d0e5a819</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">Extensions > Basic Constraints > Edit</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">Check "Enable this extension" <br> {{< image src="images/kb/Screenshot 2025-01-20 at 21.29.06.png" command="fill" option="q100" class="img-fluid" >}}</td>
     </tr>
     <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises sync enabled</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">No</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises immutable ID</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">jWmHz8UnMkCgcoJF/Rl5Xw==</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises domain name</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">tech.conanzhang</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">Extensions > Key Usage > Edit</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">Tick "Signature is proof of origin (nonrepudiation)" and leave the others as default. <br> {{< image src="images/kb/Screenshot 2025-01-20 at 21.32.01.png" command="fill" option="q100" class="img-fluid" >}}</td>
     </tr>
   </table>
-- Application Policies
-{{< image src="images/kb/Screenshot 2025-01-20 at 21.09.19.png" command="fill" option="q100" class="img-fluid" >}}
 
+e. Navigate to the General Tab and configure as follows:
 
-###### Step 1b: Take a snapshot of your VCSA VM.
-a. Navigate to the VCSA VM, and go to the snapshots tab.
-
-{{< image src="images/kb/Screenshot 2025-01-20 at 17.48.52.png" command="fill" option="q100" class="img-fluid" >}}
-
-b. Click on "Take Snapshot", uncheck the first option and click "Create"
-
-{{< image src="images/kb/Screenshot 2025-01-20 at 17.51.28.png" command="fill" option="q100" class="img-fluid" >}}
-
-c. Verify that your snapshot has been taken.
-
-{{< image src="images/kb/Screenshot 2025-01-20 at 17.52.54.png" command="fill" option="q100" class="img-fluid" >}}
-
-
-###### Step 1b: Modify synchronisation setting for the respective Entra Connect Servers.
-
-**You will only need to perform this step if your Entra Connect Server is set to "Sync all domains and OUs" because you will need to move the user to an unsynced OU.** Skip to [Step 3: Move object1 to the unsynchronised OU in DC1 and DC2 respectively.](kb/vmware001/#step-3-move-object1-to-the-unsynchronised-ou-in-dc1-and-dc2-respectively) if your Entra Connect Server is not under this setting.
-
-2a: Remote to the respective Entra Connect Servers with your Adminstrator Account via rdp, bastion or https.
-
-2b: Launch the Azure AD Connect application.
-
-{{< image src="images/kb/Screenshot 2025-01-09 at 00.10.46.png" command="fill" option="q100" class="img-fluid" >}}
-
-2c: Click "Configure".
-
-{{< image src="images/kb/Screenshot 2025-01-09 at 00.12.52.png" command="fill" option="q100" class="img-fluid" >}}
-
-2d: Click "Customise synchronization options" and click "Next".
-
-{{< image src="images/kb/Screenshot 2025-01-09 at 00.14.37.png" command="fill" option="q100" class="img-fluid" >}}
-
-2e: Enter your Microsoft Entra ID Admin credentials, login, and click "Next".
-
-{{< image src="images/kb/Screenshot 2025-01-09 at 00.17.02.png" command="fill" option="q100" class="img-fluid" >}}
-
-2f: Leave all the settings as default and Click "Next" (No image here).
-
-2g: Change the option from "Sync all domains and OUs" to "Sync selected domains and OUs" and untick the OU that you do not wish to synchronise.
-
-{{< image src="images/kb/Screenshot 2025-01-09 at 00.21.14.png" command="fill" option="q100" class="img-fluid" >}}
-
-2h: Leave all the settings as default and Click "Next" (No image here).
-
-2i: Tick the option "start the synchronization process when configuration completes" and click "Configure"
-
-{{< image src="images/kb/Screenshot 2025-01-09 at 00.29.32.png" command="fill" option="q100" class="img-fluid" >}}
-
-2j: Click "Exit" - IMPORTANT
-
-{{< image src="images/kb/Screenshot 2025-01-09 at 00.36.19.png" command="fill" option="q100" class="img-fluid" >}}
-
-
-###### Step 3: Move object1 to the unsynchronised OU in DC1 and DC2 respectively.
-
-3a. Just move them how you usually does (No image here)
-
-###### Step 4: Run first delta sync in DC1 and DC2 respectively.
-
-This deletes `object1@conanzhang.tech` and `object1anotheridentity@conanzhang.tech`, flipping their "On-premises sync enabled" to "false".
-
-Launch Powershell as administrator, and run the following command.
-```powershell
-Start-ADSyncSyncCycle -PolicyType Delta
-```
-{{< image src="images/kb/Screenshot 2025-01-09 at 00.41.55.png" command="fill" option="q100" class="img-fluid" >}}
-
-The users, `object1@conanzhang.tech` and `object1anotheridentity@conanzhang.tech` are now DELETED in Microsft Entra ID
-
-###### Step 5: Restore the deleted user object1@conanzhang.tech from Microsoft Entra ID and verify the current configuration.
-
-5a. Log in to the [Microsoft Entra ID admin portal](https://entra.microsoft.com) with your admin credentials.
-
-{{< image src="images/kb/Screenshot 2025-01-08 at 23.21.47.png" command="fill" option="q100" class="img-fluid" >}}
-
-5b. Navigate to [Users > DeletedUsers](https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndTenants/UserManagementMenuBlade/~/DeletedUsers/menuId/DeletedUsers) blade and restore the object `object1@conanzhang.tech`.
-
-{{< image src="images/kb/Screenshot 2025-01-09 at 00.52.39.png" command="fill" option="q100" class="img-fluid" >}}
-
-5c: Once restored, navigate to `object1@conanzhang.tech`, and under properties, ensure that it is the following (The value is editable, so you can edit it here and copy to your notes, this is client-side processsing, data is NOT sent to my server for processing).:
-
-object1@conanzhang.tech
 <table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
     <tr>
       <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Property</th>
       <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Value</th>
     </tr>
         <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID User principal name</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">object1@conanzhang.tech</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID Object ID</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">b48bcbb9-945b-4145-9622-7860d0e5a819</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises sync enabled</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">No</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises immutable ID</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">jWmHz8UnMkCgcoJF/Rl5Xw==</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises domain name</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">tech.conanzhang</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">General</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">Configure it as you deem fit. <br> {{< image src="images/kb/Screenshot 2025-01-20 at 21.36.25.png" command="fill" option="q100" class="img-fluid" >}}</td>
     </tr>
   </table>
 
-<br>
+f. Navigate back to the Certificate Authority console, and go to Certificate Template > New > Certificate Template to issue.
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 21.40.19.png" command="fill" option="q100" class="img-fluid" >}}</td>
+
+g. Select the Certificate template that you have created using c-e, and click Ok.
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 21.41.09.png" command="fill" option="q100" class="img-fluid" >}}</td>
+
+h. Select the Certificate template that you have created using c-e, and click Ok.
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 21.41.09.png" command="fill" option="q100" class="img-fluid" >}}</td>
+
+###### Step 2e: Change the permission of the newly issued Certificate Template so that it can be used to enroll in the Web Enrollment.
+
+*For ease of deployment, I am giving Full Control to "Everyone", PLEASE DO NOT FOLLOW THIS AS IT IS NOT RECOMMENDED!*
+
+a. Right click on the new template in the "Certificate Template Console" and select "Properties".
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 21.47.00.png" command="fill" option="q100" class="img-fluid" >}}
+
+b. Go to Security, and add "Everyone", and give "Full Control"
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 21.51.11.png" command="fill" option="q100" class="img-fluid" >}}
 
 
-###### Step 6: Remove `object1@conanzhang.tech`'s ImmutableID via MSOnline Powershell.
+#### Step 3: Generate CSR from the vSphere Certificate Manager GUI and generate a certificate to be used in the vSphere Client.
 
-6a. Run powershell as Administrator, and run the following:
+###### Step 3a: Generate CSR
 
-   ```powershell
-   Set-ExecutionPolicy bypass
-   Install-Module -Name MSOnline
-   Import-Module -Name MSOnline
-   ```
+a. Log in to your vSphere web UI, and navigate to Administration > Certificate Management
 
-{{< image src="images/kb/Screenshot 2025-01-09 at 01.02.32.png" command="fill" option="q100" class="img-fluid" >}}
+{{< image src="images/kb/Screenshot 2025-01-20 at 21.59.37.png" command="fill" option="q100" class="img-fluid" >}}
 
-6b. Connect to MSOLservice with your admin credetials.
+b. Select "Generate Certificate Signing Request (CSR)"
 
-   ```powershell
-connect-msolservice
-   ```
+{{< image src="images/kb/Screenshot 2025-01-20 at 22.02.00.png" command="fill" option="q100" class="img-fluid" >}}
 
-{{< image src="images/kb/Screenshot 2025-01-09 at 01.05.50.png" command="fill" option="q100" class="img-fluid" >}}
+c. Select "Generate Certificate Signing Request (CSR)"
 
-6c. Run the following and remove the existing ImmutableID from `object1@conanzhang.tech`.
+{{< image src="images/kb/Screenshot 2025-01-20 at 22.02.00.png" command="fill" option="q100" class="img-fluid" >}}
 
-   ```powershell
-Get-MsolUser -UserPrincipalName object1@conanzhang.tech | Set-MsolUser -ImmutableId "$null"
-   ```
+d. Enter the following value as per your server: The contents are editable.
 
-6d: Navigate to `object1@conanzhang.tech`, and under properties, ensure that it is the following (The value is editable, so you can edit it here and copy to your notes, this is client-side processsing, data is NOT sent to my server for processing).:
-
-object1@conanzhang.tech
 <table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
     <tr>
       <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Property</th>
       <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Value</th>
     </tr>
         <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID User principal name</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">object1@conanzhang.tech</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">Common name</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">fortress.conanzhang.tech</td>
     </tr>
     <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID Object ID</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">b48bcbb9-945b-4145-9622-7860d0e5a819</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">Organization</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">Facets of Conan ZHANG</td>
     </tr>
     <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises sync enabled</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">No</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">Organization Unit</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">IT</td>
     </tr>
     <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises immutable ID</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;"></td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">Country</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">Singapore</td>
     </tr>
     <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises domain name</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">tech.conanzhang</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">State/Province</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">SG</td>
+    </tr>
+      <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">Locality</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">SG</td>
+    </tr>
+      <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">Email Address</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">DataProtection@conanzhang.tech</td>
+    </tr>
+        </tr>
+      <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">Host</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">fortress.conanzhang.tech</td>
+    </tr>
+        </tr>
+      <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">Subject Alternative Name</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">fortress, fortress.tech.conanzhang, tech.conanzhang, 10.10.20.252</td>
+    </tr>
+          <tr>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">Key Size</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">2048</td>
     </tr>
   </table>
 
-<br>
+e: Copy / download the CSR
 
-###### Step 7: Perform Soft Match.
+###### Step 3b: Import the CSR into the Web Enrollment URL, and download the Base64 certificate, and download and convert the Domain Controller Ceriifcate Chain into Base64 from the CA. 
 
-7a. Navigate to `DC1\object1@conanzhang.tech` object on your AD, and update its UPN, email, SMTP: address to match `object1@conanzhang.tech` on Microsoft Entra ID.
+a. Navigate to https://<ca-url>/certsrv/certrqxt.asp
 
-**You may have a different attribute for synchronising UPN, for example, ExtensionAttribute. Update that accordingly.**
+{{< image src="images/kb/Screenshot 2025-01-20 at 22.18.35.png" command="fill" option="q100" class="img-fluid" >}}
 
-###### Step 8: Run second delta sync in DC1. 
+b. Paste your CSR and click submit
 
-This action will replace the ImmutableID to the current user in Location A and linking it to the right user.
+{{< image src="images/kb/Screenshot 2025-01-20 at 22.23.20.png" command="fill" option="q100" class="img-fluid" >}}
 
-Launch Powershell as administrator, and run the following command.
-```powershell
-Start-ADSyncSyncCycle -PolicyType Delta
-```
-{{< image src="images/kb/Screenshot 2025-01-09 at 00.41.55.png" command="fill" option="q100" class="img-fluid" >}}
+c. Select "Base 64 encoded" and download certificate (NOT CERTIFICATE CHAIN)"
 
-The users `object1@conanzhang.tech` is now synchronised with DC1 instead of DC2.
+{{< image src="images/kb/Screenshot 2025-01-20 at 22.24.24.png" command="fill" option="q100" class="img-fluid" >}}
 
+d. Navigate to https://<ca-url>/certsrv/certcarc.asp and click "Download CA certificate Chain" with Base 64 Encoding.
 
-###### Step 9: Verify that the user's On-Premise ImmutableID and On-premise Domain Name is now changed.
+{{< image src="images/kb/Screenshot 2025-01-20 at 22.27.40.png" command="fill" option="q100" class="img-fluid" >}}
 
-Please compare the table recprded in the previous step.
+e. Navigate to https://<ca-url>/certsrv/certcarc.asp and click "Download CA certificate Chain" with Base 64 Encoding.
 
-object1@conanzhang.tech
+{{< image src="images/kb/Screenshot 2025-01-20 at 22.27.40.png" command="fill" option="q100" class="img-fluid" >}}
+
+f. Open the newly downloaded .p7b file, and navigate into the folders until you find a certificate.
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 22.29.35.png" command="fill" option="q100" class="img-fluid" >}}
+
+g. Export all certificates in the chain by right clicking > All Tasks > Export
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 22.30.21.png" command="fill" option="q100" class="img-fluid" >}}
+
+h. Click next, check the option "Base-64 encoded X.509 (.CER)" option and click next
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 22.32.42.png" command="fill" option="q100" class="img-fluid" >}}
+
+i. Select the location of the .cer chain file, and click next
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 22.33.30.png" command="fill" option="q100" class="img-fluid" >}}
+
+j. Verify the information, and click Finish
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 22.34.56.png" command="fill" option="q100" class="img-fluid" >}}
+
+#### Step 4: Import the CA SSL certificate and CA Chain certificate into vSphere
+
+###### Step 4a: Log in to the vSphere Web GUI
+
+a. Log in to your vSphere web UI, and navigate to Administration > Certificate Management
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 21.59.37.png" command="fill" option="q100" class="img-fluid" >}}
+
+b. Select "Generate Certificate Signing Request (CSR)"
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 22.02.00.png" command="fill" option="q100" class="img-fluid" >}}
+
+c. Select "Import and Replace Certificate"
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 22.41.13.png" command="fill" option="q100" class="img-fluid" >}}
+
+d. Select "Replace with External CA certificate where CSR ....."
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 22.43.44.png" command="fill" option="q100" class="img-fluid" >}}
+
+e. Browse the respective files
+
 <table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
     <tr>
       <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Property</th>
       <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Value</th>
     </tr>
         <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID User principal name</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">object1@conanzhang.tech</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">Machine SSL Certificate</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">Use the file download in 3b (c) <br> 
+      
+      c. Select "Base 64 encoded" and download certificate (NOT CERTIFICATE CHAIN)"
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 22.24.24.png" command="fill" option="q100" class="img-fluid" >}}</td>
     </tr>
     <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID Object ID</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">b48bcbb9-945b-4145-9622-7860d0e5a819</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises sync enabled</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">Yes</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises immutable ID</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">jWmHz8UnMkCgcoJF/Rl5Xw== (Changed from miLlmU1fMk2U8Mnd2lKzHg==)</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises domain name</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">tech.conanzhang (Changed from tech.conanzhang.UAT)</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;">Chain of trusted root certificates</td>
+      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">Use the file exported in 3b (i) <br> 
+      
+i. Select the location of the .cer chain file, and click next
+
+{{< image src="images/kb/Screenshot 2025-01-20 at 22.33.30.png" command="fill" option="q100" class="img-fluid" >}}</td>
     </tr>
   </table>
 
-<br>
+{{< image src="images/kb/Screenshot 2025-01-20 at 22.56.39.png" command="fill" option="q100" class="img-fluid" >}}
 
-#### Solution 2: Hardmatch by forcefully modifying the On premise ImmutableID attribute to the correct one.
+f: Select "I have backed up vCenter Server and its associated database" and click next
 
-**This is not recommended as forcefully matching may result in unexpected behaviours.**
+{{< image src="images/kb/Screenshot 2025-01-20 at 22.59.15.png" command="fill" option="q100" class="img-fluid" >}}
 
-###### Step 1: Information Gathering (Microsoft Entra ID).
-1a. Log in to the [Microsoft Entra ID admin portal](https://entra.microsoft.com) with your admin credentials.
+g: Click Finish
 
-{{< image src="images/kb/Screenshot 2025-01-08 at 23.21.47.png" command="fill" option="q100" class="img-fluid" >}}
+{{< image src="images/kb/Screenshot 2025-01-20 at 23.01.04.png" command="fill" option="q100" class="img-fluid" >}}
 
-1b. Navigate to [Users > AllUsers](https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndTenants/UserManagementMenuBlade/~/AllUsers/menuId/) blade and look for the 2 objects: `object1@conanzhang.tech` and `object1anotheridentity@conanzhang.tech`
+###### Step 5: Verify the certificate is now CA Signed
 
-{{< image src="images/kb/Screenshot 2025-01-08 at 23.31.45.png" command="fill" option="q100" class="img-fluid" >}}
-
-1c: Navigate to each object, and under properties, record down the following (The value is editable, so you can edit it here and copy to your notes, this is client-side processsing, data is NOT sent to my server for processing).:
-
-object1@conanzhang.tech
-<table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
-    <tr>
-      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Property</th>
-      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Value</th>
-    </tr>
-        <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID User principal name</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">object1@conanzhang.tech</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID Object ID</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">b48bcbb9-945b-4145-9622-7860d0e5a819</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises sync enabled</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">Yes</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises immutable ID</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">jWmHz8UnMkCgcoJF/Rl5Xw==</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises domain name</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">tech.conanzhang</td>
-    </tr>
-  </table>
-
-<br>
-
-object1anotheridentity@conanzhang.tech
-<table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
-  <tr>
-    <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Property</th>
-    <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Value</th>
-  </tr>
-  <tr>
-    <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID User principal name</td>
-    <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">object1anotheridentity@conanzhang.tech</td>
-  </tr>
-  <tr>
-    <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID Object ID</td>
-    <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">61a6e220-21aa-4f06-ba7f-f1b3bff27dae</td>
-  </tr>
-  <tr>
-    <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises sync enabled</td>
-    <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">Yes</td>
-  </tr>
-  <tr>
-    <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises immutable ID</td>
-    <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">miLlmU1fMk2U8Mnd2lKzHg==</td>
-  </tr>
-  <tr>
-    <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises domain name</td>
-    <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">tech.conanzhang.UAT</td>
-  </tr>
-</table>
-
-
-###### Step 2: Replace `object1@conanzhang.tech`'s ImmutableID from miLlmU1fMk2U8Mnd2lKzHg== to jWmHz8UnMkCgcoJF/Rl5Xw== via MSOnline Powershell.
-
-2a. Run powershell as Administrator, and run the following:
-
-   ```powershell
-   Set-ExecutionPolicy bypass
-   Install-Module -Name MSOnline
-   Import-Module -Name MSOnline
-   ```
-
-{{< image src="images/kb/Screenshot 2025-01-09 at 01.02.32.png" command="fill" option="q100" class="img-fluid" >}}
-
-2b. Connect to MSOLservice with your admin credetials.
-
-   ```powershell
-connect-msolservice
-   ```
-
-{{< image src="images/kb/Screenshot 2025-01-09 at 01.05.50.png" command="fill" option="q100" class="img-fluid" >}}
-
-2c. Run the following and remove the existing ImmutableID from `object1@conanzhang.tech`.
-
-   ```powershell
-Get-MsolUser -UserPrincipalName object1@conanzhang.tech | Set-MsolUser -ImmutableId "jWmHz8UnMkCgcoJF/Rl5Xw=="
-   ```
-
-2d: Navigate to `object1@conanzhang.tech`, and under properties, ensure that it is the following (The value is editable, so you can edit it here and copy to your notes, this is client-side processsing, data is NOT sent to my server for processing).:
-
-object1@conanzhang.tech
-<table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
-    <tr>
-      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Property</th>
-      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Value</th>
-    </tr>
-        <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID User principal name</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">object1@conanzhang.tech</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID Object ID</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">b48bcbb9-945b-4145-9622-7860d0e5a819</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises sync enabled</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">No</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises immutable ID</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">jWmHz8UnMkCgcoJF/Rl5Xw==</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises domain name</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">tech.conanzhang</td>
-    </tr>
-  </table>
-
-<br>
-
-###### Step 3: Run delta sync in DC1. 
-
-This action will replace the rebase to the current user in Location A and linking it to the right user.
-
-Launch Powershell as administrator, and run the following command.
-```powershell
-Start-ADSyncSyncCycle -PolicyType Delta
-```
-{{< image src="images/kb/Screenshot 2025-01-09 at 00.41.55.png" command="fill" option="q100" class="img-fluid" >}}
-
-The users `object1@conanzhang.tech` is now synchronised with DC1 instead of DC2.
-
-
-###### Step 4: Verify that the user's On-Premise ImmutableID and On-premise Domain Name is now changed.
-
-Please compare the table recorded in the previous step.
-
-object1@conanzhang.tech
-<table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
-    <tr>
-      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Property</th>
-      <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Value</th>
-    </tr>
-        <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID User principal name</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">object1@conanzhang.tech</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">EntraID Object ID</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">b48bcbb9-945b-4145-9622-7860d0e5a819</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises sync enabled</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">Yes</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises immutable ID</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">jWmHz8UnMkCgcoJF/Rl5Xw== (Changed from miLlmU1fMk2U8Mnd2lKzHg==)</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;">On-premises domain name</td>
-      <td style="border: 1px solid black; padding: 8px; text-align: left;" contenteditable="true">tech.conanzhang (Changed from tech.conanzhang.UAT)</td>
-    </tr>
-  </table>
-
-<br>
-
----
+{{< image src="images/kb/Screenshot 2025-01-20 at 23.03.47.png" command="fill" option="q100" class="img-fluid" >}}
 
 #### Conclusion.
-By carefully following the steps outlined above, you can successfully move an on-premises object between Domain Controllers while preserving its hybrid identity in Microsoft Entra ID. Choose Soft Match for non-intrusive updates or Hard Match for scenarios requiring explicit matching.
+By carefully following the steps outlined above, you can successfully reissue a certificate that is CA trusted.
 
 ---
 
 #### Resources.
-- [Microsoft Entra ID Documentation](https://learn.microsoft.com/en-us/azure/active-directory/)
-- [Azure AD Connect Troubleshooting Guide](https://learn.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-sync-errors)
